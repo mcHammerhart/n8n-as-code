@@ -36,11 +36,10 @@ Choose your interface:
 ### 🖥️ **Option 2: CLI** (Command-line interface)
 
 ```bash
-# Installation from source
-npm install && npm run build && npm link
-
-# Or install from NPM
+# install globally
 npm install -g @n8n-as-code/cli
+# install locally as dev dependency
+npm install --save-dev @n8n-as-code/cli
 
 # Configuration
 n8nac init
