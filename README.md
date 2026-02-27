@@ -38,8 +38,11 @@ Choose your interface:
 ```bash
 # install globally
 npm install -g @n8n-as-code/cli
+npm install -g @n8n-as-code/skills
 # install locally as dev dependency
 npm install --save-dev @n8n-as-code/cli
+npm install --save-dev @n8n-as-code/skills
+```
 
 # Configuration
 n8nac init
