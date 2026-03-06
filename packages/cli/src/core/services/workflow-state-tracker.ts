@@ -546,13 +546,13 @@ export class WorkflowStateTracker extends EventEmitter {
         const originalName = name || '';
         let safeName = originalName;
 
-        const invalidCharMatches = safeName.match(/[\u0000-\u001f<>:"/\\|?*]/g) || [];
+        const invalidCharMatches = safeName.match(/[\u0000-\u001f\u007f<>:"/\\|?*]/g) || [];
         if (invalidCharMatches.length > 0) {
             console.log(
                 `[WorkflowStateTracker] Sanitizing filename "${originalName}": replacing invalid characters ` +
                 `[${invalidCharMatches.map(char => JSON.stringify(char)).join(', ')}] with "_"`
             );
-            safeName = safeName.replace(/[\u0000-\u001f<>:"/\\|?*]/g, '_');
+            safeName = safeName.replace(/[\u0000-\u001f\u007f<>:"/\\|?*]/g, '_');
         }
 
         const collapsedWhitespace = safeName.replace(/\s+/g, ' ').trim();
