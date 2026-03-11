@@ -100,8 +100,9 @@ function HomepageHeader() {
               <span className={styles.heroAccent}> n8n superpowers.</span>
             </Heading>
             <p className={styles.heroSubtitle}>
-              Give your coding agent the full n8n map: nodes, schemas, docs, templates, and validation.
-              Then keep the workflow itself in clean local code so pull requests stay readable and GitOps stays real.
+              Give your coding agent the full n8n ontology: nodes, schemas, docs, templates, validation,
+              and the real shape of what can connect to what. Then keep the workflow itself in clean local code
+              so pull requests stay readable and GitOps stays real.
             </p>
             <div className={styles.heroPills}>
               {productPillars.map((pillar) => (
@@ -172,7 +173,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={`${siteConfig.title} - ${siteConfig.tagline}`}
-      description="The AI Skill that gives your coding agent n8n superpowers, with GitOps for workflows, TypeScript output, and schema-grounded automation.">
+      description="The AI Skill that gives your coding agent an installable n8n ontology, with GitOps for workflows, TypeScript output, and schema-grounded automation.">
       <HomepageHeader />
       <main>
         <section className={styles.proofSection}>
@@ -183,8 +184,9 @@ export default function Home(): ReactNode {
                 The argument is in the dataset.
               </Heading>
               <p className={styles.sectionLead}>
-                n8n-as-code is useful because it does two things at once: it gives your agent real
-                n8n knowledge, and it gives your team clean Git-friendly workflow files to review.
+                n8n-as-code is useful because it does two things at once: it gives your agent a real
+                n8n ontology instead of loose prompts and guesswork, and it gives your team clean
+                Git-friendly workflow files to review.
               </p>
             </div>
             <div className={styles.statsGrid}>
@@ -236,7 +238,7 @@ export default function Home(): ReactNode {
                 </Heading>
                 <p className={styles.sectionLead}>
                   The goal is not to hand-author every workflow like traditional application code.
-                  The goal is to let agents build and update workflows from a trustworthy n8n knowledge base,
+                  The goal is to let agents build and update workflows from a trustworthy n8n ontology,
                   while your team reviews clean local artifacts instead of opaque UI diffs.
                 </p>
               </div>
@@ -263,8 +265,8 @@ export default function Home(): ReactNode {
                 Give your coding agent the full n8n map.
               </Heading>
               <p className={styles.ctaLead}>
-                Start with the skill, wire it into your preferred agent, and keep every workflow change readable,
-                validated, and reviewable from the first pull request.
+                Start with the skill, wire an installable n8n ontology into your preferred agent, and keep every
+                workflow change readable, validated, and reviewable from the first pull request.
               </p>
               <div className={styles.buttons}>
                 <Link

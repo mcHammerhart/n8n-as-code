@@ -21,7 +21,7 @@
 <br>
 
 **Your AI agent doesn't just _read_ about n8n. It _knows_ n8n.**<br>
-58 MB of pre-built knowledge — every node, every property, every option — embedded at install time.<br>
+An installable ontology for n8n — every node, every property, every option, and the relationships between them — embedded at install time.<br>
 Zero external calls. Zero latency. Zero hallucination.
 
 <br>
@@ -92,10 +92,12 @@ Natural-language workflow work in Claude Code, powered by the same `n8nac` CLI a
 > **Not a bridge. Not a proxy. A Skill.**<br>
 > Pre-built knowledge that your AI agent carries with it — works in **Cursor, Cline, Windsurf, Copilot, Claude**, or any coding agent.
 
+In 2026 AI tooling language, this layer is increasingly described as an **ontology**: a structured domain map that tells an agent what exists, how it fits together, and which actions are valid. That is exactly what `n8n-as-code` ships for n8n.
+
 | | |
 |:---|:---|
 | 🧩 **537 n8n nodes** | 433 core + 104 AI/LangChain — every official node, nothing missing |
-| 📋 **100% schema coverage** | 10,209 properties + 17,155 option values — your agent can't hallucinate parameters |
+| 📋 **100% schema coverage** | 10,209 properties + 17,155 option values — the ontology stays grounded in the real schema |
 | 📚 **1,243 documentation pages** | 93% of nodes have linked docs — integrations, triggers, AI, hosting, code |
 | 🔄 **7,702 workflow templates** | Full community library — searchable in ~5ms with FlexSearch |
 | 🤖 **104 AI/LangChain nodes** | Agents, chains, LLMs, tools, memory, vector stores, retrievers |
@@ -110,7 +112,7 @@ npx --yes n8nac skills examples search "AI agent"  # Search 7,702 templates
 npx --yes n8nac skills validate workflow.json   # Validate before deploying
 ```
 
-Claude Code uses the same `n8nac` CLI and ships the `n8n-architect` skill through the `n8n-as-code` plugin, so natural-language workflow work and terminal automation stay aligned.
+Claude Code uses the same `n8nac` CLI and ships the `n8n-architect` skill through the `n8n-as-code` plugin, so natural-language workflow work and terminal automation stay aligned around the same n8n ontology.
 
 ---
 
