@@ -270,24 +270,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Skip when a stable publish is pending
-        if: needs.publish-stable.outputs.pending == 'true'
-        run: echo "Stable versions are already ahead of tags on main; skipping release PR creation."
-
       - name: Setup Node.js
-        if: needs.publish-stable.outputs.pending != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '22.14'
 
       - name: Install pnpm
-        if: needs.publish-stable.outputs.pending != 'true'
         uses: pnpm/action-setup@v2
         with:
           version: 10
 
+      - name: Refresh tags after stable publish
+        run: git fetch origin --tags --force
+
       - name: Prepare release plan
-        if: needs.publish-stable.outputs.pending != 'true'
         id: release-plan
         run: |
           node scripts/release/workspace-release.mjs stable-pr --apply > release-plan.json
@@ -295,11 +291,11 @@ jobs:
           echo "changed=$CHANGED" >> "$GITHUB_OUTPUT"
 
       - name: Refresh lockfile
-        if: needs.publish-stable.outputs.pending != 'true' && steps.release-plan.outputs.changed == 'true'
+        if: steps.release-plan.outputs.changed == 'true'
         run: npm install --package-lock-only
 
       - name: Build release PR body
-        if: needs.publish-stable.outputs.pending != 'true' && steps.release-plan.outputs.changed == 'true'
+        if: steps.release-plan.outputs.changed == 'true'
         run: |
           node <<'NODE'
           const fs = require('fs');
@@ -318,7 +314,7 @@ jobs:
           NODE
 
       - name: Create or update release PR
-        if: needs.publish-stable.outputs.pending != 'true' && steps.release-plan.outputs.changed == 'true'
+        if: steps.release-plan.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
