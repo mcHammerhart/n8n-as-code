@@ -179,6 +179,7 @@ jobs:
             'n8nac': 'n8nac@v',
             'n8n-as-code': 'n8n-as-code@v',
           };
+          const changedPackages = plan.packages.filter(pkg => pkg.changed);
           for (const pkg of plan.packages) {
             if (!pkg.changed) continue;
             const tag = `${prefixByName[pkg.name]}${pkg.targetVersion}`;
@@ -190,8 +191,9 @@ jobs:
           }
 
           const releasePkg = plan.packages.find(pkg => pkg.name === 'n8nac' && pkg.changed);
-          if (releasePkg) {
-            const repoTag = `v${releasePkg.targetVersion}`;
+          if (changedPackages.length > 0) {
+            const shortSha = (process.env.GITHUB_SHA || execFileSync('git', ['rev-parse', '--short', 'HEAD'], { encoding: 'utf8' })).trim().slice(0, 7);
+            const repoTag = releasePkg ? `v${releasePkg.targetVersion}` : `release-${shortSha}`;
             try {
               execFileSync('git', ['rev-parse', '-q', '--verify', `refs/tags/${repoTag}`], { stdio: 'ignore' });
             } catch {
@@ -207,12 +209,13 @@ jobs:
         run: |
           node <<'NODE'
           const fs = require('fs');
+          const { execFileSync } = require('child_process');
 
           const plan = JSON.parse(fs.readFileSync('release-plan.json', 'utf8'));
           const pkg = plan.packages.find(item => item.name === 'n8nac');
           const changedPackages = plan.packages.filter(item => item.changed);
 
-          if (!pkg?.changed) {
+          if (changedPackages.length === 0) {
             fs.writeFileSync('github-release-meta.json', JSON.stringify({ publish: false }, null, 2));
             process.exit(0);
           }
@@ -260,14 +263,17 @@ jobs:
             return lines.join('\n').trim();
           }
 
-          const version = pkg.targetVersion;
-          const tag = `v${version}`;
-          const title = version === '1.0.0'
-            ? "🚀 n8n-as-code v1.0.0 - The 'State of the Art' Release"
-            : `n8n-as-code v${version}`;
+          const shortSha = (process.env.GITHUB_SHA || execFileSync('git', ['rev-parse', '--short', 'HEAD'], { encoding: 'utf8' })).trim().slice(0, 7);
+          const version = pkg?.changed ? pkg.targetVersion : null;
+          const tag = version ? `v${version}` : `release-${shortSha}`;
+          const title = version
+            ? (version === '1.0.0'
+                ? "🚀 n8n-as-code v1.0.0 - The 'State of the Art' Release"
+                : `n8n-as-code v${version}`)
+            : 'n8n-as-code';
 
           const notesLines = [
-            `## n8n-as-code ${version}`,
+            version ? `## n8n-as-code ${version}` : '## n8n-as-code',
             '',
             '### Product Surface',
             '',
