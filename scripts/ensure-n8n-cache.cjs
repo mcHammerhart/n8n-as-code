@@ -15,12 +15,48 @@ function parseArgs(argv) {
     };
 }
 
-function normalizeTag(rawTag) {
-    if (!rawTag) {
+function normalizeRef(rawRef) {
+    if (!rawRef) {
         return null;
     }
 
-    return rawTag.startsWith('n8n@') ? rawTag : `n8n@${rawTag}`;
+    const trimmedRef = rawRef.trim();
+    if (!trimmedRef) {
+        return null;
+    }
+
+    if (trimmedRef.startsWith('n8n@')) {
+        return trimmedRef;
+    }
+
+    if (/^\d+\.\d+\.\d+(?:[-+._0-9A-Za-z]+)?$/.test(trimmedRef)) {
+        return `n8n@${trimmedRef}`;
+    }
+
+    return trimmedRef;
+}
+
+function resolveConcreteReleaseTag(release) {
+    const releaseTag = normalizeRef(release?.tag_name);
+    if (releaseTag?.startsWith('n8n@')) {
+        return releaseTag;
+    }
+
+    const releaseName = normalizeRef(release?.name);
+    if (releaseName?.startsWith('n8n@')) {
+        return releaseName;
+    }
+
+    const targetCommitish = typeof release?.target_commitish === 'string'
+        ? release.target_commitish.trim()
+        : '';
+    const releaseBranchMatch = targetCommitish.match(/^release\/(.+)$/);
+
+    if (releaseBranchMatch) {
+        return `n8n@${releaseBranchMatch[1]}`;
+    }
+
+    return null;
 }
 
 function downloadJson(url) {
@@ -86,17 +122,24 @@ function downloadJson(url) {
 }
 
 async function resolveStableTag() {
-    const overrideTag = normalizeTag(process.env.N8N_VERSION || process.env.N8N_STABLE_TAG);
+    const overrideTag = normalizeRef(process.env.N8N_VERSION || process.env.N8N_STABLE_TAG);
     if (overrideTag) {
         return { tag: overrideTag, source: 'env' };
     }
 
     try {
         const release = await downloadJson(N8N_RELEASES_API_URL);
-        const latestTag = normalizeTag(release.tag_name);
+        const latestTag = resolveConcreteReleaseTag(release);
         if (latestTag) {
-            return { tag: latestTag, source: 'github-api' };
+            const releaseTag = normalizeRef(release.tag_name);
+            const source = releaseTag && releaseTag !== latestTag
+                ? `github-api-alias:${releaseTag}`
+                : 'github-api';
+
+            return { tag: latestTag, source };
         }
+
+        throw new Error('GitHub latest release response did not include a concrete n8n version tag.');
     } catch (error) {
         console.warn(`⚠️  Failed to resolve latest stable tag from GitHub API: ${error.message}`);
     }
