@@ -13,7 +13,7 @@
 [![npm: cli](https://img.shields.io/npm/v/@n8n-as-code/cli?label=cli&logo=npm)](https://www.npmjs.com/package/@n8n-as-code/cli)
 [![npm: skills](https://img.shields.io/npm/v/@n8n-as-code/skills?label=skills&logo=npm)](https://www.npmjs.com/package/@n8n-as-code/skills)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Beta%20%2F%20Pending%20Review-orange)](https://n8nascode.dev/docs/usage/claude-plugin/)
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 <br>
 
@@ -195,7 +195,7 @@ Claude Code uses the same `n8nac` CLI and ships the `n8n-architect` skill throug
 
 `n8n-as-code` ships a searchable index of public community workflow metadata and downloads the workflow JSON on demand when an agent or user explicitly requests it.
 
-The current community workflow catalog is built from [nusquama/n8nworkflows.xyz](https://github.com/nusquama/n8nworkflows.xyz). As in the upstream archive, each workflow keeps its original license and users should refer to the original workflow metadata and source page for license details. The repository structure and indexing logic in `n8n-as-code` remain licensed under [Apache 2.0](LICENSE).
+The current community workflow catalog is built from [nusquama/n8nworkflows.xyz](https://github.com/nusquama/n8nworkflows.xyz). As in the upstream archive, each workflow keeps its original license and users should refer to the original workflow metadata and source page for license details. The repository structure and indexing logic in `n8n-as-code` remain licensed under the [MIT License](LICENSE).
 
 Thanks to the `n8nworkflows.xyz` project for maintaining the public archive that makes this search experience possible.
 
@@ -356,7 +356,7 @@ Contributions welcome!
 
 ## 📄 License
 
-[Apache 2.0](LICENSE) — free to use, modify, and distribute.
+[MIT License](LICENSE) — free to use, modify, and distribute.
 
 Third-party community workflow metadata and downloadable workflow files remain subject to their respective upstream licenses.
 

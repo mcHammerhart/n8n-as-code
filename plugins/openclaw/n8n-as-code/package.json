@@ -15,7 +15,7 @@
     "url": "git+https://github.com/EtienneLescot/n8n-as-code.git",
     "directory": "plugins/openclaw/n8n-as-code"
   },
-  "license": "Apache-2.0",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "build": "npm run typecheck",

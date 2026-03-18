@@ -18,7 +18,7 @@
       },
       "homepage": "https://n8nascode.dev/docs/usage/claude-plugin/",
       "repository": "https://github.com/EtienneLescot/n8n-as-code",
-      "license": "Apache-2.0",
+      "license": "MIT",
       "category": "automation",
       "keywords": [
         "n8n",

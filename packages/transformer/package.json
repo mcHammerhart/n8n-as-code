@@ -3,6 +3,7 @@
     "version": "1.0.2",
     "description": "Bidirectional transformer: n8n JSON workflows ↔ TypeScript",
     "type": "module",
+    "license": "MIT",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {

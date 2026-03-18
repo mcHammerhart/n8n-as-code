@@ -38,7 +38,7 @@
     "docs:all": "npm run docs:api && npm run docs:build"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^1.13.2",
     "chokidar": "^5.0.0",

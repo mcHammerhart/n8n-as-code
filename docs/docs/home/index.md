@@ -70,7 +70,7 @@ Or install the **VS Code extension** and do everything from the sidebar. See [Ge
 
 ## Get Involved
 
-n8n-as-code is open source (Apache-2.0).
+n8n-as-code is open source (MIT).
 
 - [Report a bug](https://github.com/EtienneLescot/n8n-as-code/issues)
 - [Request a feature or ask a question](https://github.com/EtienneLescot/n8n-as-code/discussions)

@@ -75,7 +75,7 @@ Any retention of files, prompts, logs, or workflow metadata depends on:
 
 ## Open Source
 
-The plugin is distributed as open-source software under the Apache-2.0 license. The public source repository is available here:
+The plugin is distributed as open-source software under the MIT license. The public source repository is available here:
 
 ```text
 https://github.com/EtienneLescot/n8n-as-code
