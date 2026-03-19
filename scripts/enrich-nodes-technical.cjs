@@ -371,9 +371,22 @@ async function enrichNodesIndex() {
         enrichedCount++;
     }
 
+    // Read the n8n version from the cache metadata (written by ensure-n8n-cache.cjs)
+    const CACHE_METADATA_PATH = path.resolve(ROOT_DIR, '.n8n-cache', '.cache-metadata.json');
+    let n8nVersion = null;
+    if (fs.existsSync(CACHE_METADATA_PATH)) {
+        try {
+            const cacheMeta = JSON.parse(fs.readFileSync(CACHE_METADATA_PATH, 'utf8'));
+            n8nVersion = cacheMeta.resolvedTag || null;
+        } catch {
+            // best-effort
+        }
+    }
+
     // Build output
     const output = {
         generatedAt: new Date().toISOString(),
+        n8nVersion,
         sourceData: {
             nodesIndexFile: NODES_INDEX_FILE,
             docsMetadataFile: docsMetadata ? DOCS_METADATA_FILE : null,
