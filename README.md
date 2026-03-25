@@ -41,33 +41,6 @@ Zero external calls. Zero latency. Zero hallucination.
 
 Choose the entry point that matches how you already work.
 
-### ⭐ Preferred: Yagr
-
-<table>
-<tr>
-<td width="22%" align="center" valign="middle">
-<img src="res/yagr-logo.png" alt="Yagr logo" width="150">
-</td>
-<td width="78%" valign="top">
-
-**Yagr is the recommended way to get started.**  
-It gives your agent a guided onboarding flow, a persistent runtime, and the cleanest path into n8n-as-code.
-
-**Best for:** fastest setup, agent-first workflow, shared runtime across tools
-
-**Run**  
-<code>npm install -g @yagr/agent@latest</code><br>
-<code>yagr onboard</code><br>
-<code>yagr start</code>
-
-[Yagr docs](https://yagr.dev) · [Yagr repository](https://github.com/EtienneLescot/yagr)
-
-</td>
-</tr>
-</table>
-
-Yagr is still in beta. If you want the most proven setup today, choose one of the four options below.
-
 <table>
 <tr>
 <td width="50%" valign="top">
@@ -121,20 +94,17 @@ OpenClaw-native plugin and workspace bootstrap flow.
 </td>
 <td width="50%" valign="top">
 
-### ⌨️ CLI
+<h3><img src="res/yagr-logo.png" alt="Yagr" height="20" style="vertical-align:middle"> Yagr</h3>
 
-Explicit terminal-first workflow for sync and automation.
+Guided onboarding, persistent runtime, cleanest path into n8n-as-code.
 
-**Best for:** scripts, CI, GitOps pipelines, direct workflow operations
+**Best for:** fastest setup, agent-first workflow, shared runtime across tools
 
 **Run**  
-<code>npx --yes n8nac init</code><br>
-.
+<code>npm install -g @yagr/agent@latest</code><br>
+<code>yagr onboard</code>
 
-.
-
-
-[Full Getting Started Guide](https://n8nascode.dev/docs/getting-started/)
+[Yagr docs](https://yagr.dev) · [Yagr repository](https://github.com/EtienneLescot/yagr)
 
 </td>
 </tr>
@@ -142,6 +112,17 @@ Explicit terminal-first workflow for sync and automation.
 
 > **Then simply tell your agent what you want to do with your n8n workflows.**
 > Build new flows, update existing ones, search nodes and templates, validate changes, pull from n8n, push updates, and keep everything in sync.
+
+### ⌨️ CLI
+
+Explicit terminal-first workflow for sync and automation.
+
+**Best for:** scripts, CI, GitOps pipelines, direct workflow operations
+
+**Run**  
+<code>npx --yes n8nac init</code>
+
+[Full Getting Started Guide](https://n8nascode.dev/docs/getting-started/)
 
 ---
 ## MCP Clients (Claude Desktop) :
