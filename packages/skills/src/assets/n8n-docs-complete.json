@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-04T06:02:46.171Z",
+  "generatedAt": "2026-05-05T05:41:11.770Z",
   "version": "1.0.0",
   "sourceUrl": "https://docs.n8n.io/llms.txt",
   "totalPages": 1273,
@@ -8528,78 +8528,6 @@
     },
     {
       "id": "page-0087",
-      "title": "Level two: Introduction",
-      "url": "https://docs.n8n.io/courses/level-two/index.md",
-      "urlPath": "courses/level-two/index.md",
-      "category": "tutorials",
-      "subcategory": null,
-      "nodeName": null,
-      "nodeType": null,
-      "content": {
-        "markdown": "# Level two: Introduction\n\nWelcome to the **n8n Course Level 2**!\n\n## Is this course right for me?\n\nThis course is for you if you:\n\n- Want to automate somewhat complex business processes.\n- Want to dive deeper into n8n after taking the [Level 1 course](../level-one/).\n\n## What will I learn in this course?\n\nThe focus in this course is on working with data. You will learn how to:\n\n- Use the data structure of n8n correctly.\n- Process different data types (for example, XML, HTML, date, time, and binary data).\n- Merge data from different sources (for example, a database, spreadsheet, or CRM).\n- Use functions and JavaScript code in the [Code node](../../integrations/builtin/core-nodes/n8n-nodes-base.code/).\n- Deal with error workflows and workflow errors.\n\nYou will learn all this by completing short practical exercises after the theoretical explanations and building a business workflow following instructions.\n\n## What do I need to get started?\n\nTo follow along this course (at a comfortable pace) you will need the following:\n\n- **n8n set up**: You can use the [self-hosted version](../../hosting/installation/npm/) or [n8n Cloud](../../manage-cloud/overview/).\n- **A user ID**: [Sign up here](https://n8n-community.typeform.com/to/HQoQ7nXg) to get your unique ID and other credentials you will need in this course (Level 2). If you're a Level 1 finisher, please sign up again as you'll get different credentials for the Level 2 workflows.\n- **Basic n8n skills**: We strongly recommend taking the [Level 1 course](../level-one/) before this one.\n- **Basic JavaScript understanding**\n\n## How long does the course take?\n\nCompleting the course should take around **two hours**. You don't have to complete it in one go; feel free to take breaks and resume whenever you are ready.\n\n## How do I complete the course?\n\nThere are two milestones in this course that test your knowledge of what you have learned in the lessons:\n\n- Building the [main workflow](chapter-5/chapter-5.0/)\n- Passing the [quiz](https://n8n-community.typeform.com/to/r9hDbytg) at the end of the course\n\nYou can always **check your progress** throughout the course by entering your unique ID [here](https://internal.users.n8n.cloud/webhook/course-level-2/verify).\n\nIf you successfully complete the milestones above, you will get [**a badge and an avatar**](https://community.n8n.io/badges/105/completed-n8n-course-level-2) in your forum profile. You can then share your profile and course verification ID to showcase your n8n skills to others.\n\n[Let's get started!](chapter-1/)\n",
-        "excerpt": "# Level two: Introduction  Welcome to the **n8n Course Level 2**!  ## Is this course right for me?  This course is for you if you:  - Want to automate somewhat complex business processes. - Want to dive deeper into n8n after taking the [Level 1 course](../level-one/).  ## What will I learn in this course?  The focus in this course is on working with data. You will learn how to:  - Use the data structure of n8n correctly. - Process different data types (for example, XML, HTML, date, time, and bin...",
-        "sections": [
-          {
-            "title": "Level two: Introduction",
-            "level": 1,
-            "content": "Welcome to the **n8n Course Level 2**!"
-          }
-        ]
-      },
-      "metadata": {
-        "keywords": [
-          "level",
-          "two:",
-          "introduction",
-          "this",
-          "course",
-          "right",
-          "what",
-          "will",
-          "learn",
-          "course?",
-          "need",
-          "started?",
-          "long",
-          "does",
-          "take?",
-          "complete"
-        ],
-        "useCases": [],
-        "operations": [],
-        "codeExamples": 0,
-        "complexity": "beginner",
-        "readingTime": "2 min",
-        "contentLength": 2550,
-        "relatedPages": []
-      },
-      "searchIndex": {
-        "fullText": "level two: introduction # level two: introduction\n\nwelcome to the **n8n course level 2**!\n\n## is this course right for me?\n\nthis course is for you if you:\n\n- want to automate somewhat complex business processes.\n- want to dive deeper into n8n after taking the [level 1 course](../level-one/).\n\n## what will i learn in this course?\n\nthe focus in this course is on working with data. you will learn how to:\n\n- use the data structure of n8n correctly.\n- process different data types (for example, xml, html, date, time, and binary data).\n- merge data from different sources (for example, a database, spreadsheet, or crm).\n- use functions and javascript code in the [code node](../../integrations/builtin/core-nodes/n8n-nodes-base.code/).\n- deal with error workflows and workflow errors.\n\nyou will learn all this by completing short practical exercises after the theoretical explanations and building a business workflow following instructions.\n\n## what do i need to get started?\n\nto follow along this course (at a comfortable pace) you will need the following:\n\n- **n8n set up**: you can use the [self-hosted version](../../hosting/installation/npm/) or [n8n cloud](../../manage-cloud/overview/).\n- **a user id**: [sign up here](https://n8n-community.typeform.com/to/hqoq7nxg) to get your unique id and other credentials you will need in this course (level 2). if you're a level 1 finisher, please sign up again as you'll get different credentials for the level 2 workflows.\n- **basic n8n skills**: we strongly recommend taking the [level 1 course](../level-one/) before this one.\n- **basic javascript understanding**\n\n## how long does the course take?\n\ncompleting the course should take around **two hours**. you don't have to complete it in one go; feel free to take breaks and resume whenever you are ready.\n\n## how do i complete the course?\n\nthere are two milestones in this course that test your knowledge of what you have learned in the lessons:\n\n- building the [main workflow](chapter-5/chapter-5.0/)\n- passing the [quiz](https://n8n-community.typeform.com/to/r9hdbytg) at the end of the course\n\nyou can always **check your progress** throughout the course by entering your unique id [here](https://internal.users.n8n.cloud/webhook/course-level-2/verify).\n\nif you successfully complete the milestones above, you will get [**a badge and an avatar**](https://community.n8n.io/badges/105/completed-n8n-course-level-2) in your forum profile. you can then share your profile and course verification id to showcase your n8n skills to others.\n\n[let's get started!](chapter-1/)\n level two: introduction",
-        "importantTerms": [
-          "course",
-          "level",
-          "this",
-          "your",
-          "will",
-          "data",
-          "https",
-          "introduction",
-          "what",
-          "learn",
-          "different",
-          "code",
-          "workflow",
-          "need",
-          "cloud",
-          "community",
-          "take",
-          "complete",
-          "chapter"
-        ]
-      }
-    },
-    {
-      "id": "page-0088",
       "title": "Understanding the data structure",
       "url": "https://docs.n8n.io/courses/level-two/chapter-1/index.md",
       "urlPath": "courses/level-two/chapter-1/index.md",
@@ -8697,7 +8625,174 @@
       }
     },
     {
+      "id": "page-0088",
+      "title": "Level two: Introduction",
+      "url": "https://docs.n8n.io/courses/level-two/index.md",
+      "urlPath": "courses/level-two/index.md",
+      "category": "tutorials",
+      "subcategory": null,
+      "nodeName": null,
+      "nodeType": null,
+      "content": {
+        "markdown": "# Level two: Introduction\n\nWelcome to the **n8n Course Level 2**!\n\n## Is this course right for me?\n\nThis course is for you if you:\n\n- Want to automate somewhat complex business processes.\n- Want to dive deeper into n8n after taking the [Level 1 course](../level-one/).\n\n## What will I learn in this course?\n\nThe focus in this course is on working with data. You will learn how to:\n\n- Use the data structure of n8n correctly.\n- Process different data types (for example, XML, HTML, date, time, and binary data).\n- Merge data from different sources (for example, a database, spreadsheet, or CRM).\n- Use functions and JavaScript code in the [Code node](../../integrations/builtin/core-nodes/n8n-nodes-base.code/).\n- Deal with error workflows and workflow errors.\n\nYou will learn all this by completing short practical exercises after the theoretical explanations and building a business workflow following instructions.\n\n## What do I need to get started?\n\nTo follow along this course (at a comfortable pace) you will need the following:\n\n- **n8n set up**: You can use the [self-hosted version](../../hosting/installation/npm/) or [n8n Cloud](../../manage-cloud/overview/).\n- **A user ID**: [Sign up here](https://n8n-community.typeform.com/to/HQoQ7nXg) to get your unique ID and other credentials you will need in this course (Level 2). If you're a Level 1 finisher, please sign up again as you'll get different credentials for the Level 2 workflows.\n- **Basic n8n skills**: We strongly recommend taking the [Level 1 course](../level-one/) before this one.\n- **Basic JavaScript understanding**\n\n## How long does the course take?\n\nCompleting the course should take around **two hours**. You don't have to complete it in one go; feel free to take breaks and resume whenever you are ready.\n\n## How do I complete the course?\n\nThere are two milestones in this course that test your knowledge of what you have learned in the lessons:\n\n- Building the [main workflow](chapter-5/chapter-5.0/)\n- Passing the [quiz](https://n8n-community.typeform.com/to/r9hDbytg) at the end of the course\n\nYou can always **check your progress** throughout the course by entering your unique ID [here](https://internal.users.n8n.cloud/webhook/course-level-2/verify).\n\nIf you successfully complete the milestones above, you will get [**a badge and an avatar**](https://community.n8n.io/badges/105/completed-n8n-course-level-2) in your forum profile. You can then share your profile and course verification ID to showcase your n8n skills to others.\n\n[Let's get started!](chapter-1/)\n",
+        "excerpt": "# Level two: Introduction  Welcome to the **n8n Course Level 2**!  ## Is this course right for me?  This course is for you if you:  - Want to automate somewhat complex business processes. - Want to dive deeper into n8n after taking the [Level 1 course](../level-one/).  ## What will I learn in this course?  The focus in this course is on working with data. You will learn how to:  - Use the data structure of n8n correctly. - Process different data types (for example, XML, HTML, date, time, and bin...",
+        "sections": [
+          {
+            "title": "Level two: Introduction",
+            "level": 1,
+            "content": "Welcome to the **n8n Course Level 2**!"
+          }
+        ]
+      },
+      "metadata": {
+        "keywords": [
+          "level",
+          "two:",
+          "introduction",
+          "this",
+          "course",
+          "right",
+          "what",
+          "will",
+          "learn",
+          "course?",
+          "need",
+          "started?",
+          "long",
+          "does",
+          "take?",
+          "complete"
+        ],
+        "useCases": [],
+        "operations": [],
+        "codeExamples": 0,
+        "complexity": "beginner",
+        "readingTime": "2 min",
+        "contentLength": 2550,
+        "relatedPages": []
+      },
+      "searchIndex": {
+        "fullText": "level two: introduction # level two: introduction\n\nwelcome to the **n8n course level 2**!\n\n## is this course right for me?\n\nthis course is for you if you:\n\n- want to automate somewhat complex business processes.\n- want to dive deeper into n8n after taking the [level 1 course](../level-one/).\n\n## what will i learn in this course?\n\nthe focus in this course is on working with data. you will learn how to:\n\n- use the data structure of n8n correctly.\n- process different data types (for example, xml, html, date, time, and binary data).\n- merge data from different sources (for example, a database, spreadsheet, or crm).\n- use functions and javascript code in the [code node](../../integrations/builtin/core-nodes/n8n-nodes-base.code/).\n- deal with error workflows and workflow errors.\n\nyou will learn all this by completing short practical exercises after the theoretical explanations and building a business workflow following instructions.\n\n## what do i need to get started?\n\nto follow along this course (at a comfortable pace) you will need the following:\n\n- **n8n set up**: you can use the [self-hosted version](../../hosting/installation/npm/) or [n8n cloud](../../manage-cloud/overview/).\n- **a user id**: [sign up here](https://n8n-community.typeform.com/to/hqoq7nxg) to get your unique id and other credentials you will need in this course (level 2). if you're a level 1 finisher, please sign up again as you'll get different credentials for the level 2 workflows.\n- **basic n8n skills**: we strongly recommend taking the [level 1 course](../level-one/) before this one.\n- **basic javascript understanding**\n\n## how long does the course take?\n\ncompleting the course should take around **two hours**. you don't have to complete it in one go; feel free to take breaks and resume whenever you are ready.\n\n## how do i complete the course?\n\nthere are two milestones in this course that test your knowledge of what you have learned in the lessons:\n\n- building the [main workflow](chapter-5/chapter-5.0/)\n- passing the [quiz](https://n8n-community.typeform.com/to/r9hdbytg) at the end of the course\n\nyou can always **check your progress** throughout the course by entering your unique id [here](https://internal.users.n8n.cloud/webhook/course-level-2/verify).\n\nif you successfully complete the milestones above, you will get [**a badge and an avatar**](https://community.n8n.io/badges/105/completed-n8n-course-level-2) in your forum profile. you can then share your profile and course verification id to showcase your n8n skills to others.\n\n[let's get started!](chapter-1/)\n level two: introduction",
+        "importantTerms": [
+          "course",
+          "level",
+          "this",
+          "your",
+          "will",
+          "data",
+          "https",
+          "introduction",
+          "what",
+          "learn",
+          "different",
+          "code",
+          "workflow",
+          "need",
+          "cloud",
+          "community",
+          "take",
+          "complete",
+          "chapter"
+        ]
+      }
+    },
+    {
       "id": "page-0089",
+      "title": "Merging and splitting data",
+      "url": "https://docs.n8n.io/courses/level-two/chapter-3/index.md",
+      "urlPath": "courses/level-two/chapter-3/index.md",
+      "category": "tutorials",
+      "subcategory": null,
+      "nodeName": null,
+      "nodeType": null,
+      "content": {
+        "markdown": "# Merging and splitting data\n\nIn this chapter, you will learn how to merge and split data, and in what cases it might be useful to perform these operations.\n\n## Merging data\n\nIn some cases, you might need to merge (combine) and process data from different sources.\n\nMerging data can involve:\n\n- Creating one data set from multiple sources.\n- Synchronizing data between multiple systems. This could include removing duplicate data or updating data in one system when it changes in another.\n\nOne-way vs. two-way sync\n\nIn a one-way sync, data is synchronized in one direction. One system serves as the single source of truth. When information changes in that main system, it automatically changes in the secondary system; but if information changes in the secondary system, the changes aren't reflected in the main system.\n\nIn a two-way sync, data is synchronized in both directions (between both systems). When information changes in either of the two systems, it automatically changes in the other one as well.\n\n[This blog tutorial](https://blog.n8n.io/how-to-sync-data-between-two-systems/) explains how to sync data one-way and two-way between two CRMs.\n\nIn n8n, you can merge data from two different nodes using the [Merge node](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/), which provides several merging options:\n\n- [Append](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#append)\n- [Combine](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine)\n  - [Merge by Fields](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine-by-matching-fields): requires input fields to match on\n  - [Merge by Position](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine-by-position)\n  - [Combine all possible combinations](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine-by-all-possible-combinations)\n- [Choose Branch](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#choose-branch)\n\nNotice that Combine > Merge by Fields requires you enter input fields to match on. These fields should contain identical values between the data sources so n8n can properly match data together. In the **Merge node**, they're called `Input 1 Field` and `Input 2 Field`.\n\n*Property Input fields in the Merge node*\n\nProperty Input in dot notation\n\nIf you want to reference nested values in the **Merge node** parameters `Input 1 Field` and `Input 2 Field`, you need to enter the property key in dot-notation format (as text, not as an expression).\n\nNote\n\nYou can also find the **Merge node** under the alias Join. This might be more intuitive if you're familiar with SQL joins.\n\n### Merge Exercise\n\nBuild a workflow that merges data from the Customer Datastore node and Code node.\n\n1. Add a **Merge node** that takes `Input 1` from a **Customer Datastore node** and `Input 2` from a **Code node**.\n1. In the **Customer Datastore node**, run the operation **Get All People**.\n1. In the **Code node**, create an array of two objects with three properties: `name`, `language`, and `country`, where the property `country` has two sub-properties `code` and `name`.\n   - Fill out the values of these properties with the information of two characters from the Customer Database.\n   - For example, Jay Gatsby's language is English and country name is United States.\n1. In the **Merge node**, try out different merge options.\n\nShow me the solution\n\nThe workflow for this exercise looks like this:\n\n*Workflow exercise for merging data*\n\nIf you merge data with the option **Keep Matches** using the name as the input fields to match, the result should look like this (note this example only contains Jay Gatsby; yours might look different depending on which characters you selected):\n\n*Output of Merge node with option to keep matches*\n\nTo check the configuration of the nodes, you can copy the JSON workflow code below and paste it into your Editor UI:\n\n```\n{\n\"meta\": {\n\t\"templateCredsSetupCompleted\": true,\n\t\"instanceId\": \"cb484ba7b742928a2048bf8829668bed5b5ad9787579adea888f05980292a4a7\"\n},\n\"nodes\": [\n\t{\n\t\"parameters\": {\n\t\t\"mode\": \"combine\",\n\t\t\"mergeByFields\": {\n\t\t\"values\": [\n\t\t\t{\n\t\t\t\"field1\": \"name\",\n\t\t\t\"field2\": \"name\"\n\t\t\t}\n\t\t]\n\t\t},\n\t\t\"options\": {}\n\t},\n\t\"id\": \"578365f3-26dd-4fa6-9858-f0a5fdfc413b\",\n\t\"name\": \"Merge\",\n\t\"type\": \"n8n-nodes-base.merge\",\n\t\"typeVersion\": 2.1,\n\t\"position\": [\n\t\t720,\n\t\t580\n\t]\n\t},\n\t{\n\t\"parameters\": {},\n\t\"id\": \"71aa5aad-afdf-4f8a-bca0-34450eee8acc\",\n\t\"name\": \"When clicking \\\"Execute workflow\\\"\",\n\t\"type\": \"n8n-nodes-base.manualTrigger\",\n\t\"typeVersion\": 1,\n\t\"position\": [\n\t\t260,\n\t\t560\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"operation\": \"getAllPeople\"\n\t},\n\t\"id\": \"497174fe-3cab-4160-8103-78b44efd038d\",\n\t\"name\": \"Customer Datastore (n8n training)\",\n\t\"type\": \"n8n-nodes-base.n8nTrainingCustomerDatastore\",\n\t\"typeVersion\": 1,\n\t\"position\": [\n\t\t500,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"jsCode\": \"return [\\n  {\\n    'name': 'Jay Gatsby',\\n    'language': 'English',\\n    'country': {\\n      'code': 'US',\\n      'name': 'United States'\\n    }\\n    \\n  }\\n  \\n];\"\n\t},\n\t\"id\": \"387e8a1e-e796-4f05-8e75-7ce25c786c5f\",\n\t\"name\": \"Code\",\n\t\"type\": \"n8n-nodes-base.code\",\n\t\"typeVersion\": 2,\n\t\"position\": [\n\t\t500,\n\t\t720\n\t]\n\t}\n],\n\"connections\": {\n\t\"When clicking \\\"Execute workflow\\\"\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"Customer Datastore (n8n training)\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t},\n\t\t{\n\t\t\t\"node\": \"Code\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t},\n\t\"Customer Datastore (n8n training)\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"Merge\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t},\n\t\"Code\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"Merge\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 1\n\t\t}\n\t\t]\n\t]\n\t}\n},\n\"pinData\": {}\n}\n```\n\n## Looping\n\nIn some cases, you might need to perform the same operation on each element of an array or each data item (for example sending a message to every contact in your address book). In technical terms, you need to iterate through the data (with loops).\n\nn8n generally handles this repetitive processing automatically, as the nodes run once for each item, so you don't need to build loops into your workflows.\n\nHowever, there are some [exceptions of nodes and operations](../../../flow-logic/looping/#node-exceptions) that will require you to build a loop into your workflow.\n\nTo [create a loop in an n8n workflow](../../../flow-logic/looping/#using-loops-in-n8n), you need to connect the output of one node to the input of a previous node, and add an **If node** to check when to stop the loop.\n\n## Splitting data in batches\n\nIf you need to process large volumes of incoming data, execute the **Code node** multiple times, or avoid API rate limits, it's best to split the data into batches (groups) and process these batches.\n\nFor these processes, use the [**Loop Over Items node**](../../../integrations/builtin/core-nodes/n8n-nodes-base.splitinbatches/). This node splits input data into a specified batch size and, with each iteration, returns a predefined amount of data.\n\nExecution of Loop Over Items node\n\nThe **Loop Over Items node** stops executing after all the incoming items get divided into batches and passed on to the next node in the workflow, so it's not necessary to add an **If node** to stop the loop.\n\n### Loop/Batch Exercise\n\nBuild a workflow that reads the RSS feed from Medium and dev.to. The workflow should consist of three nodes:\n\n1. A **Code node** that returns the URLs of the RSS feeds of Medium (`https://medium.com/feed/n8n-io`) and dev.to (`https://dev.to/feed/n8n`).\n1. A **Loop Over Items node** with `Batch Size: 1`, that takes in the inputs from the **Code node** and **RSS Read node** and iterates over the items.\n1. An **RSS Read node** that gets the URL of the Medium RSS feed, passed as an expression: `{{ $json.url }}`.\n   - The **RSS Read node** is one of the [exception nodes](../../../flow-logic/looping/#node-exceptions) which processes only the first item it receives, so the **Loop Over Items node** is necessary for iterating over multiple items.\n\nShow me the solution\n\n1. Add a **Code Node**. You can format the code in several ways, one way is:\n   - Set **Mode** to `Run Once for All Items`.\n\n   - Set **Language** to `JavaScript`.\n\n   - Copy the code below and paste it into the JavaScript Code editor:\n\n     ```\n     let urls = [\n     \t{\n     \t\tjson: {\n     \t\turl: 'https://medium.com/feed/n8n-io'\n     \t\t}\n     \t},\n     \t{\n     \tjson: {\n     \t\turl: 'https://dev.to/feed/n8n'\n     \t\t} \n     \t}\n     ]\n     return urls;\n     ```\n1. Add a **Loop Over Items node** connected to the **Code node**.\n   - Set **Batch Size** to `1`.\n1. The **Loop Over Items node** automatically adds a node called \"Replace Me\". Replace that node with an **RSS Read node**.\n   - Set the **URL** to use the url from the Code Node: `{{ $json.url }}`.\n\nThe workflow for this exercise looks like this:\n\n*Workflow for getting RSS feeds from two blogs*\n\nTo check the configuration of the nodes, you can copy the JSON workflow code below and paste it into your Editor UI:\n\n```\n{\n\"meta\": {\n\t\"templateCredsSetupCompleted\": true,\n\t\"instanceId\": \"cb484ba7b742928a2048bf8829668bed5b5ad9787579adea888f05980292a4a7\"\n},\n\"nodes\": [\n\t{\n\t\"parameters\": {},\n\t\"id\": \"ed8dc090-ae8c-4db6-a93b-0fa873015c25\",\n\t\"name\": \"When clicking \\\"Execute workflow\\\"\",\n\t\"type\": \"n8n-nodes-base.manualTrigger\",\n\t\"typeVersion\": 1,\n\t\"position\": [\n\t\t460,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"jsCode\": \"let urls = [\\n  {\\n    json: {\\n      url: 'https://medium.com/feed/n8n-io'\\n    }\\n  },\\n  {\\n   json: {\\n     url: 'https://dev.to/feed/n8n'\\n   } \\n  }\\n]\\n\\nreturn urls;\"\n\t},\n\t\"id\": \"1df2a9bf-f970-4e04-b906-92dbbc9e8d3a\",\n\t\"name\": \"Code\",\n\t\"type\": \"n8n-nodes-base.code\",\n\t\"typeVersion\": 2,\n\t\"position\": [\n\t\t680,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"options\": {}\n\t},\n\t\"id\": \"3cce249a-0eab-42e2-90e3-dbdf3684e012\",\n\t\"name\": \"Loop Over Items\",\n\t\"type\": \"n8n-nodes-base.splitInBatches\",\n\t\"typeVersion\": 3,\n\t\"position\": [\n\t\t900,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"url\": \"={{ $json.url }}\",\n\t\t\"options\": {}\n\t},\n\t\"id\": \"50e1c1dc-9a5d-42d3-b7c0-accc31636aa6\",\n\t\"name\": \"RSS Read\",\n\t\"type\": \"n8n-nodes-base.rssFeedRead\",\n\t\"typeVersion\": 1,\n\t\"position\": [\n\t\t1120,\n\t\t460\n\t]\n\t}\n],\n\"connections\": {\n\t\"When clicking \\\"Execute workflow\\\"\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"Code\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t},\n\t\"Code\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"Loop Over Items\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t},\n\t\"Loop Over Items\": {\n\t\"main\": [\n\t\tnull,\n\t\t[\n\t\t{\n\t\t\t\"node\": \"RSS Read\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t},\n\t\"RSS Read\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"Loop Over Items\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t}\n},\n\"pinData\": {}\n}\n```\n",
+        "excerpt": "# Merging and splitting data  In this chapter, you will learn how to merge and split data, and in what cases it might be useful to perform these operations.  ## Merging data  In some cases, you might need to merge (combine) and process data from different sources.  Merging data can involve:  - Creating one data set from multiple sources. - Synchronizing data between multiple systems. This could include removing duplicate data or updating data in one system when it changes in another.  One-way vs...",
+        "sections": [
+          {
+            "title": "Merging and splitting data",
+            "level": 1,
+            "content": "In this chapter, you will learn how to merge and split data, and in what cases it might be useful to perform these operations."
+          }
+        ]
+      },
+      "metadata": {
+        "keywords": [
+          "merging",
+          "splitting",
+          "data",
+          "merge",
+          "exercise",
+          "looping",
+          "batches",
+          "loop/batch"
+        ],
+        "useCases": [],
+        "operations": [],
+        "codeExamples": 3,
+        "complexity": "intermediate",
+        "readingTime": "8 min",
+        "contentLength": 10677,
+        "relatedPages": []
+      },
+      "searchIndex": {
+        "fullText": "merging and splitting data # merging and splitting data\n\nin this chapter, you will learn how to merge and split data, and in what cases it might be useful to perform these operations.\n\n## merging data\n\nin some cases, you might need to merge (combine) and process data from different sources.\n\nmerging data can involve:\n\n- creating one data set from multiple sources.\n- synchronizing data between multiple systems. this could include removing duplicate data or updating data in one system when it changes in another.\n\none-way vs. two-way sync\n\nin a one-way sync, data is synchronized in one direction. one system serves as the single source of truth. when information changes in that main system, it automatically changes in the secondary system; but if information changes in the secondary system, the changes aren't reflected in the main system.\n\nin a two-way sync, data is synchronized in both directions (between both systems). when information changes in either of the two systems, it automatically changes in the other one as well.\n\n[this blog tutorial](https://blog.n8n.io/how-to-sync-data-between-two-systems/) explains how to sync data one-way and two-way between two crms.\n\nin n8n, you can merge data from two different nodes using the [merge node](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/), which provides several merging options:\n\n- [append](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#append)\n- [combine](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine)\n  - [merge by fields](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine-by-matching-fields): requires input fields to match on\n  - [merge by position](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine-by-position)\n  - [combine all possible combinations](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine-by-all-possible-combinations)\n- [choose branch](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#choose-branch)\n\nnotice that combine > merge by fields requires you enter input fields to match on. these fields should contain identical values between the data sources so n8n can properly match data together. in the **merge node**, they're called `input 1 field` and `input 2 field`.\n\n*property input fields in the merge node*\n\nproperty input in dot notation\n\nif you want to reference nested values in the **merge node** parameters `input 1 field` and `input 2 field`, you need to enter the property key in dot-notation format (as text, not as an expression).\n\nnote\n\nyou can also find the **merge node** under the alias join. this might be more intuitive if you're familiar with sql joins.\n\n### merge exercise\n\nbuild a workflow that merges data from the customer datastore node and code node.\n\n1. add a **merge node** that takes `input 1` from a **customer datastore node** and `input 2` from a **code node**.\n1. in the **customer datastore node**, run the operation **get all people**.\n1. in the **code node**, create an array of two objects with three properties: `name`, `language`, and `country`, where the property `country` has two sub-properties `code` and `name`.\n   - fill out the values of these properties with the information of two characters from the customer database.\n   - for example, jay gatsby's language is english and country name is united states.\n1. in the **merge node**, try out different merge options.\n\nshow me the solution\n\nthe workflow for this exercise looks like this:\n\n*workflow exercise for merging data*\n\nif you merge data with the option **keep matches** using the name as the input fields to match, the result should look like this (note this example only contains jay gatsby; yours might look different depending on which characters you selected):\n\n*output of merge node with option to keep matches*\n\nto check the configuration of the nodes, you can copy the json workflow code below and paste it into your editor ui:\n\n```\n{\n\"meta\": {\n\t\"templatecredssetupcompleted\": true,\n\t\"instanceid\": \"cb484ba7b742928a2048bf8829668bed5b5ad9787579adea888f05980292a4a7\"\n},\n\"nodes\": [\n\t{\n\t\"parameters\": {\n\t\t\"mode\": \"combine\",\n\t\t\"mergebyfields\": {\n\t\t\"values\": [\n\t\t\t{\n\t\t\t\"field1\": \"name\",\n\t\t\t\"field2\": \"name\"\n\t\t\t}\n\t\t]\n\t\t},\n\t\t\"options\": {}\n\t},\n\t\"id\": \"578365f3-26dd-4fa6-9858-f0a5fdfc413b\",\n\t\"name\": \"merge\",\n\t\"type\": \"n8n-nodes-base.merge\",\n\t\"typeversion\": 2.1,\n\t\"position\": [\n\t\t720,\n\t\t580\n\t]\n\t},\n\t{\n\t\"parameters\": {},\n\t\"id\": \"71aa5aad-afdf-4f8a-bca0-34450eee8acc\",\n\t\"name\": \"when clicking \\\"execute workflow\\\"\",\n\t\"type\": \"n8n-nodes-base.manualtrigger\",\n\t\"typeversion\": 1,\n\t\"position\": [\n\t\t260,\n\t\t560\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"operation\": \"getallpeople\"\n\t},\n\t\"id\": \"497174fe-3cab-4160-8103-78b44efd038d\",\n\t\"name\": \"customer datastore (n8n training)\",\n\t\"type\": \"n8n-nodes-base.n8ntrainingcustomerdatastore\",\n\t\"typeversion\": 1,\n\t\"position\": [\n\t\t500,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"jscode\": \"return [\\n  {\\n    'name': 'jay gatsby',\\n    'language': 'english',\\n    'country': {\\n      'code': 'us',\\n      'name': 'united states'\\n    }\\n    \\n  }\\n  \\n];\"\n\t},\n\t\"id\": \"387e8a1e-e796-4f05-8e75-7ce25c786c5f\",\n\t\"name\": \"code\",\n\t\"type\": \"n8n-nodes-base.code\",\n\t\"typeversion\": 2,\n\t\"position\": [\n\t\t500,\n\t\t720\n\t]\n\t}\n],\n\"connections\": {\n\t\"when clicking \\\"execute workflow\\\"\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"customer datastore (n8n training)\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t},\n\t\t{\n\t\t\t\"node\": \"code\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t},\n\t\"customer datastore (n8n training)\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"merge\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t},\n\t\"code\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"merge\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 1\n\t\t}\n\t\t]\n\t]\n\t}\n},\n\"pindata\": {}\n}\n```\n\n## looping\n\nin some cases, you might need to perform the same operation on each element of an array or each data item (for example sending a message to every contact in your address book). in technical terms, you need to iterate through the data (with loops).\n\nn8n generally handles this repetitive processing automatically, as the nodes run once for each item, so you don't need to build loops into your workflows.\n\nhowever, there are some [exceptions of nodes and operations](../../../flow-logic/looping/#node-exceptions) that will require you to build a loop into your workflow.\n\nto [create a loop in an n8n workflow](../../../flow-logic/looping/#using-loops-in-n8n), you need to connect the output of one node to the input of a previous node, and add an **if node** to check when to stop the loop.\n\n## splitting data in batches\n\nif you need to process large volumes of incoming data, execute the **code node** multiple times, or avoid api rate limits, it's best to split the data into batches (groups) and process these batches.\n\nfor these processes, use the [**loop over items node**](../../../integrations/builtin/core-nodes/n8n-nodes-base.splitinbatches/). this node splits input data into a specified batch size and, with each iteration, returns a predefined amount of data.\n\nexecution of loop over items node\n\nthe **loop over items node** stops executing after all the incoming items get divided into batches and passed on to the next node in the workflow, so it's not necessary to add an **if node** to stop the loop.\n\n### loop/batch exercise\n\nbuild a workflow that reads the rss feed from medium and dev.to. the workflow should consist of three nodes:\n\n1. a **code node** that returns the urls of the rss feeds of medium (`https://medium.com/feed/n8n-io`) and dev.to (`https://dev.to/feed/n8n`).\n1. a **loop over items node** with `batch size: 1`, that takes in the inputs from the **code node** and **rss read node** and iterates over the items.\n1. an **rss read node** that gets the url of the medium rss feed, passed as an expression: `{{ $json.url }}`.\n   - the **rss read node** is one of the [exception nodes](../../../flow-logic/looping/#node-exceptions) which processes only the first item it receives, so the **loop over items node** is necessary for iterating over multiple items.\n\nshow me the solution\n\n1. add a **code node**. you can format the code in several ways, one way is:\n   - set **mode** to `run once for all items`.\n\n   - set **language** to `javascript`.\n\n   - copy the code below and paste it into the javascript code editor:\n\n     ```\n     let urls = [\n     \t{\n     \t\tjson: {\n     \t\turl: 'https://medium.com/feed/n8n-io'\n     \t\t}\n     \t},\n     \t{\n     \tjson: {\n     \t\turl: 'https://dev.to/feed/n8n'\n     \t\t} \n     \t}\n     ]\n     return urls;\n     ```\n1. add a **loop over items node** connected to the **code node**.\n   - set **batch size** to `1`.\n1. the **loop over items node** automatically adds a node called \"replace me\". replace that node with an **rss read node**.\n   - set the **url** to use the url from the code node: `{{ $json.url }}`.\n\nthe workflow for this exercise looks like this:\n\n*workflow for getting rss feeds from two blogs*\n\nto check the configuration of the nodes, you can copy the json workflow code below and paste it into your editor ui:\n\n```\n{\n\"meta\": {\n\t\"templatecredssetupcompleted\": true,\n\t\"instanceid\": \"cb484ba7b742928a2048bf8829668bed5b5ad9787579adea888f05980292a4a7\"\n},\n\"nodes\": [\n\t{\n\t\"parameters\": {},\n\t\"id\": \"ed8dc090-ae8c-4db6-a93b-0fa873015c25\",\n\t\"name\": \"when clicking \\\"execute workflow\\\"\",\n\t\"type\": \"n8n-nodes-base.manualtrigger\",\n\t\"typeversion\": 1,\n\t\"position\": [\n\t\t460,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"jscode\": \"let urls = [\\n  {\\n    json: {\\n      url: 'https://medium.com/feed/n8n-io'\\n    }\\n  },\\n  {\\n   json: {\\n     url: 'https://dev.to/feed/n8n'\\n   } \\n  }\\n]\\n\\nreturn urls;\"\n\t},\n\t\"id\": \"1df2a9bf-f970-4e04-b906-92dbbc9e8d3a\",\n\t\"name\": \"code\",\n\t\"type\": \"n8n-nodes-base.code\",\n\t\"typeversion\": 2,\n\t\"position\": [\n\t\t680,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"options\": {}\n\t},\n\t\"id\": \"3cce249a-0eab-42e2-90e3-dbdf3684e012\",\n\t\"name\": \"loop over items\",\n\t\"type\": \"n8n-nodes-base.splitinbatches\",\n\t\"typeversion\": 3,\n\t\"position\": [\n\t\t900,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"url\": \"={{ $",
+        "importantTerms": [
+          "node",
+          "nodes",
+          "data",
+          "merge",
+          "code",
+          "main",
+          "base",
+          "workflow",
+          "name",
+          "type",
+          "loop",
+          "items",
+          "input",
+          "over",
+          "this",
+          "from",
+          "that",
+          "position",
+          "combine",
+          "parameters",
+          "with",
+          "json",
+          "when",
+          "integrations",
+          "builtin",
+          "core",
+          "fields",
+          "into",
+          "typeversion",
+          "index",
+          "feed",
+          "merging",
+          "need",
+          "changes",
+          "https",
+          "customer",
+          "read",
+          "system",
+          "datastore",
+          "medium",
+          "might",
+          "these",
+          "between",
+          "sync",
+          "options",
+          "exercise",
+          "your",
+          "execute",
+          "urls",
+          "splitting"
+        ]
+      }
+    },
+    {
+      "id": "page-0090",
       "title": "Processing different data types",
       "url": "https://docs.n8n.io/courses/level-two/chapter-2/index.md",
       "urlPath": "courses/level-two/chapter-2/index.md",
@@ -8793,101 +8888,6 @@
           "schedule",
           "after",
           "minutes"
-        ]
-      }
-    },
-    {
-      "id": "page-0090",
-      "title": "Merging and splitting data",
-      "url": "https://docs.n8n.io/courses/level-two/chapter-3/index.md",
-      "urlPath": "courses/level-two/chapter-3/index.md",
-      "category": "tutorials",
-      "subcategory": null,
-      "nodeName": null,
-      "nodeType": null,
-      "content": {
-        "markdown": "# Merging and splitting data\n\nIn this chapter, you will learn how to merge and split data, and in what cases it might be useful to perform these operations.\n\n## Merging data\n\nIn some cases, you might need to merge (combine) and process data from different sources.\n\nMerging data can involve:\n\n- Creating one data set from multiple sources.\n- Synchronizing data between multiple systems. This could include removing duplicate data or updating data in one system when it changes in another.\n\nOne-way vs. two-way sync\n\nIn a one-way sync, data is synchronized in one direction. One system serves as the single source of truth. When information changes in that main system, it automatically changes in the secondary system; but if information changes in the secondary system, the changes aren't reflected in the main system.\n\nIn a two-way sync, data is synchronized in both directions (between both systems). When information changes in either of the two systems, it automatically changes in the other one as well.\n\n[This blog tutorial](https://blog.n8n.io/how-to-sync-data-between-two-systems/) explains how to sync data one-way and two-way between two CRMs.\n\nIn n8n, you can merge data from two different nodes using the [Merge node](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/), which provides several merging options:\n\n- [Append](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#append)\n- [Combine](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine)\n  - [Merge by Fields](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine-by-matching-fields): requires input fields to match on\n  - [Merge by Position](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine-by-position)\n  - [Combine all possible combinations](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine-by-all-possible-combinations)\n- [Choose Branch](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#choose-branch)\n\nNotice that Combine > Merge by Fields requires you enter input fields to match on. These fields should contain identical values between the data sources so n8n can properly match data together. In the **Merge node**, they're called `Input 1 Field` and `Input 2 Field`.\n\n*Property Input fields in the Merge node*\n\nProperty Input in dot notation\n\nIf you want to reference nested values in the **Merge node** parameters `Input 1 Field` and `Input 2 Field`, you need to enter the property key in dot-notation format (as text, not as an expression).\n\nNote\n\nYou can also find the **Merge node** under the alias Join. This might be more intuitive if you're familiar with SQL joins.\n\n### Merge Exercise\n\nBuild a workflow that merges data from the Customer Datastore node and Code node.\n\n1. Add a **Merge node** that takes `Input 1` from a **Customer Datastore node** and `Input 2` from a **Code node**.\n1. In the **Customer Datastore node**, run the operation **Get All People**.\n1. In the **Code node**, create an array of two objects with three properties: `name`, `language`, and `country`, where the property `country` has two sub-properties `code` and `name`.\n   - Fill out the values of these properties with the information of two characters from the Customer Database.\n   - For example, Jay Gatsby's language is English and country name is United States.\n1. In the **Merge node**, try out different merge options.\n\nShow me the solution\n\nThe workflow for this exercise looks like this:\n\n*Workflow exercise for merging data*\n\nIf you merge data with the option **Keep Matches** using the name as the input fields to match, the result should look like this (note this example only contains Jay Gatsby; yours might look different depending on which characters you selected):\n\n*Output of Merge node with option to keep matches*\n\nTo check the configuration of the nodes, you can copy the JSON workflow code below and paste it into your Editor UI:\n\n```\n{\n\"meta\": {\n\t\"templateCredsSetupCompleted\": true,\n\t\"instanceId\": \"cb484ba7b742928a2048bf8829668bed5b5ad9787579adea888f05980292a4a7\"\n},\n\"nodes\": [\n\t{\n\t\"parameters\": {\n\t\t\"mode\": \"combine\",\n\t\t\"mergeByFields\": {\n\t\t\"values\": [\n\t\t\t{\n\t\t\t\"field1\": \"name\",\n\t\t\t\"field2\": \"name\"\n\t\t\t}\n\t\t]\n\t\t},\n\t\t\"options\": {}\n\t},\n\t\"id\": \"578365f3-26dd-4fa6-9858-f0a5fdfc413b\",\n\t\"name\": \"Merge\",\n\t\"type\": \"n8n-nodes-base.merge\",\n\t\"typeVersion\": 2.1,\n\t\"position\": [\n\t\t720,\n\t\t580\n\t]\n\t},\n\t{\n\t\"parameters\": {},\n\t\"id\": \"71aa5aad-afdf-4f8a-bca0-34450eee8acc\",\n\t\"name\": \"When clicking \\\"Execute workflow\\\"\",\n\t\"type\": \"n8n-nodes-base.manualTrigger\",\n\t\"typeVersion\": 1,\n\t\"position\": [\n\t\t260,\n\t\t560\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"operation\": \"getAllPeople\"\n\t},\n\t\"id\": \"497174fe-3cab-4160-8103-78b44efd038d\",\n\t\"name\": \"Customer Datastore (n8n training)\",\n\t\"type\": \"n8n-nodes-base.n8nTrainingCustomerDatastore\",\n\t\"typeVersion\": 1,\n\t\"position\": [\n\t\t500,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"jsCode\": \"return [\\n  {\\n    'name': 'Jay Gatsby',\\n    'language': 'English',\\n    'country': {\\n      'code': 'US',\\n      'name': 'United States'\\n    }\\n    \\n  }\\n  \\n];\"\n\t},\n\t\"id\": \"387e8a1e-e796-4f05-8e75-7ce25c786c5f\",\n\t\"name\": \"Code\",\n\t\"type\": \"n8n-nodes-base.code\",\n\t\"typeVersion\": 2,\n\t\"position\": [\n\t\t500,\n\t\t720\n\t]\n\t}\n],\n\"connections\": {\n\t\"When clicking \\\"Execute workflow\\\"\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"Customer Datastore (n8n training)\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t},\n\t\t{\n\t\t\t\"node\": \"Code\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t},\n\t\"Customer Datastore (n8n training)\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"Merge\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t},\n\t\"Code\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"Merge\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 1\n\t\t}\n\t\t]\n\t]\n\t}\n},\n\"pinData\": {}\n}\n```\n\n## Looping\n\nIn some cases, you might need to perform the same operation on each element of an array or each data item (for example sending a message to every contact in your address book). In technical terms, you need to iterate through the data (with loops).\n\nn8n generally handles this repetitive processing automatically, as the nodes run once for each item, so you don't need to build loops into your workflows.\n\nHowever, there are some [exceptions of nodes and operations](../../../flow-logic/looping/#node-exceptions) that will require you to build a loop into your workflow.\n\nTo [create a loop in an n8n workflow](../../../flow-logic/looping/#using-loops-in-n8n), you need to connect the output of one node to the input of a previous node, and add an **If node** to check when to stop the loop.\n\n## Splitting data in batches\n\nIf you need to process large volumes of incoming data, execute the **Code node** multiple times, or avoid API rate limits, it's best to split the data into batches (groups) and process these batches.\n\nFor these processes, use the [**Loop Over Items node**](../../../integrations/builtin/core-nodes/n8n-nodes-base.splitinbatches/). This node splits input data into a specified batch size and, with each iteration, returns a predefined amount of data.\n\nExecution of Loop Over Items node\n\nThe **Loop Over Items node** stops executing after all the incoming items get divided into batches and passed on to the next node in the workflow, so it's not necessary to add an **If node** to stop the loop.\n\n### Loop/Batch Exercise\n\nBuild a workflow that reads the RSS feed from Medium and dev.to. The workflow should consist of three nodes:\n\n1. A **Code node** that returns the URLs of the RSS feeds of Medium (`https://medium.com/feed/n8n-io`) and dev.to (`https://dev.to/feed/n8n`).\n1. A **Loop Over Items node** with `Batch Size: 1`, that takes in the inputs from the **Code node** and **RSS Read node** and iterates over the items.\n1. An **RSS Read node** that gets the URL of the Medium RSS feed, passed as an expression: `{{ $json.url }}`.\n   - The **RSS Read node** is one of the [exception nodes](../../../flow-logic/looping/#node-exceptions) which processes only the first item it receives, so the **Loop Over Items node** is necessary for iterating over multiple items.\n\nShow me the solution\n\n1. Add a **Code Node**. You can format the code in several ways, one way is:\n   - Set **Mode** to `Run Once for All Items`.\n\n   - Set **Language** to `JavaScript`.\n\n   - Copy the code below and paste it into the JavaScript Code editor:\n\n     ```\n     let urls = [\n     \t{\n     \t\tjson: {\n     \t\turl: 'https://medium.com/feed/n8n-io'\n     \t\t}\n     \t},\n     \t{\n     \tjson: {\n     \t\turl: 'https://dev.to/feed/n8n'\n     \t\t} \n     \t}\n     ]\n     return urls;\n     ```\n1. Add a **Loop Over Items node** connected to the **Code node**.\n   - Set **Batch Size** to `1`.\n1. The **Loop Over Items node** automatically adds a node called \"Replace Me\". Replace that node with an **RSS Read node**.\n   - Set the **URL** to use the url from the Code Node: `{{ $json.url }}`.\n\nThe workflow for this exercise looks like this:\n\n*Workflow for getting RSS feeds from two blogs*\n\nTo check the configuration of the nodes, you can copy the JSON workflow code below and paste it into your Editor UI:\n\n```\n{\n\"meta\": {\n\t\"templateCredsSetupCompleted\": true,\n\t\"instanceId\": \"cb484ba7b742928a2048bf8829668bed5b5ad9787579adea888f05980292a4a7\"\n},\n\"nodes\": [\n\t{\n\t\"parameters\": {},\n\t\"id\": \"ed8dc090-ae8c-4db6-a93b-0fa873015c25\",\n\t\"name\": \"When clicking \\\"Execute workflow\\\"\",\n\t\"type\": \"n8n-nodes-base.manualTrigger\",\n\t\"typeVersion\": 1,\n\t\"position\": [\n\t\t460,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"jsCode\": \"let urls = [\\n  {\\n    json: {\\n      url: 'https://medium.com/feed/n8n-io'\\n    }\\n  },\\n  {\\n   json: {\\n     url: 'https://dev.to/feed/n8n'\\n   } \\n  }\\n]\\n\\nreturn urls;\"\n\t},\n\t\"id\": \"1df2a9bf-f970-4e04-b906-92dbbc9e8d3a\",\n\t\"name\": \"Code\",\n\t\"type\": \"n8n-nodes-base.code\",\n\t\"typeVersion\": 2,\n\t\"position\": [\n\t\t680,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"options\": {}\n\t},\n\t\"id\": \"3cce249a-0eab-42e2-90e3-dbdf3684e012\",\n\t\"name\": \"Loop Over Items\",\n\t\"type\": \"n8n-nodes-base.splitInBatches\",\n\t\"typeVersion\": 3,\n\t\"position\": [\n\t\t900,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"url\": \"={{ $json.url }}\",\n\t\t\"options\": {}\n\t},\n\t\"id\": \"50e1c1dc-9a5d-42d3-b7c0-accc31636aa6\",\n\t\"name\": \"RSS Read\",\n\t\"type\": \"n8n-nodes-base.rssFeedRead\",\n\t\"typeVersion\": 1,\n\t\"position\": [\n\t\t1120,\n\t\t460\n\t]\n\t}\n],\n\"connections\": {\n\t\"When clicking \\\"Execute workflow\\\"\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"Code\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t},\n\t\"Code\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"Loop Over Items\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t},\n\t\"Loop Over Items\": {\n\t\"main\": [\n\t\tnull,\n\t\t[\n\t\t{\n\t\t\t\"node\": \"RSS Read\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t},\n\t\"RSS Read\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"Loop Over Items\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t}\n},\n\"pinData\": {}\n}\n```\n",
-        "excerpt": "# Merging and splitting data  In this chapter, you will learn how to merge and split data, and in what cases it might be useful to perform these operations.  ## Merging data  In some cases, you might need to merge (combine) and process data from different sources.  Merging data can involve:  - Creating one data set from multiple sources. - Synchronizing data between multiple systems. This could include removing duplicate data or updating data in one system when it changes in another.  One-way vs...",
-        "sections": [
-          {
-            "title": "Merging and splitting data",
-            "level": 1,
-            "content": "In this chapter, you will learn how to merge and split data, and in what cases it might be useful to perform these operations."
-          }
-        ]
-      },
-      "metadata": {
-        "keywords": [
-          "merging",
-          "splitting",
-          "data",
-          "merge",
-          "exercise",
-          "looping",
-          "batches",
-          "loop/batch"
-        ],
-        "useCases": [],
-        "operations": [],
-        "codeExamples": 3,
-        "complexity": "intermediate",
-        "readingTime": "8 min",
-        "contentLength": 10677,
-        "relatedPages": []
-      },
-      "searchIndex": {
-        "fullText": "merging and splitting data # merging and splitting data\n\nin this chapter, you will learn how to merge and split data, and in what cases it might be useful to perform these operations.\n\n## merging data\n\nin some cases, you might need to merge (combine) and process data from different sources.\n\nmerging data can involve:\n\n- creating one data set from multiple sources.\n- synchronizing data between multiple systems. this could include removing duplicate data or updating data in one system when it changes in another.\n\none-way vs. two-way sync\n\nin a one-way sync, data is synchronized in one direction. one system serves as the single source of truth. when information changes in that main system, it automatically changes in the secondary system; but if information changes in the secondary system, the changes aren't reflected in the main system.\n\nin a two-way sync, data is synchronized in both directions (between both systems). when information changes in either of the two systems, it automatically changes in the other one as well.\n\n[this blog tutorial](https://blog.n8n.io/how-to-sync-data-between-two-systems/) explains how to sync data one-way and two-way between two crms.\n\nin n8n, you can merge data from two different nodes using the [merge node](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/), which provides several merging options:\n\n- [append](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#append)\n- [combine](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine)\n  - [merge by fields](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine-by-matching-fields): requires input fields to match on\n  - [merge by position](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine-by-position)\n  - [combine all possible combinations](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#combine-by-all-possible-combinations)\n- [choose branch](../../../integrations/builtin/core-nodes/n8n-nodes-base.merge/#choose-branch)\n\nnotice that combine > merge by fields requires you enter input fields to match on. these fields should contain identical values between the data sources so n8n can properly match data together. in the **merge node**, they're called `input 1 field` and `input 2 field`.\n\n*property input fields in the merge node*\n\nproperty input in dot notation\n\nif you want to reference nested values in the **merge node** parameters `input 1 field` and `input 2 field`, you need to enter the property key in dot-notation format (as text, not as an expression).\n\nnote\n\nyou can also find the **merge node** under the alias join. this might be more intuitive if you're familiar with sql joins.\n\n### merge exercise\n\nbuild a workflow that merges data from the customer datastore node and code node.\n\n1. add a **merge node** that takes `input 1` from a **customer datastore node** and `input 2` from a **code node**.\n1. in the **customer datastore node**, run the operation **get all people**.\n1. in the **code node**, create an array of two objects with three properties: `name`, `language`, and `country`, where the property `country` has two sub-properties `code` and `name`.\n   - fill out the values of these properties with the information of two characters from the customer database.\n   - for example, jay gatsby's language is english and country name is united states.\n1. in the **merge node**, try out different merge options.\n\nshow me the solution\n\nthe workflow for this exercise looks like this:\n\n*workflow exercise for merging data*\n\nif you merge data with the option **keep matches** using the name as the input fields to match, the result should look like this (note this example only contains jay gatsby; yours might look different depending on which characters you selected):\n\n*output of merge node with option to keep matches*\n\nto check the configuration of the nodes, you can copy the json workflow code below and paste it into your editor ui:\n\n```\n{\n\"meta\": {\n\t\"templatecredssetupcompleted\": true,\n\t\"instanceid\": \"cb484ba7b742928a2048bf8829668bed5b5ad9787579adea888f05980292a4a7\"\n},\n\"nodes\": [\n\t{\n\t\"parameters\": {\n\t\t\"mode\": \"combine\",\n\t\t\"mergebyfields\": {\n\t\t\"values\": [\n\t\t\t{\n\t\t\t\"field1\": \"name\",\n\t\t\t\"field2\": \"name\"\n\t\t\t}\n\t\t]\n\t\t},\n\t\t\"options\": {}\n\t},\n\t\"id\": \"578365f3-26dd-4fa6-9858-f0a5fdfc413b\",\n\t\"name\": \"merge\",\n\t\"type\": \"n8n-nodes-base.merge\",\n\t\"typeversion\": 2.1,\n\t\"position\": [\n\t\t720,\n\t\t580\n\t]\n\t},\n\t{\n\t\"parameters\": {},\n\t\"id\": \"71aa5aad-afdf-4f8a-bca0-34450eee8acc\",\n\t\"name\": \"when clicking \\\"execute workflow\\\"\",\n\t\"type\": \"n8n-nodes-base.manualtrigger\",\n\t\"typeversion\": 1,\n\t\"position\": [\n\t\t260,\n\t\t560\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"operation\": \"getallpeople\"\n\t},\n\t\"id\": \"497174fe-3cab-4160-8103-78b44efd038d\",\n\t\"name\": \"customer datastore (n8n training)\",\n\t\"type\": \"n8n-nodes-base.n8ntrainingcustomerdatastore\",\n\t\"typeversion\": 1,\n\t\"position\": [\n\t\t500,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"jscode\": \"return [\\n  {\\n    'name': 'jay gatsby',\\n    'language': 'english',\\n    'country': {\\n      'code': 'us',\\n      'name': 'united states'\\n    }\\n    \\n  }\\n  \\n];\"\n\t},\n\t\"id\": \"387e8a1e-e796-4f05-8e75-7ce25c786c5f\",\n\t\"name\": \"code\",\n\t\"type\": \"n8n-nodes-base.code\",\n\t\"typeversion\": 2,\n\t\"position\": [\n\t\t500,\n\t\t720\n\t]\n\t}\n],\n\"connections\": {\n\t\"when clicking \\\"execute workflow\\\"\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"customer datastore (n8n training)\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t},\n\t\t{\n\t\t\t\"node\": \"code\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t},\n\t\"customer datastore (n8n training)\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"merge\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 0\n\t\t}\n\t\t]\n\t]\n\t},\n\t\"code\": {\n\t\"main\": [\n\t\t[\n\t\t{\n\t\t\t\"node\": \"merge\",\n\t\t\t\"type\": \"main\",\n\t\t\t\"index\": 1\n\t\t}\n\t\t]\n\t]\n\t}\n},\n\"pindata\": {}\n}\n```\n\n## looping\n\nin some cases, you might need to perform the same operation on each element of an array or each data item (for example sending a message to every contact in your address book). in technical terms, you need to iterate through the data (with loops).\n\nn8n generally handles this repetitive processing automatically, as the nodes run once for each item, so you don't need to build loops into your workflows.\n\nhowever, there are some [exceptions of nodes and operations](../../../flow-logic/looping/#node-exceptions) that will require you to build a loop into your workflow.\n\nto [create a loop in an n8n workflow](../../../flow-logic/looping/#using-loops-in-n8n), you need to connect the output of one node to the input of a previous node, and add an **if node** to check when to stop the loop.\n\n## splitting data in batches\n\nif you need to process large volumes of incoming data, execute the **code node** multiple times, or avoid api rate limits, it's best to split the data into batches (groups) and process these batches.\n\nfor these processes, use the [**loop over items node**](../../../integrations/builtin/core-nodes/n8n-nodes-base.splitinbatches/). this node splits input data into a specified batch size and, with each iteration, returns a predefined amount of data.\n\nexecution of loop over items node\n\nthe **loop over items node** stops executing after all the incoming items get divided into batches and passed on to the next node in the workflow, so it's not necessary to add an **if node** to stop the loop.\n\n### loop/batch exercise\n\nbuild a workflow that reads the rss feed from medium and dev.to. the workflow should consist of three nodes:\n\n1. a **code node** that returns the urls of the rss feeds of medium (`https://medium.com/feed/n8n-io`) and dev.to (`https://dev.to/feed/n8n`).\n1. a **loop over items node** with `batch size: 1`, that takes in the inputs from the **code node** and **rss read node** and iterates over the items.\n1. an **rss read node** that gets the url of the medium rss feed, passed as an expression: `{{ $json.url }}`.\n   - the **rss read node** is one of the [exception nodes](../../../flow-logic/looping/#node-exceptions) which processes only the first item it receives, so the **loop over items node** is necessary for iterating over multiple items.\n\nshow me the solution\n\n1. add a **code node**. you can format the code in several ways, one way is:\n   - set **mode** to `run once for all items`.\n\n   - set **language** to `javascript`.\n\n   - copy the code below and paste it into the javascript code editor:\n\n     ```\n     let urls = [\n     \t{\n     \t\tjson: {\n     \t\turl: 'https://medium.com/feed/n8n-io'\n     \t\t}\n     \t},\n     \t{\n     \tjson: {\n     \t\turl: 'https://dev.to/feed/n8n'\n     \t\t} \n     \t}\n     ]\n     return urls;\n     ```\n1. add a **loop over items node** connected to the **code node**.\n   - set **batch size** to `1`.\n1. the **loop over items node** automatically adds a node called \"replace me\". replace that node with an **rss read node**.\n   - set the **url** to use the url from the code node: `{{ $json.url }}`.\n\nthe workflow for this exercise looks like this:\n\n*workflow for getting rss feeds from two blogs*\n\nto check the configuration of the nodes, you can copy the json workflow code below and paste it into your editor ui:\n\n```\n{\n\"meta\": {\n\t\"templatecredssetupcompleted\": true,\n\t\"instanceid\": \"cb484ba7b742928a2048bf8829668bed5b5ad9787579adea888f05980292a4a7\"\n},\n\"nodes\": [\n\t{\n\t\"parameters\": {},\n\t\"id\": \"ed8dc090-ae8c-4db6-a93b-0fa873015c25\",\n\t\"name\": \"when clicking \\\"execute workflow\\\"\",\n\t\"type\": \"n8n-nodes-base.manualtrigger\",\n\t\"typeversion\": 1,\n\t\"position\": [\n\t\t460,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"jscode\": \"let urls = [\\n  {\\n    json: {\\n      url: 'https://medium.com/feed/n8n-io'\\n    }\\n  },\\n  {\\n   json: {\\n     url: 'https://dev.to/feed/n8n'\\n   } \\n  }\\n]\\n\\nreturn urls;\"\n\t},\n\t\"id\": \"1df2a9bf-f970-4e04-b906-92dbbc9e8d3a\",\n\t\"name\": \"code\",\n\t\"type\": \"n8n-nodes-base.code\",\n\t\"typeversion\": 2,\n\t\"position\": [\n\t\t680,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"options\": {}\n\t},\n\t\"id\": \"3cce249a-0eab-42e2-90e3-dbdf3684e012\",\n\t\"name\": \"loop over items\",\n\t\"type\": \"n8n-nodes-base.splitinbatches\",\n\t\"typeversion\": 3,\n\t\"position\": [\n\t\t900,\n\t\t460\n\t]\n\t},\n\t{\n\t\"parameters\": {\n\t\t\"url\": \"={{ $",
-        "importantTerms": [
-          "node",
-          "nodes",
-          "data",
-          "merge",
-          "code",
-          "main",
-          "base",
-          "workflow",
-          "name",
-          "type",
-          "loop",
-          "items",
-          "input",
-          "over",
-          "this",
-          "from",
-          "that",
-          "position",
-          "combine",
-          "parameters",
-          "with",
-          "json",
-          "when",
-          "integrations",
-          "builtin",
-          "core",
-          "fields",
-          "into",
-          "typeversion",
-          "index",
-          "feed",
-          "merging",
-          "need",
-          "changes",
-          "https",
-          "customer",
-          "read",
-          "system",
-          "datastore",
-          "medium",
-          "might",
-          "these",
-          "between",
-          "sync",
-          "options",
-          "exercise",
-          "your",
-          "execute",
-          "urls",
-          "splitting"
         ]
       }
     },
@@ -55102,6 +55102,84 @@
     },
     {
       "id": "page-0693",
+      "title": "Split Out",
+      "url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.splitout/index.md",
+      "urlPath": "integrations/builtin/core-nodes/n8n-nodes-base.splitout/index.md",
+      "category": "other",
+      "subcategory": null,
+      "nodeName": "splitout",
+      "nodeType": "n8n-nodes-base.splitout",
+      "content": {
+        "markdown": "# Split Out\n\nUse the Split Out node to separate a single data item containing a list into multiple items. For example, a list of customers, and you want to split them so that you have an item for each customer.\n\n## Node parameters\n\nConfigure this node using the following parameters.\n\n### Field to Split Out\n\nEnter the field containing the list you want to separate out into individual items.\n\nIf you're working with binary data inputs, use `$binary` in an expression to set the field to split out.\n\n### Include\n\nSelect whether and how you want n8n to keep any other fields from the input data with each new individual item.\n\nYou can select:\n\n- **No Other Fields**: No other fields will be included.\n- **All Other Fields**: All other fields will be included.\n- **Selected Other Fields**: Only the selected fields will be included.\n  - **Fields to Include**: Enter a comma separated list of the fields you want to include.\n\n## Node options\n\n### Disable Dot Notation\n\nBy default, n8n enables dot notation to reference child fields in the format `parent.child`. Use this option to disable dot notation (turned on) or to continue using dot (turned off).\n\n### Destination Field Name\n\nEnter the field in the output where the split field contents should go.\n\n### Include Binary\n\nChoose whether to include binary data from the input in the new output (turned on) or not (turned off).\n\n## Templates and examples\n\n**Scrape and summarize webpages with AI**\n\nby n8n Team\n\n[View template details](https://n8n.io/workflows/1951-scrape-and-summarize-webpages-with-ai/)\n\n**Scrape business emails from Google Maps without the use of any third party APIs**\n\nby Akram Kadri\n\n[View template details](https://n8n.io/workflows/2567-scrape-business-emails-from-google-maps-without-the-use-of-any-third-party-apis/)\n\n**Automated Web Scraping: email a CSV, save to Google Sheets & Microsoft Excel**\n\nby Mihai Farcas\n\n[View template details](https://n8n.io/workflows/2275-automated-web-scraping-email-a-csv-save-to-google-sheets-and-microsoft-excel/)\n\n[Browse Split Out integration templates](https://n8n.io/integrations/split-out/), or [search all templates](https://n8n.io/workflows/)\n\n## Related resources\n\nLearn more about [data structure and data flow](../../../../data/) in n8n workflows.\n",
+        "excerpt": "# Split Out  Use the Split Out node to separate a single data item containing a list into multiple items. For example, a list of customers, and you want to split them so that you have an item for each customer.  ## Node parameters  Configure this node using the following parameters.  ### Field to Split Out  Enter the field containing the list you want to separate out into individual items.  If you're working with binary data inputs, use `$binary` in an expression to set the field to split out....",
+        "sections": [
+          {
+            "title": "Split Out",
+            "level": 1,
+            "content": "Use the Split Out node to separate a single data item containing a list into multiple items. For example, a list of customers, and you want to split them so that you have an item for each customer."
+          }
+        ]
+      },
+      "metadata": {
+        "keywords": [
+          "split",
+          "node",
+          "parameters",
+          "field",
+          "include",
+          "options",
+          "disable",
+          "notation",
+          "destination",
+          "name",
+          "binary",
+          "templates",
+          "examples",
+          "related",
+          "resources"
+        ],
+        "useCases": [],
+        "operations": [],
+        "codeExamples": 0,
+        "complexity": "beginner",
+        "readingTime": "2 min",
+        "contentLength": 2269,
+        "relatedPages": []
+      },
+      "searchIndex": {
+        "fullText": "split out # split out\n\nuse the split out node to separate a single data item containing a list into multiple items. for example, a list of customers, and you want to split them so that you have an item for each customer.\n\n## node parameters\n\nconfigure this node using the following parameters.\n\n### field to split out\n\nenter the field containing the list you want to separate out into individual items.\n\nif you're working with binary data inputs, use `$binary` in an expression to set the field to split out.\n\n### include\n\nselect whether and how you want n8n to keep any other fields from the input data with each new individual item.\n\nyou can select:\n\n- **no other fields**: no other fields will be included.\n- **all other fields**: all other fields will be included.\n- **selected other fields**: only the selected fields will be included.\n  - **fields to include**: enter a comma separated list of the fields you want to include.\n\n## node options\n\n### disable dot notation\n\nby default, n8n enables dot notation to reference child fields in the format `parent.child`. use this option to disable dot notation (turned on) or to continue using dot (turned off).\n\n### destination field name\n\nenter the field in the output where the split field contents should go.\n\n### include binary\n\nchoose whether to include binary data from the input in the new output (turned on) or not (turned off).\n\n## templates and examples\n\n**scrape and summarize webpages with ai**\n\nby n8n team\n\n[view template details](https://n8n.io/workflows/1951-scrape-and-summarize-webpages-with-ai/)\n\n**scrape business emails from google maps without the use of any third party apis**\n\nby akram kadri\n\n[view template details](https://n8n.io/workflows/2567-scrape-business-emails-from-google-maps-without-the-use-of-any-third-party-apis/)\n\n**automated web scraping: email a csv, save to google sheets & microsoft excel**\n\nby mihai farcas\n\n[view template details](https://n8n.io/workflows/2275-automated-web-scraping-email-a-csv-save-to-google-sheets-and-microsoft-excel/)\n\n[browse split out integration templates](https://n8n.io/integrations/split-out/), or [search all templates](https://n8n.io/workflows/)\n\n## related resources\n\nlearn more about [data structure and data flow](../../../../data/) in n8n workflows.\n split out",
+        "importantTerms": [
+          "split",
+          "fields",
+          "data",
+          "field",
+          "other",
+          "include",
+          "https",
+          "workflows",
+          "node",
+          "list",
+          "want",
+          "with",
+          "binary",
+          "from",
+          "turned",
+          "scrape",
+          "google",
+          "item",
+          "enter",
+          "will",
+          "included",
+          "notation",
+          "templates",
+          "view",
+          "template",
+          "details"
+        ]
+      }
+    },
+    {
+      "id": "page-0694",
       "title": "Loop Over Items (Split in Batches)",
       "url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.splitinbatches/index.md",
       "urlPath": "integrations/builtin/core-nodes/n8n-nodes-base.splitinbatches/index.md",
@@ -55207,84 +55285,6 @@
           "current",
           "termination",
           "templates",
-          "template",
-          "details"
-        ]
-      }
-    },
-    {
-      "id": "page-0694",
-      "title": "Split Out",
-      "url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.splitout/index.md",
-      "urlPath": "integrations/builtin/core-nodes/n8n-nodes-base.splitout/index.md",
-      "category": "other",
-      "subcategory": null,
-      "nodeName": "splitout",
-      "nodeType": "n8n-nodes-base.splitout",
-      "content": {
-        "markdown": "# Split Out\n\nUse the Split Out node to separate a single data item containing a list into multiple items. For example, a list of customers, and you want to split them so that you have an item for each customer.\n\n## Node parameters\n\nConfigure this node using the following parameters.\n\n### Field to Split Out\n\nEnter the field containing the list you want to separate out into individual items.\n\nIf you're working with binary data inputs, use `$binary` in an expression to set the field to split out.\n\n### Include\n\nSelect whether and how you want n8n to keep any other fields from the input data with each new individual item.\n\nYou can select:\n\n- **No Other Fields**: No other fields will be included.\n- **All Other Fields**: All other fields will be included.\n- **Selected Other Fields**: Only the selected fields will be included.\n  - **Fields to Include**: Enter a comma separated list of the fields you want to include.\n\n## Node options\n\n### Disable Dot Notation\n\nBy default, n8n enables dot notation to reference child fields in the format `parent.child`. Use this option to disable dot notation (turned on) or to continue using dot (turned off).\n\n### Destination Field Name\n\nEnter the field in the output where the split field contents should go.\n\n### Include Binary\n\nChoose whether to include binary data from the input in the new output (turned on) or not (turned off).\n\n## Templates and examples\n\n**Scrape and summarize webpages with AI**\n\nby n8n Team\n\n[View template details](https://n8n.io/workflows/1951-scrape-and-summarize-webpages-with-ai/)\n\n**Scrape business emails from Google Maps without the use of any third party APIs**\n\nby Akram Kadri\n\n[View template details](https://n8n.io/workflows/2567-scrape-business-emails-from-google-maps-without-the-use-of-any-third-party-apis/)\n\n**Automated Web Scraping: email a CSV, save to Google Sheets & Microsoft Excel**\n\nby Mihai Farcas\n\n[View template details](https://n8n.io/workflows/2275-automated-web-scraping-email-a-csv-save-to-google-sheets-and-microsoft-excel/)\n\n[Browse Split Out integration templates](https://n8n.io/integrations/split-out/), or [search all templates](https://n8n.io/workflows/)\n\n## Related resources\n\nLearn more about [data structure and data flow](../../../../data/) in n8n workflows.\n",
-        "excerpt": "# Split Out  Use the Split Out node to separate a single data item containing a list into multiple items. For example, a list of customers, and you want to split them so that you have an item for each customer.  ## Node parameters  Configure this node using the following parameters.  ### Field to Split Out  Enter the field containing the list you want to separate out into individual items.  If you're working with binary data inputs, use `$binary` in an expression to set the field to split out....",
-        "sections": [
-          {
-            "title": "Split Out",
-            "level": 1,
-            "content": "Use the Split Out node to separate a single data item containing a list into multiple items. For example, a list of customers, and you want to split them so that you have an item for each customer."
-          }
-        ]
-      },
-      "metadata": {
-        "keywords": [
-          "split",
-          "node",
-          "parameters",
-          "field",
-          "include",
-          "options",
-          "disable",
-          "notation",
-          "destination",
-          "name",
-          "binary",
-          "templates",
-          "examples",
-          "related",
-          "resources"
-        ],
-        "useCases": [],
-        "operations": [],
-        "codeExamples": 0,
-        "complexity": "beginner",
-        "readingTime": "2 min",
-        "contentLength": 2269,
-        "relatedPages": []
-      },
-      "searchIndex": {
-        "fullText": "split out # split out\n\nuse the split out node to separate a single data item containing a list into multiple items. for example, a list of customers, and you want to split them so that you have an item for each customer.\n\n## node parameters\n\nconfigure this node using the following parameters.\n\n### field to split out\n\nenter the field containing the list you want to separate out into individual items.\n\nif you're working with binary data inputs, use `$binary` in an expression to set the field to split out.\n\n### include\n\nselect whether and how you want n8n to keep any other fields from the input data with each new individual item.\n\nyou can select:\n\n- **no other fields**: no other fields will be included.\n- **all other fields**: all other fields will be included.\n- **selected other fields**: only the selected fields will be included.\n  - **fields to include**: enter a comma separated list of the fields you want to include.\n\n## node options\n\n### disable dot notation\n\nby default, n8n enables dot notation to reference child fields in the format `parent.child`. use this option to disable dot notation (turned on) or to continue using dot (turned off).\n\n### destination field name\n\nenter the field in the output where the split field contents should go.\n\n### include binary\n\nchoose whether to include binary data from the input in the new output (turned on) or not (turned off).\n\n## templates and examples\n\n**scrape and summarize webpages with ai**\n\nby n8n team\n\n[view template details](https://n8n.io/workflows/1951-scrape-and-summarize-webpages-with-ai/)\n\n**scrape business emails from google maps without the use of any third party apis**\n\nby akram kadri\n\n[view template details](https://n8n.io/workflows/2567-scrape-business-emails-from-google-maps-without-the-use-of-any-third-party-apis/)\n\n**automated web scraping: email a csv, save to google sheets & microsoft excel**\n\nby mihai farcas\n\n[view template details](https://n8n.io/workflows/2275-automated-web-scraping-email-a-csv-save-to-google-sheets-and-microsoft-excel/)\n\n[browse split out integration templates](https://n8n.io/integrations/split-out/), or [search all templates](https://n8n.io/workflows/)\n\n## related resources\n\nlearn more about [data structure and data flow](../../../../data/) in n8n workflows.\n split out",
-        "importantTerms": [
-          "split",
-          "fields",
-          "data",
-          "field",
-          "other",
-          "include",
-          "https",
-          "workflows",
-          "node",
-          "list",
-          "want",
-          "with",
-          "binary",
-          "from",
-          "turned",
-          "scrape",
-          "google",
-          "item",
-          "enter",
-          "will",
-          "included",
-          "notation",
-          "templates",
-          "view",
           "template",
           "details"
         ]
@@ -66755,6 +66755,56 @@
     },
     {
       "id": "page-0863",
+      "title": "LingvaNex credentials",
+      "url": "https://docs.n8n.io/integrations/builtin/credentials/lingvanex/index.md",
+      "urlPath": "integrations/builtin/credentials/lingvanex/index.md",
+      "category": "other",
+      "subcategory": null,
+      "nodeName": null,
+      "nodeType": null,
+      "content": {
+        "markdown": "# LingvaNex credentials\n\nYou can use these credentials to authenticate the following nodes:\n\n- [LingvaNex](../../app-nodes/n8n-nodes-base.lingvanex/)\n\n## Prerequisites\n\nCreate a [LingvaNex](https://lingvanex.com) account.\n\n## Supported authentication methods\n\n- API key\n\n## Related resources\n\nRefer to [Lingvanex's Cloud API documentation](https://docs.lingvanex.com/reference/overview) for more information about the service.\n\n## Using API key\n\nTo configure this credential, you'll need:\n\n- An **API Key**: Generate an API key from your **Account** page. Refer to [Where can I get the authorization key?](https://docs.lingvanex.com/reference/translator-service-faq#where-can-i-get-the-authorization-key) for more detailed instructions.\n",
+        "excerpt": "# LingvaNex credentials  You can use these credentials to authenticate the following nodes:  - [LingvaNex](../../app-nodes/n8n-nodes-base.lingvanex/)  ## Prerequisites  Create a [LingvaNex](https://lingvanex.com) account.  ## Supported authentication methods  - API key  ## Related resources  Refer to [Lingvanex's Cloud API documentation](https://docs.lingvanex.com/reference/overview) for more information about the service.  ## Using API key  To configure this credential, you'll need:  - An **API...",
+        "sections": [
+          {
+            "title": "LingvaNex credentials",
+            "level": 1,
+            "content": "You can use these credentials to authenticate the following nodes:\n\n- [LingvaNex](../../app-nodes/n8n-nodes-base.lingvanex/)"
+          }
+        ]
+      },
+      "metadata": {
+        "keywords": [
+          "lingvanex",
+          "credentials",
+          "prerequisites",
+          "supported",
+          "authentication",
+          "methods",
+          "related",
+          "resources",
+          "using"
+        ],
+        "useCases": [],
+        "operations": [],
+        "codeExamples": 0,
+        "complexity": "beginner",
+        "readingTime": "1 min",
+        "contentLength": 737,
+        "relatedPages": []
+      },
+      "searchIndex": {
+        "fullText": "lingvanex credentials # lingvanex credentials\n\nyou can use these credentials to authenticate the following nodes:\n\n- [lingvanex](../../app-nodes/n8n-nodes-base.lingvanex/)\n\n## prerequisites\n\ncreate a [lingvanex](https://lingvanex.com) account.\n\n## supported authentication methods\n\n- api key\n\n## related resources\n\nrefer to [lingvanex's cloud api documentation](https://docs.lingvanex.com/reference/overview) for more information about the service.\n\n## using api key\n\nto configure this credential, you'll need:\n\n- an **api key**: generate an api key from your **account** page. refer to [where can i get the authorization key?](https://docs.lingvanex.com/reference/translator-service-faq#where-can-i-get-the-authorization-key) for more detailed instructions.\n lingvanex credentials",
+        "importantTerms": [
+          "lingvanex",
+          "credentials",
+          "nodes",
+          "https"
+        ]
+      }
+    },
+    {
+      "id": "page-0864",
       "title": "Linear credentials",
       "url": "https://docs.n8n.io/integrations/builtin/credentials/linear/index.md",
       "urlPath": "integrations/builtin/credentials/linear/index.md",
@@ -66816,56 +66866,6 @@
           "graphql",
           "more",
           "credential"
-        ]
-      }
-    },
-    {
-      "id": "page-0864",
-      "title": "LingvaNex credentials",
-      "url": "https://docs.n8n.io/integrations/builtin/credentials/lingvanex/index.md",
-      "urlPath": "integrations/builtin/credentials/lingvanex/index.md",
-      "category": "other",
-      "subcategory": null,
-      "nodeName": null,
-      "nodeType": null,
-      "content": {
-        "markdown": "# LingvaNex credentials\n\nYou can use these credentials to authenticate the following nodes:\n\n- [LingvaNex](../../app-nodes/n8n-nodes-base.lingvanex/)\n\n## Prerequisites\n\nCreate a [LingvaNex](https://lingvanex.com) account.\n\n## Supported authentication methods\n\n- API key\n\n## Related resources\n\nRefer to [Lingvanex's Cloud API documentation](https://docs.lingvanex.com/reference/overview) for more information about the service.\n\n## Using API key\n\nTo configure this credential, you'll need:\n\n- An **API Key**: Generate an API key from your **Account** page. Refer to [Where can I get the authorization key?](https://docs.lingvanex.com/reference/translator-service-faq#where-can-i-get-the-authorization-key) for more detailed instructions.\n",
-        "excerpt": "# LingvaNex credentials  You can use these credentials to authenticate the following nodes:  - [LingvaNex](../../app-nodes/n8n-nodes-base.lingvanex/)  ## Prerequisites  Create a [LingvaNex](https://lingvanex.com) account.  ## Supported authentication methods  - API key  ## Related resources  Refer to [Lingvanex's Cloud API documentation](https://docs.lingvanex.com/reference/overview) for more information about the service.  ## Using API key  To configure this credential, you'll need:  - An **API...",
-        "sections": [
-          {
-            "title": "LingvaNex credentials",
-            "level": 1,
-            "content": "You can use these credentials to authenticate the following nodes:\n\n- [LingvaNex](../../app-nodes/n8n-nodes-base.lingvanex/)"
-          }
-        ]
-      },
-      "metadata": {
-        "keywords": [
-          "lingvanex",
-          "credentials",
-          "prerequisites",
-          "supported",
-          "authentication",
-          "methods",
-          "related",
-          "resources",
-          "using"
-        ],
-        "useCases": [],
-        "operations": [],
-        "codeExamples": 0,
-        "complexity": "beginner",
-        "readingTime": "1 min",
-        "contentLength": 737,
-        "relatedPages": []
-      },
-      "searchIndex": {
-        "fullText": "lingvanex credentials # lingvanex credentials\n\nyou can use these credentials to authenticate the following nodes:\n\n- [lingvanex](../../app-nodes/n8n-nodes-base.lingvanex/)\n\n## prerequisites\n\ncreate a [lingvanex](https://lingvanex.com) account.\n\n## supported authentication methods\n\n- api key\n\n## related resources\n\nrefer to [lingvanex's cloud api documentation](https://docs.lingvanex.com/reference/overview) for more information about the service.\n\n## using api key\n\nto configure this credential, you'll need:\n\n- an **api key**: generate an api key from your **account** page. refer to [where can i get the authorization key?](https://docs.lingvanex.com/reference/translator-service-faq#where-can-i-get-the-authorization-key) for more detailed instructions.\n lingvanex credentials",
-        "importantTerms": [
-          "lingvanex",
-          "credentials",
-          "nodes",
-          "https"
         ]
       }
     },
@@ -67778,6 +67778,58 @@
     },
     {
       "id": "page-0879",
+      "title": "MessageBird credentials",
+      "url": "https://docs.n8n.io/integrations/builtin/credentials/messagebird/index.md",
+      "urlPath": "integrations/builtin/credentials/messagebird/index.md",
+      "category": "other",
+      "subcategory": null,
+      "nodeName": null,
+      "nodeType": null,
+      "content": {
+        "markdown": "# MessageBird credentials\n\nYou can use these credentials to authenticate the following nodes:\n\n- [MessageBird](../../app-nodes/n8n-nodes-base.messagebird/)\n\n## Prerequisites\n\nCreate a [Bird](https://bird.com/) account.\n\n## Supported authentication methods\n\n- API key\n\n## Related resources\n\nRefer to [MessageBird's API documentation](https://docs.bird.com/api) for more information about the service.\n\n## Using API key\n\nTo configure this credential, you'll need:\n\n- An **API Key**: To generate an appropriate key, visit the [Access keys](https://app.bird.com/settings/access-keys) page in MessageBird. Refer to the [API authorization documentation](https://docs.bird.com/api/api-access/api-authorization) for detailed instructions.\n",
+        "excerpt": "# MessageBird credentials  You can use these credentials to authenticate the following nodes:  - [MessageBird](../../app-nodes/n8n-nodes-base.messagebird/)  ## Prerequisites  Create a [Bird](https://bird.com/) account.  ## Supported authentication methods  - API key  ## Related resources  Refer to [MessageBird's API documentation](https://docs.bird.com/api) for more information about the service.  ## Using API key  To configure this credential, you'll need:  - An **API Key**: To generate an appr...",
+        "sections": [
+          {
+            "title": "MessageBird credentials",
+            "level": 1,
+            "content": "You can use these credentials to authenticate the following nodes:\n\n- [MessageBird](../../app-nodes/n8n-nodes-base.messagebird/)"
+          }
+        ]
+      },
+      "metadata": {
+        "keywords": [
+          "messagebird",
+          "credentials",
+          "prerequisites",
+          "supported",
+          "authentication",
+          "methods",
+          "related",
+          "resources",
+          "using"
+        ],
+        "useCases": [],
+        "operations": [],
+        "codeExamples": 0,
+        "complexity": "beginner",
+        "readingTime": "1 min",
+        "contentLength": 731,
+        "relatedPages": []
+      },
+      "searchIndex": {
+        "fullText": "messagebird credentials # messagebird credentials\n\nyou can use these credentials to authenticate the following nodes:\n\n- [messagebird](../../app-nodes/n8n-nodes-base.messagebird/)\n\n## prerequisites\n\ncreate a [bird](https://bird.com/) account.\n\n## supported authentication methods\n\n- api key\n\n## related resources\n\nrefer to [messagebird's api documentation](https://docs.bird.com/api) for more information about the service.\n\n## using api key\n\nto configure this credential, you'll need:\n\n- an **api key**: to generate an appropriate key, visit the [access keys](https://app.bird.com/settings/access-keys) page in messagebird. refer to the [api authorization documentation](https://docs.bird.com/api/api-access/api-authorization) for detailed instructions.\n messagebird credentials",
+        "importantTerms": [
+          "messagebird",
+          "bird",
+          "credentials",
+          "https",
+          "nodes",
+          "access"
+        ]
+      }
+    },
+    {
+      "id": "page-0880",
       "title": "Medium credentials",
       "url": "https://docs.n8n.io/integrations/builtin/credentials/medium/index.md",
       "urlPath": "integrations/builtin/credentials/medium/index.md",
@@ -67838,58 +67890,6 @@
           "settings",
           "tokens",
           "secret"
-        ]
-      }
-    },
-    {
-      "id": "page-0880",
-      "title": "MessageBird credentials",
-      "url": "https://docs.n8n.io/integrations/builtin/credentials/messagebird/index.md",
-      "urlPath": "integrations/builtin/credentials/messagebird/index.md",
-      "category": "other",
-      "subcategory": null,
-      "nodeName": null,
-      "nodeType": null,
-      "content": {
-        "markdown": "# MessageBird credentials\n\nYou can use these credentials to authenticate the following nodes:\n\n- [MessageBird](../../app-nodes/n8n-nodes-base.messagebird/)\n\n## Prerequisites\n\nCreate a [Bird](https://bird.com/) account.\n\n## Supported authentication methods\n\n- API key\n\n## Related resources\n\nRefer to [MessageBird's API documentation](https://docs.bird.com/api) for more information about the service.\n\n## Using API key\n\nTo configure this credential, you'll need:\n\n- An **API Key**: To generate an appropriate key, visit the [Access keys](https://app.bird.com/settings/access-keys) page in MessageBird. Refer to the [API authorization documentation](https://docs.bird.com/api/api-access/api-authorization) for detailed instructions.\n",
-        "excerpt": "# MessageBird credentials  You can use these credentials to authenticate the following nodes:  - [MessageBird](../../app-nodes/n8n-nodes-base.messagebird/)  ## Prerequisites  Create a [Bird](https://bird.com/) account.  ## Supported authentication methods  - API key  ## Related resources  Refer to [MessageBird's API documentation](https://docs.bird.com/api) for more information about the service.  ## Using API key  To configure this credential, you'll need:  - An **API Key**: To generate an appr...",
-        "sections": [
-          {
-            "title": "MessageBird credentials",
-            "level": 1,
-            "content": "You can use these credentials to authenticate the following nodes:\n\n- [MessageBird](../../app-nodes/n8n-nodes-base.messagebird/)"
-          }
-        ]
-      },
-      "metadata": {
-        "keywords": [
-          "messagebird",
-          "credentials",
-          "prerequisites",
-          "supported",
-          "authentication",
-          "methods",
-          "related",
-          "resources",
-          "using"
-        ],
-        "useCases": [],
-        "operations": [],
-        "codeExamples": 0,
-        "complexity": "beginner",
-        "readingTime": "1 min",
-        "contentLength": 731,
-        "relatedPages": []
-      },
-      "searchIndex": {
-        "fullText": "messagebird credentials # messagebird credentials\n\nyou can use these credentials to authenticate the following nodes:\n\n- [messagebird](../../app-nodes/n8n-nodes-base.messagebird/)\n\n## prerequisites\n\ncreate a [bird](https://bird.com/) account.\n\n## supported authentication methods\n\n- api key\n\n## related resources\n\nrefer to [messagebird's api documentation](https://docs.bird.com/api) for more information about the service.\n\n## using api key\n\nto configure this credential, you'll need:\n\n- an **api key**: to generate an appropriate key, visit the [access keys](https://app.bird.com/settings/access-keys) page in messagebird. refer to the [api authorization documentation](https://docs.bird.com/api/api-access/api-authorization) for detailed instructions.\n messagebird credentials",
-        "importantTerms": [
-          "messagebird",
-          "bird",
-          "credentials",
-          "https",
-          "nodes",
-          "access"
         ]
       }
     },
@@ -77414,72 +77414,6 @@
     },
     {
       "id": "page-1029",
-      "title": "Zammad credentials",
-      "url": "https://docs.n8n.io/integrations/builtin/credentials/zammad/index.md",
-      "urlPath": "integrations/builtin/credentials/zammad/index.md",
-      "category": "other",
-      "subcategory": null,
-      "nodeName": null,
-      "nodeType": null,
-      "content": {
-        "markdown": "# Zammad credentials\n\nYou can use these credentials to authenticate the following nodes:\n\n- [Zammad](../../app-nodes/n8n-nodes-base.zammad/)\n\n## Prerequisites\n\n- Create a hosted [Zammad](https://zammad.com/) account or set up your own Zammad instance.\n- For token authentication, enable **API Token Access** in **Settings > System > API**. Refer to [Setting up a Zammad](https://admin-docs.zammad.org/en/latest/system/integrations/zabbix.html?#setting-up-a-zammad) for more information.\n\n## Supported authentication methods\n\n- Basic auth\n- Token auth: Zammad recommends using this authentication method.\n\n## Related resources\n\nRefer to [Zammad's API Authentication documentation](https://docs.zammad.org/en/latest/api/intro.html?#authentication) for more information about authenticating with the service.\n\n## Using basic auth\n\nTo configure this credential, you'll need:\n\n- A **Base URL**: Enter the URL of your Zammad instance.\n- An **Email** address: Enter the email address you use to log in to Zammad.\n- A **Password**: Enter your Zammad password.\n- **Ignore SSL Issues**: When turned on, n8n will connect even if SSL certificate validation fails.\n\n## Using token auth\n\nTo configure this credential, you'll need:\n\n- A **Base URL**: Enter the URL of your Zammad instance.\n- An **Access Token**: Once **API Token Access** is enabled for the Zammad instance, any user with the `user_preferences.access_token` permission can generate an **Access Token** by going to your **avatar > Profile > Token Access** and **Create** a new token.\n  - The access token permissions depend on what actions you'd like to complete with this credential. For all functionality within the [Zammad](../../app-nodes/n8n-nodes-base.zammad/) node, select:\n    - `admin.group`\n    - `admin.organization`\n    - `admin.user`\n    - `ticket.agent`\n    - `ticket.customer`\n- **Ignore SSL Issues**: When turned on, n8n will connect even if SSL certificate validation fails.\n",
-        "excerpt": "# Zammad credentials  You can use these credentials to authenticate the following nodes:  - [Zammad](../../app-nodes/n8n-nodes-base.zammad/)  ## Prerequisites  - Create a hosted [Zammad](https://zammad.com/) account or set up your own Zammad instance. - For token authentication, enable **API Token Access** in **Settings > System > API**. Refer to [Setting up a Zammad](https://admin-docs.zammad.org/en/latest/system/integrations/zabbix.html?#setting-up-a-zammad) for more information.  ## Supported...",
-        "sections": [
-          {
-            "title": "Zammad credentials",
-            "level": 1,
-            "content": "You can use these credentials to authenticate the following nodes:\n\n- [Zammad](../../app-nodes/n8n-nodes-base.zammad/)"
-          }
-        ]
-      },
-      "metadata": {
-        "keywords": [
-          "zammad",
-          "credentials",
-          "prerequisites",
-          "supported",
-          "authentication",
-          "methods",
-          "related",
-          "resources",
-          "using",
-          "basic",
-          "auth",
-          "token"
-        ],
-        "useCases": [],
-        "operations": [],
-        "codeExamples": 0,
-        "complexity": "beginner",
-        "readingTime": "2 min",
-        "contentLength": 1943,
-        "relatedPages": []
-      },
-      "searchIndex": {
-        "fullText": "zammad credentials # zammad credentials\n\nyou can use these credentials to authenticate the following nodes:\n\n- [zammad](../../app-nodes/n8n-nodes-base.zammad/)\n\n## prerequisites\n\n- create a hosted [zammad](https://zammad.com/) account or set up your own zammad instance.\n- for token authentication, enable **api token access** in **settings > system > api**. refer to [setting up a zammad](https://admin-docs.zammad.org/en/latest/system/integrations/zabbix.html?#setting-up-a-zammad) for more information.\n\n## supported authentication methods\n\n- basic auth\n- token auth: zammad recommends using this authentication method.\n\n## related resources\n\nrefer to [zammad's api authentication documentation](https://docs.zammad.org/en/latest/api/intro.html?#authentication) for more information about authenticating with the service.\n\n## using basic auth\n\nto configure this credential, you'll need:\n\n- a **base url**: enter the url of your zammad instance.\n- an **email** address: enter the email address you use to log in to zammad.\n- a **password**: enter your zammad password.\n- **ignore ssl issues**: when turned on, n8n will connect even if ssl certificate validation fails.\n\n## using token auth\n\nto configure this credential, you'll need:\n\n- a **base url**: enter the url of your zammad instance.\n- an **access token**: once **api token access** is enabled for the zammad instance, any user with the `user_preferences.access_token` permission can generate an **access token** by going to your **avatar > profile > token access** and **create** a new token.\n  - the access token permissions depend on what actions you'd like to complete with this credential. for all functionality within the [zammad](../../app-nodes/n8n-nodes-base.zammad/) node, select:\n    - `admin.group`\n    - `admin.organization`\n    - `admin.user`\n    - `ticket.agent`\n    - `ticket.customer`\n- **ignore ssl issues**: when turned on, n8n will connect even if ssl certificate validation fails.\n zammad credentials",
-        "importantTerms": [
-          "zammad",
-          "token",
-          "access",
-          "nodes",
-          "your",
-          "authentication",
-          "credentials",
-          "base",
-          "instance",
-          "admin",
-          "auth",
-          "this",
-          "enter",
-          "https",
-          "using",
-          "with",
-          "credential"
-        ]
-      }
-    },
-    {
-      "id": "page-1030",
       "title": "Zendesk credentials",
       "url": "https://docs.n8n.io/integrations/builtin/credentials/zendesk/index.md",
       "urlPath": "integrations/builtin/credentials/zendesk/index.md",
@@ -77546,6 +77480,72 @@
           "using",
           "secret",
           "copy"
+        ]
+      }
+    },
+    {
+      "id": "page-1030",
+      "title": "Zammad credentials",
+      "url": "https://docs.n8n.io/integrations/builtin/credentials/zammad/index.md",
+      "urlPath": "integrations/builtin/credentials/zammad/index.md",
+      "category": "other",
+      "subcategory": null,
+      "nodeName": null,
+      "nodeType": null,
+      "content": {
+        "markdown": "# Zammad credentials\n\nYou can use these credentials to authenticate the following nodes:\n\n- [Zammad](../../app-nodes/n8n-nodes-base.zammad/)\n\n## Prerequisites\n\n- Create a hosted [Zammad](https://zammad.com/) account or set up your own Zammad instance.\n- For token authentication, enable **API Token Access** in **Settings > System > API**. Refer to [Setting up a Zammad](https://admin-docs.zammad.org/en/latest/system/integrations/zabbix.html?#setting-up-a-zammad) for more information.\n\n## Supported authentication methods\n\n- Basic auth\n- Token auth: Zammad recommends using this authentication method.\n\n## Related resources\n\nRefer to [Zammad's API Authentication documentation](https://docs.zammad.org/en/latest/api/intro.html?#authentication) for more information about authenticating with the service.\n\n## Using basic auth\n\nTo configure this credential, you'll need:\n\n- A **Base URL**: Enter the URL of your Zammad instance.\n- An **Email** address: Enter the email address you use to log in to Zammad.\n- A **Password**: Enter your Zammad password.\n- **Ignore SSL Issues**: When turned on, n8n will connect even if SSL certificate validation fails.\n\n## Using token auth\n\nTo configure this credential, you'll need:\n\n- A **Base URL**: Enter the URL of your Zammad instance.\n- An **Access Token**: Once **API Token Access** is enabled for the Zammad instance, any user with the `user_preferences.access_token` permission can generate an **Access Token** by going to your **avatar > Profile > Token Access** and **Create** a new token.\n  - The access token permissions depend on what actions you'd like to complete with this credential. For all functionality within the [Zammad](../../app-nodes/n8n-nodes-base.zammad/) node, select:\n    - `admin.group`\n    - `admin.organization`\n    - `admin.user`\n    - `ticket.agent`\n    - `ticket.customer`\n- **Ignore SSL Issues**: When turned on, n8n will connect even if SSL certificate validation fails.\n",
+        "excerpt": "# Zammad credentials  You can use these credentials to authenticate the following nodes:  - [Zammad](../../app-nodes/n8n-nodes-base.zammad/)  ## Prerequisites  - Create a hosted [Zammad](https://zammad.com/) account or set up your own Zammad instance. - For token authentication, enable **API Token Access** in **Settings > System > API**. Refer to [Setting up a Zammad](https://admin-docs.zammad.org/en/latest/system/integrations/zabbix.html?#setting-up-a-zammad) for more information.  ## Supported...",
+        "sections": [
+          {
+            "title": "Zammad credentials",
+            "level": 1,
+            "content": "You can use these credentials to authenticate the following nodes:\n\n- [Zammad](../../app-nodes/n8n-nodes-base.zammad/)"
+          }
+        ]
+      },
+      "metadata": {
+        "keywords": [
+          "zammad",
+          "credentials",
+          "prerequisites",
+          "supported",
+          "authentication",
+          "methods",
+          "related",
+          "resources",
+          "using",
+          "basic",
+          "auth",
+          "token"
+        ],
+        "useCases": [],
+        "operations": [],
+        "codeExamples": 0,
+        "complexity": "beginner",
+        "readingTime": "2 min",
+        "contentLength": 1943,
+        "relatedPages": []
+      },
+      "searchIndex": {
+        "fullText": "zammad credentials # zammad credentials\n\nyou can use these credentials to authenticate the following nodes:\n\n- [zammad](../../app-nodes/n8n-nodes-base.zammad/)\n\n## prerequisites\n\n- create a hosted [zammad](https://zammad.com/) account or set up your own zammad instance.\n- for token authentication, enable **api token access** in **settings > system > api**. refer to [setting up a zammad](https://admin-docs.zammad.org/en/latest/system/integrations/zabbix.html?#setting-up-a-zammad) for more information.\n\n## supported authentication methods\n\n- basic auth\n- token auth: zammad recommends using this authentication method.\n\n## related resources\n\nrefer to [zammad's api authentication documentation](https://docs.zammad.org/en/latest/api/intro.html?#authentication) for more information about authenticating with the service.\n\n## using basic auth\n\nto configure this credential, you'll need:\n\n- a **base url**: enter the url of your zammad instance.\n- an **email** address: enter the email address you use to log in to zammad.\n- a **password**: enter your zammad password.\n- **ignore ssl issues**: when turned on, n8n will connect even if ssl certificate validation fails.\n\n## using token auth\n\nto configure this credential, you'll need:\n\n- a **base url**: enter the url of your zammad instance.\n- an **access token**: once **api token access** is enabled for the zammad instance, any user with the `user_preferences.access_token` permission can generate an **access token** by going to your **avatar > profile > token access** and **create** a new token.\n  - the access token permissions depend on what actions you'd like to complete with this credential. for all functionality within the [zammad](../../app-nodes/n8n-nodes-base.zammad/) node, select:\n    - `admin.group`\n    - `admin.organization`\n    - `admin.user`\n    - `ticket.agent`\n    - `ticket.customer`\n- **ignore ssl issues**: when turned on, n8n will connect even if ssl certificate validation fails.\n zammad credentials",
+        "importantTerms": [
+          "zammad",
+          "token",
+          "access",
+          "nodes",
+          "your",
+          "authentication",
+          "credentials",
+          "base",
+          "instance",
+          "admin",
+          "auth",
+          "this",
+          "enter",
+          "https",
+          "using",
+          "with",
+          "credential"
         ]
       }
     },
@@ -83533,63 +83533,6 @@
     },
     {
       "id": "page-1142",
-      "title": "Permissions",
-      "url": "https://docs.n8n.io/integrations/builtin/trigger-nodes/n8n-nodes-base.facebooktrigger/permissions/index.md",
-      "urlPath": "integrations/builtin/trigger-nodes/n8n-nodes-base.facebooktrigger/permissions/index.md",
-      "category": "trigger-nodes",
-      "subcategory": null,
-      "nodeName": "facebooktrigger",
-      "nodeType": "n8n-nodes-base.facebooktrigger",
-      "content": {
-        "markdown": "# Facebook Trigger Permissions object\n\nUse this object to receive updates when a user grants or revokes a permission for your app. Refer to [Facebook Trigger](../) for more information on the trigger itself.\n\nCredentials\n\nYou can find authentication information for this node [here](../../../credentials/facebookapp/).\n\nExamples and templates\n\nFor usage examples and templates to help you get started, refer to n8n's [Facebook Trigger integrations](https://n8n.io/integrations/facebook-trigger/) page.\n\n## Trigger configuration\n\nTo configure the trigger with this Object:\n\n1. Select the **Credential to connect with**. Select an existing or create a new [Facebook App credential](../../../credentials/facebookapp/).\n1. Enter the **APP ID** of the app connected to your credential. Refer to the [Facebook App credential](../../../credentials/facebookapp/) documentation for more information.\n1. Select **Permissions** as the **Object**.\n1. **Field Names or IDs**: By default, the node will trigger on all the available events using the `*` wildcard filter. If you'd like to limit the events, use the `X` to remove the star and use the dropdown or an expression to select the updates you're interested in.\n1. In **Options**, choose whether to turn on the toggle to **Include Values**. When turned on, the node includes the new values for the changes.\n\n## Related resources\n\nRefer to Meta's [Permissions](https://developers.facebook.com/docs/graph-api/webhooks/reference/permissions/) Graph API reference for more information.\n",
-        "excerpt": "# Facebook Trigger Permissions object  Use this object to receive updates when a user grants or revokes a permission for your app. Refer to [Facebook Trigger](../) for more information on the trigger itself.  Credentials  You can find authentication information for this node [here](../../../credentials/facebookapp/).  Examples and templates  For usage examples and templates to help you get started, refer to n8n's [Facebook Trigger integrations](https://n8n.io/integrations/facebook-trigger/) page...",
-        "sections": [
-          {
-            "title": "Facebook Trigger Permissions object",
-            "level": 1,
-            "content": "Use this object to receive updates when a user grants or revokes a permission for your app. Refer to [Facebook Trigger](../) for more information on the trigger itself.\n\nCredentials\n\nYou can find authentication information for this node [here](../../../credentials/facebookapp/).\n\nExamples and templates\n\nFor usage examples and templates to help you get started, refer to n8n's [Facebook Trigger integrations](https://n8n.io/integrations/facebook-trigger/) page."
-          }
-        ]
-      },
-      "metadata": {
-        "keywords": [
-          "permissions",
-          "facebook",
-          "trigger",
-          "object",
-          "configuration",
-          "related",
-          "resources"
-        ],
-        "useCases": [],
-        "operations": [],
-        "codeExamples": 0,
-        "complexity": "beginner",
-        "readingTime": "2 min",
-        "contentLength": 1524,
-        "relatedPages": []
-      },
-      "searchIndex": {
-        "fullText": "permissions # facebook trigger permissions object\n\nuse this object to receive updates when a user grants or revokes a permission for your app. refer to [facebook trigger](../) for more information on the trigger itself.\n\ncredentials\n\nyou can find authentication information for this node [here](../../../credentials/facebookapp/).\n\nexamples and templates\n\nfor usage examples and templates to help you get started, refer to n8n's [facebook trigger integrations](https://n8n.io/integrations/facebook-trigger/) page.\n\n## trigger configuration\n\nto configure the trigger with this object:\n\n1. select the **credential to connect with**. select an existing or create a new [facebook app credential](../../../credentials/facebookapp/).\n1. enter the **app id** of the app connected to your credential. refer to the [facebook app credential](../../../credentials/facebookapp/) documentation for more information.\n1. select **permissions** as the **object**.\n1. **field names or ids**: by default, the node will trigger on all the available events using the `*` wildcard filter. if you'd like to limit the events, use the `x` to remove the star and use the dropdown or an expression to select the updates you're interested in.\n1. in **options**, choose whether to turn on the toggle to **include values**. when turned on, the node includes the new values for the changes.\n\n## related resources\n\nrefer to meta's [permissions](https://developers.facebook.com/docs/graph-api/webhooks/reference/permissions/) graph api reference for more information.\n facebook trigger permissions object",
-        "importantTerms": [
-          "trigger",
-          "facebook",
-          "permissions",
-          "object",
-          "refer",
-          "information",
-          "credentials",
-          "select",
-          "credential",
-          "this",
-          "more",
-          "node",
-          "facebookapp"
-        ]
-      }
-    },
-    {
-      "id": "page-1143",
       "title": "User",
       "url": "https://docs.n8n.io/integrations/builtin/trigger-nodes/n8n-nodes-base.facebooktrigger/user/index.md",
       "urlPath": "integrations/builtin/trigger-nodes/n8n-nodes-base.facebooktrigger/user/index.md",
@@ -83632,6 +83575,63 @@
           "trigger",
           "facebook",
           "user",
+          "object",
+          "refer",
+          "information",
+          "credentials",
+          "select",
+          "credential",
+          "this",
+          "more",
+          "node",
+          "facebookapp"
+        ]
+      }
+    },
+    {
+      "id": "page-1143",
+      "title": "Permissions",
+      "url": "https://docs.n8n.io/integrations/builtin/trigger-nodes/n8n-nodes-base.facebooktrigger/permissions/index.md",
+      "urlPath": "integrations/builtin/trigger-nodes/n8n-nodes-base.facebooktrigger/permissions/index.md",
+      "category": "trigger-nodes",
+      "subcategory": null,
+      "nodeName": "facebooktrigger",
+      "nodeType": "n8n-nodes-base.facebooktrigger",
+      "content": {
+        "markdown": "# Facebook Trigger Permissions object\n\nUse this object to receive updates when a user grants or revokes a permission for your app. Refer to [Facebook Trigger](../) for more information on the trigger itself.\n\nCredentials\n\nYou can find authentication information for this node [here](../../../credentials/facebookapp/).\n\nExamples and templates\n\nFor usage examples and templates to help you get started, refer to n8n's [Facebook Trigger integrations](https://n8n.io/integrations/facebook-trigger/) page.\n\n## Trigger configuration\n\nTo configure the trigger with this Object:\n\n1. Select the **Credential to connect with**. Select an existing or create a new [Facebook App credential](../../../credentials/facebookapp/).\n1. Enter the **APP ID** of the app connected to your credential. Refer to the [Facebook App credential](../../../credentials/facebookapp/) documentation for more information.\n1. Select **Permissions** as the **Object**.\n1. **Field Names or IDs**: By default, the node will trigger on all the available events using the `*` wildcard filter. If you'd like to limit the events, use the `X` to remove the star and use the dropdown or an expression to select the updates you're interested in.\n1. In **Options**, choose whether to turn on the toggle to **Include Values**. When turned on, the node includes the new values for the changes.\n\n## Related resources\n\nRefer to Meta's [Permissions](https://developers.facebook.com/docs/graph-api/webhooks/reference/permissions/) Graph API reference for more information.\n",
+        "excerpt": "# Facebook Trigger Permissions object  Use this object to receive updates when a user grants or revokes a permission for your app. Refer to [Facebook Trigger](../) for more information on the trigger itself.  Credentials  You can find authentication information for this node [here](../../../credentials/facebookapp/).  Examples and templates  For usage examples and templates to help you get started, refer to n8n's [Facebook Trigger integrations](https://n8n.io/integrations/facebook-trigger/) page...",
+        "sections": [
+          {
+            "title": "Facebook Trigger Permissions object",
+            "level": 1,
+            "content": "Use this object to receive updates when a user grants or revokes a permission for your app. Refer to [Facebook Trigger](../) for more information on the trigger itself.\n\nCredentials\n\nYou can find authentication information for this node [here](../../../credentials/facebookapp/).\n\nExamples and templates\n\nFor usage examples and templates to help you get started, refer to n8n's [Facebook Trigger integrations](https://n8n.io/integrations/facebook-trigger/) page."
+          }
+        ]
+      },
+      "metadata": {
+        "keywords": [
+          "permissions",
+          "facebook",
+          "trigger",
+          "object",
+          "configuration",
+          "related",
+          "resources"
+        ],
+        "useCases": [],
+        "operations": [],
+        "codeExamples": 0,
+        "complexity": "beginner",
+        "readingTime": "2 min",
+        "contentLength": 1524,
+        "relatedPages": []
+      },
+      "searchIndex": {
+        "fullText": "permissions # facebook trigger permissions object\n\nuse this object to receive updates when a user grants or revokes a permission for your app. refer to [facebook trigger](../) for more information on the trigger itself.\n\ncredentials\n\nyou can find authentication information for this node [here](../../../credentials/facebookapp/).\n\nexamples and templates\n\nfor usage examples and templates to help you get started, refer to n8n's [facebook trigger integrations](https://n8n.io/integrations/facebook-trigger/) page.\n\n## trigger configuration\n\nto configure the trigger with this object:\n\n1. select the **credential to connect with**. select an existing or create a new [facebook app credential](../../../credentials/facebookapp/).\n1. enter the **app id** of the app connected to your credential. refer to the [facebook app credential](../../../credentials/facebookapp/) documentation for more information.\n1. select **permissions** as the **object**.\n1. **field names or ids**: by default, the node will trigger on all the available events using the `*` wildcard filter. if you'd like to limit the events, use the `x` to remove the star and use the dropdown or an expression to select the updates you're interested in.\n1. in **options**, choose whether to turn on the toggle to **include values**. when turned on, the node includes the new values for the changes.\n\n## related resources\n\nrefer to meta's [permissions](https://developers.facebook.com/docs/graph-api/webhooks/reference/permissions/) graph api reference for more information.\n facebook trigger permissions object",
+        "importantTerms": [
+          "trigger",
+          "facebook",
+          "permissions",
           "object",
           "refer",
           "information",
@@ -84042,6 +84042,61 @@
     },
     {
       "id": "page-1150",
+      "title": "Google Sheets Trigger",
+      "url": "https://docs.n8n.io/integrations/builtin/trigger-nodes/n8n-nodes-base.googlesheetstrigger/index.md",
+      "urlPath": "integrations/builtin/trigger-nodes/n8n-nodes-base.googlesheetstrigger/index.md",
+      "category": "trigger-nodes",
+      "subcategory": null,
+      "nodeName": "googlesheetstrigger",
+      "nodeType": "n8n-nodes-base.googlesheetstrigger",
+      "content": {
+        "markdown": "# Google Sheets Trigger node\n\n[Google Sheets](https://www.google.com/sheets) is a web-based spreadsheet program that's part of Google's office software suite within its Google Drive service.\n\nCredentials\n\nYou can find authentication information for this node [here](../../credentials/google/).\n\nExamples and templates\n\nFor usage examples and templates to help you get started, refer to n8n's [Google Sheets Trigger integrations](https://n8n.io/integrations/google-sheets-trigger/) page.\n\n## Events\n\n- Row added\n- Row updated\n- Row added or updated\n\n## Related resources\n\nRefer to [Google Sheet's API documentation](https://developers.google.com/sheets/api) for more information about the service.\n\nn8n provides an app node for Google Sheets. You can find the node docs [here](../../app-nodes/n8n-nodes-base.googlesheets/).\n\nView [example workflows and related content](https://n8n.io/integrations/google-sheets-trigger/) on n8n's website.\n\n## Common issues\n\nFor common questions or issues and suggested solutions, refer to [Common issues](common-issues/).\n",
+        "excerpt": "# Google Sheets Trigger node  [Google Sheets](https://www.google.com/sheets) is a web-based spreadsheet program that's part of Google's office software suite within its Google Drive service.  Credentials  You can find authentication information for this node [here](../../credentials/google/).  Examples and templates  For usage examples and templates to help you get started, refer to n8n's [Google Sheets Trigger integrations](https://n8n.io/integrations/google-sheets-trigger/) page.  ## Events  -...",
+        "sections": [
+          {
+            "title": "Google Sheets Trigger node",
+            "level": 1,
+            "content": "[Google Sheets](https://www.google.com/sheets) is a web-based spreadsheet program that's part of Google's office software suite within its Google Drive service.\n\nCredentials\n\nYou can find authentication information for this node [here](../../credentials/google/).\n\nExamples and templates\n\nFor usage examples and templates to help you get started, refer to n8n's [Google Sheets Trigger integrations](https://n8n.io/integrations/google-sheets-trigger/) page."
+          }
+        ]
+      },
+      "metadata": {
+        "keywords": [
+          "google",
+          "sheets",
+          "trigger",
+          "node",
+          "events",
+          "related",
+          "resources",
+          "common",
+          "issues"
+        ],
+        "useCases": [],
+        "operations": [],
+        "codeExamples": 0,
+        "complexity": "beginner",
+        "readingTime": "1 min",
+        "contentLength": 1056,
+        "relatedPages": []
+      },
+      "searchIndex": {
+        "fullText": "google sheets trigger # google sheets trigger node\n\n[google sheets](https://www.google.com/sheets) is a web-based spreadsheet program that's part of google's office software suite within its google drive service.\n\ncredentials\n\nyou can find authentication information for this node [here](../../credentials/google/).\n\nexamples and templates\n\nfor usage examples and templates to help you get started, refer to n8n's [google sheets trigger integrations](https://n8n.io/integrations/google-sheets-trigger/) page.\n\n## events\n\n- row added\n- row updated\n- row added or updated\n\n## related resources\n\nrefer to [google sheet's api documentation](https://developers.google.com/sheets/api) for more information about the service.\n\nn8n provides an app node for google sheets. you can find the node docs [here](../../app-nodes/n8n-nodes-base.googlesheets/).\n\nview [example workflows and related content](https://n8n.io/integrations/google-sheets-trigger/) on n8n's website.\n\n## common issues\n\nfor common questions or issues and suggested solutions, refer to [common issues](common-issues/).\n google sheets trigger node",
+        "importantTerms": [
+          "google",
+          "sheets",
+          "trigger",
+          "node",
+          "https",
+          "common",
+          "issues",
+          "refer",
+          "integrations"
+        ]
+      }
+    },
+    {
+      "id": "page-1151",
       "title": "Common issues",
       "url": "https://docs.n8n.io/integrations/builtin/trigger-nodes/n8n-nodes-base.googledrivetrigger/common-issues/index.md",
       "urlPath": "integrations/builtin/trigger-nodes/n8n-nodes-base.googledrivetrigger/common-issues/index.md",
@@ -84107,61 +84162,6 @@
           "wide",
           "delegation",
           "changes"
-        ]
-      }
-    },
-    {
-      "id": "page-1151",
-      "title": "Google Sheets Trigger",
-      "url": "https://docs.n8n.io/integrations/builtin/trigger-nodes/n8n-nodes-base.googlesheetstrigger/index.md",
-      "urlPath": "integrations/builtin/trigger-nodes/n8n-nodes-base.googlesheetstrigger/index.md",
-      "category": "trigger-nodes",
-      "subcategory": null,
-      "nodeName": "googlesheetstrigger",
-      "nodeType": "n8n-nodes-base.googlesheetstrigger",
-      "content": {
-        "markdown": "# Google Sheets Trigger node\n\n[Google Sheets](https://www.google.com/sheets) is a web-based spreadsheet program that's part of Google's office software suite within its Google Drive service.\n\nCredentials\n\nYou can find authentication information for this node [here](../../credentials/google/).\n\nExamples and templates\n\nFor usage examples and templates to help you get started, refer to n8n's [Google Sheets Trigger integrations](https://n8n.io/integrations/google-sheets-trigger/) page.\n\n## Events\n\n- Row added\n- Row updated\n- Row added or updated\n\n## Related resources\n\nRefer to [Google Sheet's API documentation](https://developers.google.com/sheets/api) for more information about the service.\n\nn8n provides an app node for Google Sheets. You can find the node docs [here](../../app-nodes/n8n-nodes-base.googlesheets/).\n\nView [example workflows and related content](https://n8n.io/integrations/google-sheets-trigger/) on n8n's website.\n\n## Common issues\n\nFor common questions or issues and suggested solutions, refer to [Common issues](common-issues/).\n",
-        "excerpt": "# Google Sheets Trigger node  [Google Sheets](https://www.google.com/sheets) is a web-based spreadsheet program that's part of Google's office software suite within its Google Drive service.  Credentials  You can find authentication information for this node [here](../../credentials/google/).  Examples and templates  For usage examples and templates to help you get started, refer to n8n's [Google Sheets Trigger integrations](https://n8n.io/integrations/google-sheets-trigger/) page.  ## Events  -...",
-        "sections": [
-          {
-            "title": "Google Sheets Trigger node",
-            "level": 1,
-            "content": "[Google Sheets](https://www.google.com/sheets) is a web-based spreadsheet program that's part of Google's office software suite within its Google Drive service.\n\nCredentials\n\nYou can find authentication information for this node [here](../../credentials/google/).\n\nExamples and templates\n\nFor usage examples and templates to help you get started, refer to n8n's [Google Sheets Trigger integrations](https://n8n.io/integrations/google-sheets-trigger/) page."
-          }
-        ]
-      },
-      "metadata": {
-        "keywords": [
-          "google",
-          "sheets",
-          "trigger",
-          "node",
-          "events",
-          "related",
-          "resources",
-          "common",
-          "issues"
-        ],
-        "useCases": [],
-        "operations": [],
-        "codeExamples": 0,
-        "complexity": "beginner",
-        "readingTime": "1 min",
-        "contentLength": 1056,
-        "relatedPages": []
-      },
-      "searchIndex": {
-        "fullText": "google sheets trigger # google sheets trigger node\n\n[google sheets](https://www.google.com/sheets) is a web-based spreadsheet program that's part of google's office software suite within its google drive service.\n\ncredentials\n\nyou can find authentication information for this node [here](../../credentials/google/).\n\nexamples and templates\n\nfor usage examples and templates to help you get started, refer to n8n's [google sheets trigger integrations](https://n8n.io/integrations/google-sheets-trigger/) page.\n\n## events\n\n- row added\n- row updated\n- row added or updated\n\n## related resources\n\nrefer to [google sheet's api documentation](https://developers.google.com/sheets/api) for more information about the service.\n\nn8n provides an app node for google sheets. you can find the node docs [here](../../app-nodes/n8n-nodes-base.googlesheets/).\n\nview [example workflows and related content](https://n8n.io/integrations/google-sheets-trigger/) on n8n's website.\n\n## common issues\n\nfor common questions or issues and suggested solutions, refer to [common issues](common-issues/).\n google sheets trigger node",
-        "importantTerms": [
-          "google",
-          "sheets",
-          "trigger",
-          "node",
-          "https",
-          "common",
-          "issues",
-          "refer",
-          "integrations"
         ]
       }
     },
@@ -93578,7 +93578,7 @@
         "page-0065",
         "page-0066",
         "page-0083",
-        "page-0088",
+        "page-0087",
         "page-0099",
         "page-0103",
         "page-0107",
@@ -93635,7 +93635,7 @@
         "page-0082",
         "page-0083",
         "page-0085",
-        "page-0088",
+        "page-0087",
         "page-0099",
         "page-0101",
         "page-0103",
@@ -94394,7 +94394,7 @@
         "page-0206",
         "page-0433",
         "page-0885",
-        "page-1142",
+        "page-1143",
         "page-1215",
         "page-1256"
       ],
@@ -94403,7 +94403,7 @@
         "page-0003",
         "page-0013",
         "page-0146",
-        "page-1150",
+        "page-1151",
         "page-1171",
         "page-1200",
         "page-1214",
@@ -94687,7 +94687,7 @@
       ],
       "date": [
         "page-0002",
-        "page-0089",
+        "page-0090",
         "page-0114",
         "page-0119",
         "page-0134",
@@ -94735,7 +94735,7 @@
         "page-0080",
         "page-0081",
         "page-0082",
-        "page-0088",
+        "page-0087",
         "page-0089",
         "page-0090",
         "page-0094",
@@ -95056,7 +95056,7 @@
         "page-0639",
         "page-0643",
         "page-0669",
-        "page-0693",
+        "page-0694",
         "page-0701",
         "page-0710",
         "page-0953",
@@ -95101,7 +95101,7 @@
         "page-0666",
         "page-0685",
         "page-0690",
-        "page-0693",
+        "page-0694",
         "page-0717",
         "page-0719",
         "page-0726",
@@ -95327,7 +95327,7 @@
         "page-0867",
         "page-0876",
         "page-0877",
-        "page-0879",
+        "page-0880",
         "page-0885",
         "page-0904",
         "page-0909",
@@ -95417,7 +95417,7 @@
         "page-0696",
         "page-0708",
         "page-0716",
-        "page-1150",
+        "page-1151",
         "page-1169",
         "page-1172",
         "page-1176",
@@ -95538,7 +95538,7 @@
         "page-0221",
         "page-0229",
         "page-0652",
-        "page-0694",
+        "page-0693",
         "page-0698",
         "page-1157",
         "page-1236"
@@ -95981,7 +95981,7 @@
       "binary": [
         "page-0003",
         "page-0067",
-        "page-0089",
+        "page-0090",
         "page-0132",
         "page-0172",
         "page-0212",
@@ -95989,7 +95989,7 @@
         "page-0571",
         "page-0666",
         "page-0691",
-        "page-0694",
+        "page-0693",
         "page-0716",
         "page-1194",
         "page-1215"
@@ -96582,7 +96582,7 @@
         "page-0503",
         "page-0685",
         "page-0688",
-        "page-0693"
+        "page-0694"
       ],
       "list": [
         "page-0005",
@@ -97325,7 +97325,7 @@
         "page-0050",
         "page-0052",
         "page-0066",
-        "page-0088",
+        "page-0087",
         "page-0091",
         "page-0099",
         "page-0100",
@@ -98014,7 +98014,7 @@
         "page-0007",
         "page-0015",
         "page-0072",
-        "page-0087",
+        "page-0088",
         "page-0712",
         "page-1199"
       ],
@@ -98075,7 +98075,7 @@
         "page-0025",
         "page-0530",
         "page-0687",
-        "page-1150",
+        "page-1151",
         "page-1215"
       ],
       "selected": [
@@ -98399,7 +98399,7 @@
         "page-1130",
         "page-1131",
         "page-1146",
-        "page-1151",
+        "page-1150",
         "page-1153"
       ],
       "destinations": [
@@ -98419,7 +98419,7 @@
         "page-0012",
         "page-0018",
         "page-0075",
-        "page-0088",
+        "page-0087",
         "page-0744",
         "page-1224"
       ],
@@ -98973,7 +98973,7 @@
         "page-0020",
         "page-0138",
         "page-0235",
-        "page-0693"
+        "page-0694"
       ],
       "calls": [
         "page-0013",
@@ -98994,7 +98994,7 @@
         "page-0035",
         "page-0036",
         "page-0072",
-        "page-0087",
+        "page-0088",
         "page-0100",
         "page-0144",
         "page-0206",
@@ -99665,7 +99665,7 @@
         "page-0220",
         "page-0535",
         "page-0668",
-        "page-0693"
+        "page-0694"
       ],
       "restricts": [
         "page-0015"
@@ -99975,7 +99975,7 @@
         "page-0688",
         "page-0689",
         "page-0692",
-        "page-0694",
+        "page-0693",
         "page-0697",
         "page-0698",
         "page-0699",
@@ -100339,7 +100339,7 @@
         "page-1143",
         "page-1145",
         "page-1146",
-        "page-1151",
+        "page-1150",
         "page-1153"
       ],
       "resources": [
@@ -100522,7 +100522,7 @@
         "page-0688",
         "page-0689",
         "page-0692",
-        "page-0694",
+        "page-0693",
         "page-0697",
         "page-0698",
         "page-0699",
@@ -100886,7 +100886,7 @@
         "page-1143",
         "page-1145",
         "page-1146",
-        "page-1151",
+        "page-1150",
         "page-1153",
         "page-1166",
         "page-1171",
@@ -100897,7 +100897,7 @@
         "page-0017",
         "page-0025",
         "page-0044",
-        "page-0089",
+        "page-0090",
         "page-0232",
         "page-0234",
         "page-0865",
@@ -101375,7 +101375,7 @@
         "page-0136",
         "page-0235",
         "page-0681",
-        "page-1150",
+        "page-1151",
         "page-1173",
         "page-1192",
         "page-1214",
@@ -101401,7 +101401,7 @@
       ],
       "creating": [
         "page-0019",
-        "page-0088",
+        "page-0087",
         "page-0138",
         "page-0751",
         "page-1164",
@@ -101454,7 +101454,7 @@
         "page-0944",
         "page-0978",
         "page-1040",
-        "page-1143",
+        "page-1142",
         "page-1179",
         "page-1194",
         "page-1214",
@@ -101645,13 +101645,13 @@
       "will": [
         "page-0021",
         "page-0072",
-        "page-0087",
+        "page-0088",
         "page-0201"
       ],
       "need": [
         "page-0021",
         "page-0072",
-        "page-0087",
+        "page-0088",
         "page-0202",
         "page-0717",
         "page-0746",
@@ -101665,7 +101665,7 @@
         "page-0025",
         "page-0045",
         "page-0072",
-        "page-0087"
+        "page-0088"
       ],
       "concepts": [
         "page-0021",
@@ -101798,7 +101798,7 @@
       "right": [
         "page-0022",
         "page-0072",
-        "page-0087",
+        "page-0088",
         "page-1271"
       ],
       "model?": [
@@ -101806,7 +101806,7 @@
       ],
       "splitting": [
         "page-0022",
-        "page-0090",
+        "page-0089",
         "page-0140"
       ],
       "case?": [
@@ -102150,7 +102150,7 @@
         "page-0515",
         "page-0516",
         "page-0517",
-        "page-1151",
+        "page-1150",
         "page-1152",
         "page-1214"
       ],
@@ -102169,7 +102169,7 @@
       "introduction": [
         "page-0031",
         "page-0072",
-        "page-0087",
+        "page-0088",
         "page-1229"
       ],
       "examples": [
@@ -102970,7 +102970,7 @@
       "level": [
         "page-0043",
         "page-0072",
-        "page-0087",
+        "page-0088",
         "page-0201",
         "page-0207",
         "page-0709",
@@ -103022,7 +103022,7 @@
       "complete": [
         "page-0043",
         "page-0072",
-        "page-0087"
+        "page-0088"
       ],
       "disablement": [
         "page-0043"
@@ -103059,11 +103059,11 @@
         "page-0840",
         "page-0855",
         "page-0862",
-        "page-0863",
+        "page-0864",
         "page-0865",
         "page-0869",
         "page-0878",
-        "page-0879",
+        "page-0880",
         "page-0882",
         "page-0883",
         "page-0884",
@@ -103092,7 +103092,7 @@
         "page-1017",
         "page-1021",
         "page-1026",
-        "page-1030",
+        "page-1029",
         "page-1032",
         "page-1033",
         "page-1036",
@@ -103162,7 +103162,7 @@
         "page-0872",
         "page-0876",
         "page-0877",
-        "page-0879",
+        "page-0880",
         "page-0892",
         "page-0895",
         "page-0897",
@@ -103564,7 +103564,7 @@
         "page-0538",
         "page-0641",
         "page-0661",
-        "page-0693",
+        "page-0694",
         "page-0705",
         "page-0717"
       ],
@@ -104627,7 +104627,7 @@
         "page-0235",
         "page-0677",
         "page-0681",
-        "page-0693",
+        "page-0694",
         "page-0698",
         "page-0709",
         "page-0718",
@@ -104648,7 +104648,7 @@
         "page-0166",
         "page-0201",
         "page-0656",
-        "page-0693",
+        "page-0694",
         "page-0718",
         "page-0719",
         "page-1199",
@@ -104783,7 +104783,7 @@
       "this": [
         "page-0062",
         "page-0072",
-        "page-0087",
+        "page-0088",
         "page-0097",
         "page-0206",
         "page-0509",
@@ -104936,7 +104936,7 @@
       "size": [
         "page-0070",
         "page-0207",
-        "page-0693"
+        "page-0694"
       ],
       "query": [
         "page-0070",
@@ -104962,7 +104962,7 @@
         "page-0072",
         "page-0552",
         "page-0558",
-        "page-0693"
+        "page-0694"
       ],
       "one:": [
         "page-0072",
@@ -104973,23 +104973,23 @@
       ],
       "course": [
         "page-0072",
-        "page-0087"
+        "page-0088"
       ],
       "course?": [
         "page-0072",
-        "page-0087"
+        "page-0088"
       ],
       "started?": [
         "page-0072",
-        "page-0087"
+        "page-0088"
       ],
       "long": [
         "page-0072",
-        "page-0087"
+        "page-0088"
       ],
       "take?": [
         "page-0072",
-        "page-0087"
+        "page-0088"
       ],
       "navigating": [
         "page-0073",
@@ -105099,7 +105099,7 @@
       ],
       "processing": [
         "page-0082",
-        "page-0089",
+        "page-0090",
         "page-0219",
         "page-0550",
         "page-0639",
@@ -105161,15 +105161,8 @@
       "examining": [
         "page-0086"
       ],
-      "two:": [
-        "page-0087",
-        "page-0155",
-        "page-1228",
-        "page-1229",
-        "page-1233"
-      ],
       "structure": [
-        "page-0088",
+        "page-0087",
         "page-0100",
         "page-0148",
         "page-1172",
@@ -105178,33 +105171,64 @@
         "page-1187"
       ],
       "sets": [
-        "page-0088"
+        "page-0087"
       ],
       "exercise": [
-        "page-0088",
+        "page-0087",
         "page-0089",
         "page-0090",
         "page-0091"
       ],
       "referencing": [
-        "page-0088",
+        "page-0087",
         "page-0105",
         "page-0106",
         "page-0108"
       ],
       "transforming": [
-        "page-0088",
+        "page-0087",
         "page-0104"
       ],
-      "different": [
+      "two:": [
+        "page-0088",
+        "page-0155",
+        "page-1228",
+        "page-1229",
+        "page-1233"
+      ],
+      "merging": [
         "page-0089",
+        "page-0094",
+        "page-0139",
+        "page-0681",
+        "page-1234"
+      ],
+      "merge": [
+        "page-0089",
+        "page-0139",
+        "page-0674",
+        "page-0681",
+        "page-1226"
+      ],
+      "looping": [
+        "page-0089",
+        "page-0138"
+      ],
+      "batches": [
+        "page-0089"
+      ],
+      "loop/batch": [
+        "page-0089"
+      ],
+      "different": [
+        "page-0090",
         "page-0095",
         "page-0139",
         "page-0681",
-        "page-0693"
+        "page-0694"
       ],
       "html": [
-        "page-0089",
+        "page-0090",
         "page-0654",
         "page-0668",
         "page-0669",
@@ -105218,40 +105242,16 @@
         "page-1215"
       ],
       "date,": [
-        "page-0089"
+        "page-0090"
       ],
       "time,": [
-        "page-0089"
+        "page-0090"
       ],
       "interval": [
-        "page-0089",
+        "page-0090",
         "page-0701",
         "page-0720",
         "page-0721"
-      ],
-      "merging": [
-        "page-0090",
-        "page-0094",
-        "page-0139",
-        "page-0681",
-        "page-1234"
-      ],
-      "merge": [
-        "page-0090",
-        "page-0139",
-        "page-0674",
-        "page-0681",
-        "page-1226"
-      ],
-      "looping": [
-        "page-0090",
-        "page-0138"
-      ],
-      "batches": [
-        "page-0090"
-      ],
-      "loop/batch": [
-        "page-0090"
       ],
       "checking": [
         "page-0091",
@@ -105588,7 +105588,7 @@
       ],
       "sources": [
         "page-0095",
-        "page-0693"
+        "page-0694"
       ],
       "regional": [
         "page-0095"
@@ -106686,7 +106686,7 @@
         "page-1019",
         "page-1020",
         "page-1147",
-        "page-1150",
+        "page-1151",
         "page-1173",
         "page-1180",
         "page-1198",
@@ -106748,7 +106748,7 @@
       "processed": [
         "page-0138",
         "page-0166",
-        "page-0693",
+        "page-0694",
         "page-0718"
       ],
       "streams": [
@@ -106763,7 +106763,7 @@
       ],
       "split": [
         "page-0139",
-        "page-0694",
+        "page-0693",
         "page-0698"
       ],
       "again": [
@@ -106846,7 +106846,7 @@
         "page-0562",
         "page-0570",
         "page-0691",
-        "page-0694",
+        "page-0693",
         "page-1176",
         "page-1180"
       ],
@@ -106864,7 +106864,7 @@
         "page-0639",
         "page-0643",
         "page-0668",
-        "page-0693",
+        "page-0694",
         "page-0707"
       ],
       "active": [
@@ -106954,7 +106954,7 @@
         "page-1015",
         "page-1016",
         "page-1021",
-        "page-1029",
+        "page-1030",
         "page-1034"
       ],
       "identity": [
@@ -107903,7 +107903,7 @@
         "page-0561",
         "page-0562",
         "page-0659",
-        "page-0694",
+        "page-0693",
         "page-0725",
         "page-1180",
         "page-1198",
@@ -109147,7 +109147,7 @@
       ],
       "over": [
         "page-0235",
-        "page-0693"
+        "page-0694"
       ],
       "wait": [
         "page-0235",
@@ -109157,7 +109157,7 @@
       ],
       "batch": [
         "page-0235",
-        "page-0693"
+        "page-0694"
       ],
       "paginate": [
         "page-0235"
@@ -109869,12 +109869,12 @@
       ],
       "linear": [
         "page-0357",
-        "page-0863",
+        "page-0864",
         "page-1092"
       ],
       "lingvanex": [
         "page-0358",
-        "page-0864"
+        "page-0863"
       ],
       "linkedin": [
         "page-0359",
@@ -109936,7 +109936,7 @@
       "field": [
         "page-0370",
         "page-0666",
-        "page-0694",
+        "page-0693",
         "page-0698",
         "page-1052",
         "page-1180",
@@ -109949,11 +109949,11 @@
       ],
       "medium": [
         "page-0372",
-        "page-0879"
+        "page-0880"
       ],
       "messagebird": [
         "page-0373",
-        "page-0880"
+        "page-0879"
       ],
       "metabase": [
         "page-0374",
@@ -110467,11 +110467,11 @@
       ],
       "zammad": [
         "page-0485",
-        "page-1029"
+        "page-1030"
       ],
       "zendesk": [
         "page-0486",
-        "page-1030",
+        "page-1029",
         "page-1133"
       ],
       "zoho": [
@@ -110591,7 +110591,7 @@
         "page-1037",
         "page-1038",
         "page-1147",
-        "page-1150"
+        "page-1151"
       ],
       "please": [
         "page-0500",
@@ -110666,7 +110666,7 @@
         "page-0513",
         "page-1039",
         "page-1149",
-        "page-1150"
+        "page-1151"
       ],
       "hasn't": [
         "page-0509",
@@ -110877,7 +110877,7 @@
         "page-0530",
         "page-0687",
         "page-0719",
-        "page-1150"
+        "page-1151"
       ],
       "animation": [
         "page-0532"
@@ -110990,7 +110990,7 @@
         "page-1015",
         "page-1016",
         "page-1021",
-        "page-1029",
+        "page-1030",
         "page-1034"
       ],
       "format": [
@@ -111714,7 +111714,7 @@
       "notation": [
         "page-0652",
         "page-0691",
-        "page-0694",
+        "page-0693",
         "page-0698"
       ],
       "matches": [
@@ -111814,7 +111814,7 @@
       ],
       "destination": [
         "page-0666",
-        "page-0694"
+        "page-0693"
       ],
       "conditions": [
         "page-0667",
@@ -112007,7 +112007,7 @@
       ],
       "feed": [
         "page-0689",
-        "page-0693",
+        "page-0694",
         "page-1215"
       ],
       "hour": [
@@ -112039,13 +112039,13 @@
         "page-0691"
       ],
       "(split": [
-        "page-0693"
+        "page-0694"
       ],
       "batches)": [
-        "page-0693"
+        "page-0694"
       ],
       "reset": [
-        "page-0693"
+        "page-0694"
       ],
       "continue": [
         "page-0698"
@@ -116014,10 +116014,10 @@
       "sort": [
         "page-0692"
       ],
-      "splitinbatches": [
+      "splitout": [
         "page-0693"
       ],
-      "splitout": [
+      "splitinbatches": [
         "page-0694"
       ],
       "ssetrigger": [
@@ -116354,10 +116354,10 @@
       ],
       "googledrivetrigger": [
         "page-1149",
-        "page-1150"
+        "page-1151"
       ],
       "googlesheetstrigger": [
-        "page-1151",
+        "page-1150",
         "page-1152"
       ],
       "telegramtrigger": [
