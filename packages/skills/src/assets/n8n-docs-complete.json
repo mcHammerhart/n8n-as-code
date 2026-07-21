@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T05:21:50.048Z",
+  "generatedAt": "2026-07-21T05:46:36.447Z",
   "version": "1.0.0",
   "sourceUrl": "https://docs.n8n.io/llms.txt",
   "totalPages": 161,
@@ -1776,6 +1776,178 @@
     },
     {
       "id": "page-0016",
+      "title": "Deploy to Azure",
+      "url": "https://docs.n8n.io/deploy/host-n8n/install-options/use-a-cloud-provider/deploy-to-azure.md",
+      "urlPath": "deploy/host-n8n/install-options/use-a-cloud-provider/deploy-to-azure.md",
+      "category": "other",
+      "subcategory": null,
+      "nodeName": null,
+      "nodeType": null,
+      "content": {
+        "markdown": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/deploy/host-n8n/install-options/use-a-cloud-provider/deploy-to-azure.md).\n\n# Deploy to Azure\n\nThis hosting guide shows you how to self-host n8n on Azure. It uses n8n with Postgres as a database backend using Kubernetes to manage the necessary resources and reverse proxy.\n\n## Prerequisites <a href=\"#prerequisites\" id=\"prerequisites\"></a>\n\nYou need [The Azure command line tool](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)\n\n{% hint style=\"info\" %}\n**Self-hosting knowledge prerequisites**\n\nSelf-hosting n8n requires technical knowledge, including:\n\n* Setting up and configuring servers and containers\n* Managing application resources and scaling\n* Securing servers and applications\n* Configuring n8n\n\nn8n recommends self-hosting for expert users. Mistakes can lead to data loss, security issues, and downtime. If you aren't experienced at managing servers, n8n recommends [n8n Cloud](https://n8n.io/cloud/).\n{% endhint %}\n\n{% hint style=\"info\" %}\n**Stable and Beta versions**\n\nn8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).\n\nCurrent `stable`: 2.29.8 Current `beta`: 2.30.1\n{% endhint %}\n\n## Hosting options <a href=\"#hosting-options\" id=\"hosting-options\"></a>\n\nAzure offers several ways suitable for hosting n8n, including Azure Container Instances (optimized for running containers), Linux Virtual Machines, and Azure Kubernetes Service (containers running with Kubernetes).\n\nThis guide uses the Azure Kubernetes Service (AKS) as the hosting option. Using Kubernetes requires some additional complexity and configuration, but is the best method for scaling n8n as demand changes.\n\nThe steps in this guide use a mix of the Azure UI and command line tool, but you can use either to accomplish most tasks.\n\n## Open the Azure Kubernetes Service <a href=\"#open-the-azure-kubernetes-service\" id=\"open-the-azure-kubernetes-service\"></a>\n\nFrom [the Azure portal](https://portal.azure.com/) select **Kubernetes services**.\n\n## Create a cluster <a href=\"#create-a-cluster\" id=\"create-a-cluster\"></a>\n\nFrom the Kubernetes services page, select **Create** > **Create a Kubernetes cluster**.\n\nYou can select any of the configuration options that suit your needs, then select **Create** when done.\n\n## Set Kubectl context <a href=\"#set-kubectl-context\" id=\"set-kubectl-context\"></a>\n\nThe remainder of the steps in this guide require you to set the Azure instance as the Kubectl context. You can find the connection details for a cluster instance by opening its details page and then the **Connect** button. The resulting code snippets shows the steps to paste and run into a terminal to change your local Kubernetes settings to use the new cluster.\n\n## Clone configuration repository <a href=\"#clone-configuration-repository\" id=\"clone-configuration-repository\"></a>\n\nKubernetes and n8n require a series of configuration files. You can clone these from [this repository](https://github.com/n8n-io/n8n-hosting). The following steps tell you which file configures what and what you need to change.\n\nClone the repository with the following command:\n\n```shell\ngit clone https://github.com/n8n-io/n8n-hosting.git\n```\n\nAnd change directory:\n\n```shell\ncd n8n-hosting/kubernetes\n```\n\n## Configure Postgres <a href=\"#configure-postgres\" id=\"configure-postgres\"></a>\n\nFor larger scale n8n deployments, Postgres provides a more robust database backend than SQLite.\n\n### Configure volume for persistent storage <a href=\"#configure-volume-for-persistent-storage\" id=\"configure-volume-for-persistent-storage\"></a>\n\nTo maintain data between pod restarts, the Postgres deployment needs a persistent volume. The default storage class is suitable for this purpose and is defined in the `postgres-claim0-persistentvolumeclaim.yaml` manifest.\n\n{% hint style=\"info\" %}\n**Specialized storage classes**\n\nIf you have specialised or higher requirements for storage classes, [read more on the options Azure offers in the documentation](https://learn.microsoft.com/en-us/azure/aks/concepts-storage#storage-classes).\n{% endhint %}\n\n### Postgres environment variables <a href=\"#postgres-environment-variables\" id=\"postgres-environment-variables\"></a>\n\nPostgres needs some environment variables set to pass to the application running in the containers.\n\nThe example `postgres-secret.yaml` file contains placeholders you need to replace with your own values. Postgres will use these details when creating the database..\n\nThe `postgres-deployment.yaml` manifest then uses the values from this manifest file to send to the application pods.\n\n## Configure n8n <a href=\"#configure-n8n\" id=\"configure-n8n\"></a>\n\n### Create a volume for file storage <a href=\"#create-a-volume-for-file-storage\" id=\"create-a-volume-for-file-storage\"></a>\n\nWhile not essential for running n8n, using persistent volumes is required for:\n\n* Using nodes that interact with files, such as the binary data node.\n* If you want to persist [manual n8n encryption keys](/deploy/host-n8n/configure-n8n/basic-configuration/use-environment-variables/deployment.md) between restarts. This saves a file containing the key into file storage during startup.\n\nThe `n8n-claim0-persistentvolumeclaim.yaml` manifest creates this, and the n8n Deployment mounts that claim in the `volumes` section of the `n8n-deployment.yaml` manifest.\n\n```yaml\n…\nvolumes:\n  - name: n8n-claim0\n    persistentVolumeClaim:\n      claimName: n8n-claim0\n…\n```\n\n### Pod resources <a href=\"#pod-resources\" id=\"pod-resources\"></a>\n\n[Kubernetes lets you](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) optionally specify the minimum resources application containers need and the limits they can run to. The example YAML files cloned above contain the following in the `resources` section of the `n8n-deployment.yaml` file:\n\n```yaml\n…\nresources:\n  requests:\n    memory: \"250Mi\"\n  limits:\n    memory: \"500Mi\"\n…    \n```\n\nThis defines a minimum of 250mb per container, a maximum of 500mb, and lets Kubernetes handle CPU. You can change these values to match your own needs. As a guide, here are the resources values for the n8n cloud offerings:\n\n* **Start**: 320mb RAM, 10 millicore CPU burstable\n* **Pro (10k executions)**: 640mb RAM, 20 millicore CPU burstable\n* **Pro (50k executions)**: 1280mb RAM, 80 millicore CPU burstable\n\n### Optional: Environment variables <a href=\"#optional-environment-variables\" id=\"optional-environment-variables\"></a>\n\nYou can configure n8n settings and behaviors using environment variables.\n\nCreate an `n8n-secret.yaml` file. Refer to [Environment variables](/deploy/host-n8n/configure-n8n/basic-configuration/use-environment-variables.md) for n8n environment variables details.\n\n## Deployments <a href=\"#deployments\" id=\"deployments\"></a>\n\nThe two deployment manifests (`n8n-deployment.yaml` and `postgres-deployment.yaml`) define the n8n and Postgres applications to Kubernetes.\n\nThe manifests define the following:\n\n* Send the environment variables defined to each application pod\n* Define the container image to use\n* Set resource consumption limits with the `resources` object\n* The `volumes` defined earlier and `volumeMounts` to define the path in the container to mount volumes.\n* Scaling and restart policies. The example manifests define one instance of each pod. You should change this to meet your needs.\n\n## Services <a href=\"#services\" id=\"services\"></a>\n\nThe two service manifests (`postgres-service.yaml` and `n8n-service.yaml`) expose the services to the outside world using the Kubernetes load balancer using ports 5432 and 5678 respectively.\n\n## Send to Kubernetes cluster <a href=\"#send-to-kubernetes-cluster\" id=\"send-to-kubernetes-cluster\"></a>\n\nSend all the manifests to the cluster with the following command:\n\n```shell\nkubectl apply -f .\n```\n\n{% hint style=\"info\" %}\n**Namespace error**\n\nYou may see an error message about not finding an \"n8n\" namespace as that resources isn't ready yet. You can run the same command again, or apply the namespace manifest first with the following command:\n\n```shell\nkubectl apply -f namespace.yaml\n```\n\n{% endhint %}\n\n## Set up DNS <a href=\"#set-up-dns\" id=\"set-up-dns\"></a>\n\nn8n typically operates on a subdomain. Create a DNS record with your provider for the subdomain and point it to the IP address of the n8n service. Find the IP address of the n8n service from the **Services & ingresses** menu item of the cluster you want to use under the **External IP** column. You need to add the n8n port, \"5678\" to the URL.\n\n{% hint style=\"info\" %}\n**Static IP addresses with AKS**\n\n[Read this tutorial](https://learn.microsoft.com/en-us/azure/aks/static-ip) for more details on how to use a static IP address with AKS.\n{% endhint %}\n\n## Delete resources <a href=\"#delete-resources\" id=\"delete-resources\"></a>\n\nRemove the resources created by the manifests with the following command:\n\n```shell\nkubectl delete -f .\n```\n\n## Next steps <a href=\"#next-steps\" id=\"next-steps\"></a>\n\n* Learn more about [configuring](/deploy/host-n8n/configure-n8n/basic-configuration/use-environment-variables.md) and [scaling](/deploy/host-n8n/configure-n8n/scaling.md) n8n.\n* Or explore using n8n: try the [Quickstarts](/build-your-first-workflow.md).\n",
+        "excerpt": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/deploy/host-n8n/install-options/use-a-cloud-provider/deploy-to-azure.md).  # Deploy to Azure  This hosting guide shows you how to self-host n8n on Azure. It uses n8n with Postgres as a database backend using Kubernetes to manage the necessary resources and reverse prox...",
+        "sections": [
+          {
+            "title": "Deploy to Azure",
+            "level": 1,
+            "content": "This hosting guide shows you how to self-host n8n on Azure. It uses n8n with Postgres as a database backend using Kubernetes to manage the necessary resources and reverse proxy."
+          }
+        ]
+      },
+      "metadata": {
+        "keywords": [
+          "deploy",
+          "azure",
+          "prerequisites",
+          "href=\"#prerequisites\"",
+          "id=\"prerequisites\"></a>",
+          "hosting",
+          "options",
+          "href=\"#hosting",
+          "options\"",
+          "id=\"hosting",
+          "options\"></a>",
+          "open",
+          "kubernetes",
+          "service",
+          "href=\"#open",
+          "service\"",
+          "id=\"open",
+          "service\"></a>",
+          "create",
+          "cluster",
+          "href=\"#create",
+          "cluster\"",
+          "id=\"create",
+          "cluster\"></a>",
+          "kubectl",
+          "context",
+          "href=\"#set",
+          "context\"",
+          "id=\"set",
+          "context\"></a>",
+          "clone",
+          "configuration",
+          "repository",
+          "href=\"#clone",
+          "repository\"",
+          "id=\"clone",
+          "repository\"></a>",
+          "configure",
+          "postgres",
+          "href=\"#configure",
+          "postgres\"",
+          "id=\"configure",
+          "postgres\"></a>",
+          "volume",
+          "persistent",
+          "storage",
+          "storage\"",
+          "storage\"></a>",
+          "environment",
+          "variables",
+          "href=\"#postgres",
+          "variables\"",
+          "id=\"postgres",
+          "variables\"></a>",
+          "n8n\"",
+          "n8n\"></a>",
+          "file",
+          "resources",
+          "href=\"#pod",
+          "resources\"",
+          "id=\"pod",
+          "resources\"></a>",
+          "optional:",
+          "href=\"#optional",
+          "id=\"optional",
+          "deployments",
+          "href=\"#deployments\"",
+          "id=\"deployments\"></a>",
+          "services",
+          "href=\"#services\"",
+          "id=\"services\"></a>",
+          "send",
+          "href=\"#send",
+          "id=\"send",
+          "dns\"",
+          "dns\"></a>",
+          "delete",
+          "href=\"#delete",
+          "id=\"delete",
+          "next",
+          "steps",
+          "href=\"#next",
+          "steps\"",
+          "id=\"next",
+          "steps\"></a>"
+        ],
+        "useCases": [],
+        "operations": [],
+        "codeExamples": 7,
+        "complexity": "beginner",
+        "readingTime": "6 min",
+        "contentLength": 9574,
+        "relatedPages": []
+      },
+      "searchIndex": {
+        "fullText": "deploy to azure > for the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). markdown versions of documentation pages are available by appending `.md` to page urls; this page is available as [markdown](https://docs.n8n.io/deploy/host-n8n/install-options/use-a-cloud-provider/deploy-to-azure.md).\n\n# deploy to azure\n\nthis hosting guide shows you how to self-host n8n on azure. it uses n8n with postgres as a database backend using kubernetes to manage the necessary resources and reverse proxy.\n\n## prerequisites <a href=\"#prerequisites\" id=\"prerequisites\"></a>\n\nyou need [the azure command line tool](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)\n\n{% hint style=\"info\" %}\n**self-hosting knowledge prerequisites**\n\nself-hosting n8n requires technical knowledge, including:\n\n* setting up and configuring servers and containers\n* managing application resources and scaling\n* securing servers and applications\n* configuring n8n\n\nn8n recommends self-hosting for expert users. mistakes can lead to data loss, security issues, and downtime. if you aren't experienced at managing servers, n8n recommends [n8n cloud](https://n8n.io/cloud/).\n{% endhint %}\n\n{% hint style=\"info\" %}\n**stable and beta versions**\n\nn8n releases a new minor version most weeks. the `stable` version is for production use. `beta` is the most recent release. the `beta` version may be unstable. to report issues, use the [forum](https://community.n8n.io/c/questions/12).\n\ncurrent `stable`: 2.29.8 current `beta`: 2.30.1\n{% endhint %}\n\n## hosting options <a href=\"#hosting-options\" id=\"hosting-options\"></a>\n\nazure offers several ways suitable for hosting n8n, including azure container instances (optimized for running containers), linux virtual machines, and azure kubernetes service (containers running with kubernetes).\n\nthis guide uses the azure kubernetes service (aks) as the hosting option. using kubernetes requires some additional complexity and configuration, but is the best method for scaling n8n as demand changes.\n\nthe steps in this guide use a mix of the azure ui and command line tool, but you can use either to accomplish most tasks.\n\n## open the azure kubernetes service <a href=\"#open-the-azure-kubernetes-service\" id=\"open-the-azure-kubernetes-service\"></a>\n\nfrom [the azure portal](https://portal.azure.com/) select **kubernetes services**.\n\n## create a cluster <a href=\"#create-a-cluster\" id=\"create-a-cluster\"></a>\n\nfrom the kubernetes services page, select **create** > **create a kubernetes cluster**.\n\nyou can select any of the configuration options that suit your needs, then select **create** when done.\n\n## set kubectl context <a href=\"#set-kubectl-context\" id=\"set-kubectl-context\"></a>\n\nthe remainder of the steps in this guide require you to set the azure instance as the kubectl context. you can find the connection details for a cluster instance by opening its details page and then the **connect** button. the resulting code snippets shows the steps to paste and run into a terminal to change your local kubernetes settings to use the new cluster.\n\n## clone configuration repository <a href=\"#clone-configuration-repository\" id=\"clone-configuration-repository\"></a>\n\nkubernetes and n8n require a series of configuration files. you can clone these from [this repository](https://github.com/n8n-io/n8n-hosting). the following steps tell you which file configures what and what you need to change.\n\nclone the repository with the following command:\n\n```shell\ngit clone https://github.com/n8n-io/n8n-hosting.git\n```\n\nand change directory:\n\n```shell\ncd n8n-hosting/kubernetes\n```\n\n## configure postgres <a href=\"#configure-postgres\" id=\"configure-postgres\"></a>\n\nfor larger scale n8n deployments, postgres provides a more robust database backend than sqlite.\n\n### configure volume for persistent storage <a href=\"#configure-volume-for-persistent-storage\" id=\"configure-volume-for-persistent-storage\"></a>\n\nto maintain data between pod restarts, the postgres deployment needs a persistent volume. the default storage class is suitable for this purpose and is defined in the `postgres-claim0-persistentvolumeclaim.yaml` manifest.\n\n{% hint style=\"info\" %}\n**specialized storage classes**\n\nif you have specialised or higher requirements for storage classes, [read more on the options azure offers in the documentation](https://learn.microsoft.com/en-us/azure/aks/concepts-storage#storage-classes).\n{% endhint %}\n\n### postgres environment variables <a href=\"#postgres-environment-variables\" id=\"postgres-environment-variables\"></a>\n\npostgres needs some environment variables set to pass to the application running in the containers.\n\nthe example `postgres-secret.yaml` file contains placeholders you need to replace with your own values. postgres will use these details when creating the database..\n\nthe `postgres-deployment.yaml` manifest then uses the values from this manifest file to send to the application pods.\n\n## configure n8n <a href=\"#configure-n8n\" id=\"configure-n8n\"></a>\n\n### create a volume for file storage <a href=\"#create-a-volume-for-file-storage\" id=\"create-a-volume-for-file-storage\"></a>\n\nwhile not essential for running n8n, using persistent volumes is required for:\n\n* using nodes that interact with files, such as the binary data node.\n* if you want to persist [manual n8n encryption keys](/deploy/host-n8n/configure-n8n/basic-configuration/use-environment-variables/deployment.md) between restarts. this saves a file containing the key into file storage during startup.\n\nthe `n8n-claim0-persistentvolumeclaim.yaml` manifest creates this, and the n8n deployment mounts that claim in the `volumes` section of the `n8n-deployment.yaml` manifest.\n\n```yaml\n…\nvolumes:\n  - name: n8n-claim0\n    persistentvolumeclaim:\n      claimname: n8n-claim0\n…\n```\n\n### pod resources <a href=\"#pod-resources\" id=\"pod-resources\"></a>\n\n[kubernetes lets you](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) optionally specify the minimum resources application containers need and the limits they can run to. the example yaml files cloned above contain the following in the `resources` section of the `n8n-deployment.yaml` file:\n\n```yaml\n…\nresources:\n  requests:\n    memory: \"250mi\"\n  limits:\n    memory: \"500mi\"\n…    \n```\n\nthis defines a minimum of 250mb per container, a maximum of 500mb, and lets kubernetes handle cpu. you can change these values to match your own needs. as a guide, here are the resources values for the n8n cloud offerings:\n\n* **start**: 320mb ram, 10 millicore cpu burstable\n* **pro (10k executions)**: 640mb ram, 20 millicore cpu burstable\n* **pro (50k executions)**: 1280mb ram, 80 millicore cpu burstable\n\n### optional: environment variables <a href=\"#optional-environment-variables\" id=\"optional-environment-variables\"></a>\n\nyou can configure n8n settings and behaviors using environment variables.\n\ncreate an `n8n-secret.yaml` file. refer to [environment variables](/deploy/host-n8n/configure-n8n/basic-configuration/use-environment-variables.md) for n8n environment variables details.\n\n## deployments <a href=\"#deployments\" id=\"deployments\"></a>\n\nthe two deployment manifests (`n8n-deployment.yaml` and `postgres-deployment.yaml`) define the n8n and postgres applications to kubernetes.\n\nthe manifests define the following:\n\n* send the environment variables defined to each application pod\n* define the container image to use\n* set resource consumption limits with the `resources` object\n* the `volumes` defined earlier and `volumemounts` to define the path in the container to mount volumes.\n* scaling and restart policies. the example manifests define one instance of each pod. you should change this to meet your needs.\n\n## services <a href=\"#services\" id=\"services\"></a>\n\nthe two service manifests (`postgres-service.yaml` and `n8n-service.yaml`) expose the services to the outside world using the kubernetes load balancer using ports 5432 and 5678 respectively.\n\n## send to kubernetes cluster <a href=\"#send-to-kubernetes-cluster\" id=\"send-to-kubernetes-cluster\"></a>\n\nsend all the manifests to the cluster with the following command:\n\n```shell\nkubectl apply -f .\n```\n\n{% hint style=\"info\" %}\n**namespace error**\n\nyou may see an error message about not finding an \"n8n\" namespace as that resources isn't ready yet. you can run the same command again, or apply the namespace manifest first with the following command:\n\n```shell\nkubectl apply -f namespace.yaml\n```\n\n{% endhint %}\n\n## set up dns <a href=\"#set-up-dns\" id=\"set-up-dns\"></a>\n\nn8n typically operates on a subdomain. create a dns record with your provider for the subdomain and point it to the ip address of the n8n service. find the ip address of the n8n service from the **services & ingresses** menu item of the cluster you want to use under the **external ip** column. you need to add the n8n port, \"5678\" to the url.\n\n{% hint style=\"info\" %}\n**static ip addresses with aks**\n\n[read this tutorial](https://learn.microsoft.com/en-us/azure/aks/static-ip) for more details on how to use a static ip address with aks.\n{% endhint %}\n\n## delete resources <a href=\"#delete-resources\" id=\"delete-resources\"></a>\n\nremove the resources created by the manifests with the following command:\n\n```shell\nkubectl delete -f .\n```\n\n## next steps <a href=\"#next-steps\" id=\"next-steps\"></a>\n\n* learn more about [configuring](/deploy/host-n8n/configure-n8n/basic-configuration/use-environment-variables.md) and [scaling](/deploy/host-n8n/configure-n8n/scaling.md) n8n.\n* or explore using n8n: try the [quickstarts](/build-your-first-workflow.md).\n deploy to azure",
+        "importantTerms": [
+          "azure",
+          "kubernetes",
+          "href",
+          "postgres",
+          "resources",
+          "yaml",
+          "configure",
+          "environment",
+          "variables",
+          "this",
+          "hosting",
+          "with",
+          "storage",
+          "https",
+          "create",
+          "cluster",
+          "service",
+          "configuration",
+          "file",
+          "deploy",
+          "deployment",
+          "using",
+          "command",
+          "steps",
+          "services",
+          "your",
+          "kubectl",
+          "following",
+          "volume",
+          "host",
+          "options",
+          "containers",
+          "clone",
+          "manifest",
+          "send",
+          "manifests",
+          "guide",
+          "need",
+          "hint",
+          "style",
+          "info",
+          "application",
+          "scaling",
+          "endhint",
+          "from",
+          "needs",
+          "details",
+          "change",
+          "repository",
+          "shell"
+        ]
+      }
+    },
+    {
+      "id": "page-0017",
       "title": "Deploy to Google Cloud Run",
       "url": "https://docs.n8n.io/deploy/host-n8n/install-options/use-a-cloud-provider/deploy-to-google-cloud-run.md",
       "urlPath": "deploy/host-n8n/install-options/use-a-cloud-provider/deploy-to-google-cloud-run.md",
@@ -1961,178 +2133,6 @@
           "with",
           "refer",
           "created"
-        ]
-      }
-    },
-    {
-      "id": "page-0017",
-      "title": "Deploy to Azure",
-      "url": "https://docs.n8n.io/deploy/host-n8n/install-options/use-a-cloud-provider/deploy-to-azure.md",
-      "urlPath": "deploy/host-n8n/install-options/use-a-cloud-provider/deploy-to-azure.md",
-      "category": "other",
-      "subcategory": null,
-      "nodeName": null,
-      "nodeType": null,
-      "content": {
-        "markdown": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/deploy/host-n8n/install-options/use-a-cloud-provider/deploy-to-azure.md).\n\n# Deploy to Azure\n\nThis hosting guide shows you how to self-host n8n on Azure. It uses n8n with Postgres as a database backend using Kubernetes to manage the necessary resources and reverse proxy.\n\n## Prerequisites <a href=\"#prerequisites\" id=\"prerequisites\"></a>\n\nYou need [The Azure command line tool](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)\n\n{% hint style=\"info\" %}\n**Self-hosting knowledge prerequisites**\n\nSelf-hosting n8n requires technical knowledge, including:\n\n* Setting up and configuring servers and containers\n* Managing application resources and scaling\n* Securing servers and applications\n* Configuring n8n\n\nn8n recommends self-hosting for expert users. Mistakes can lead to data loss, security issues, and downtime. If you aren't experienced at managing servers, n8n recommends [n8n Cloud](https://n8n.io/cloud/).\n{% endhint %}\n\n{% hint style=\"info\" %}\n**Stable and Beta versions**\n\nn8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).\n\nCurrent `stable`: 2.29.8 Current `beta`: 2.30.1\n{% endhint %}\n\n## Hosting options <a href=\"#hosting-options\" id=\"hosting-options\"></a>\n\nAzure offers several ways suitable for hosting n8n, including Azure Container Instances (optimized for running containers), Linux Virtual Machines, and Azure Kubernetes Service (containers running with Kubernetes).\n\nThis guide uses the Azure Kubernetes Service (AKS) as the hosting option. Using Kubernetes requires some additional complexity and configuration, but is the best method for scaling n8n as demand changes.\n\nThe steps in this guide use a mix of the Azure UI and command line tool, but you can use either to accomplish most tasks.\n\n## Open the Azure Kubernetes Service <a href=\"#open-the-azure-kubernetes-service\" id=\"open-the-azure-kubernetes-service\"></a>\n\nFrom [the Azure portal](https://portal.azure.com/) select **Kubernetes services**.\n\n## Create a cluster <a href=\"#create-a-cluster\" id=\"create-a-cluster\"></a>\n\nFrom the Kubernetes services page, select **Create** > **Create a Kubernetes cluster**.\n\nYou can select any of the configuration options that suit your needs, then select **Create** when done.\n\n## Set Kubectl context <a href=\"#set-kubectl-context\" id=\"set-kubectl-context\"></a>\n\nThe remainder of the steps in this guide require you to set the Azure instance as the Kubectl context. You can find the connection details for a cluster instance by opening its details page and then the **Connect** button. The resulting code snippets shows the steps to paste and run into a terminal to change your local Kubernetes settings to use the new cluster.\n\n## Clone configuration repository <a href=\"#clone-configuration-repository\" id=\"clone-configuration-repository\"></a>\n\nKubernetes and n8n require a series of configuration files. You can clone these from [this repository](https://github.com/n8n-io/n8n-hosting). The following steps tell you which file configures what and what you need to change.\n\nClone the repository with the following command:\n\n```shell\ngit clone https://github.com/n8n-io/n8n-hosting.git\n```\n\nAnd change directory:\n\n```shell\ncd n8n-hosting/kubernetes\n```\n\n## Configure Postgres <a href=\"#configure-postgres\" id=\"configure-postgres\"></a>\n\nFor larger scale n8n deployments, Postgres provides a more robust database backend than SQLite.\n\n### Configure volume for persistent storage <a href=\"#configure-volume-for-persistent-storage\" id=\"configure-volume-for-persistent-storage\"></a>\n\nTo maintain data between pod restarts, the Postgres deployment needs a persistent volume. The default storage class is suitable for this purpose and is defined in the `postgres-claim0-persistentvolumeclaim.yaml` manifest.\n\n{% hint style=\"info\" %}\n**Specialized storage classes**\n\nIf you have specialised or higher requirements for storage classes, [read more on the options Azure offers in the documentation](https://learn.microsoft.com/en-us/azure/aks/concepts-storage#storage-classes).\n{% endhint %}\n\n### Postgres environment variables <a href=\"#postgres-environment-variables\" id=\"postgres-environment-variables\"></a>\n\nPostgres needs some environment variables set to pass to the application running in the containers.\n\nThe example `postgres-secret.yaml` file contains placeholders you need to replace with your own values. Postgres will use these details when creating the database..\n\nThe `postgres-deployment.yaml` manifest then uses the values from this manifest file to send to the application pods.\n\n## Configure n8n <a href=\"#configure-n8n\" id=\"configure-n8n\"></a>\n\n### Create a volume for file storage <a href=\"#create-a-volume-for-file-storage\" id=\"create-a-volume-for-file-storage\"></a>\n\nWhile not essential for running n8n, using persistent volumes is required for:\n\n* Using nodes that interact with files, such as the binary data node.\n* If you want to persist [manual n8n encryption keys](/deploy/host-n8n/configure-n8n/basic-configuration/use-environment-variables/deployment.md) between restarts. This saves a file containing the key into file storage during startup.\n\nThe `n8n-claim0-persistentvolumeclaim.yaml` manifest creates this, and the n8n Deployment mounts that claim in the `volumes` section of the `n8n-deployment.yaml` manifest.\n\n```yaml\n…\nvolumes:\n  - name: n8n-claim0\n    persistentVolumeClaim:\n      claimName: n8n-claim0\n…\n```\n\n### Pod resources <a href=\"#pod-resources\" id=\"pod-resources\"></a>\n\n[Kubernetes lets you](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) optionally specify the minimum resources application containers need and the limits they can run to. The example YAML files cloned above contain the following in the `resources` section of the `n8n-deployment.yaml` file:\n\n```yaml\n…\nresources:\n  requests:\n    memory: \"250Mi\"\n  limits:\n    memory: \"500Mi\"\n…    \n```\n\nThis defines a minimum of 250mb per container, a maximum of 500mb, and lets Kubernetes handle CPU. You can change these values to match your own needs. As a guide, here are the resources values for the n8n cloud offerings:\n\n* **Start**: 320mb RAM, 10 millicore CPU burstable\n* **Pro (10k executions)**: 640mb RAM, 20 millicore CPU burstable\n* **Pro (50k executions)**: 1280mb RAM, 80 millicore CPU burstable\n\n### Optional: Environment variables <a href=\"#optional-environment-variables\" id=\"optional-environment-variables\"></a>\n\nYou can configure n8n settings and behaviors using environment variables.\n\nCreate an `n8n-secret.yaml` file. Refer to [Environment variables](/deploy/host-n8n/configure-n8n/basic-configuration/use-environment-variables.md) for n8n environment variables details.\n\n## Deployments <a href=\"#deployments\" id=\"deployments\"></a>\n\nThe two deployment manifests (`n8n-deployment.yaml` and `postgres-deployment.yaml`) define the n8n and Postgres applications to Kubernetes.\n\nThe manifests define the following:\n\n* Send the environment variables defined to each application pod\n* Define the container image to use\n* Set resource consumption limits with the `resources` object\n* The `volumes` defined earlier and `volumeMounts` to define the path in the container to mount volumes.\n* Scaling and restart policies. The example manifests define one instance of each pod. You should change this to meet your needs.\n\n## Services <a href=\"#services\" id=\"services\"></a>\n\nThe two service manifests (`postgres-service.yaml` and `n8n-service.yaml`) expose the services to the outside world using the Kubernetes load balancer using ports 5432 and 5678 respectively.\n\n## Send to Kubernetes cluster <a href=\"#send-to-kubernetes-cluster\" id=\"send-to-kubernetes-cluster\"></a>\n\nSend all the manifests to the cluster with the following command:\n\n```shell\nkubectl apply -f .\n```\n\n{% hint style=\"info\" %}\n**Namespace error**\n\nYou may see an error message about not finding an \"n8n\" namespace as that resources isn't ready yet. You can run the same command again, or apply the namespace manifest first with the following command:\n\n```shell\nkubectl apply -f namespace.yaml\n```\n\n{% endhint %}\n\n## Set up DNS <a href=\"#set-up-dns\" id=\"set-up-dns\"></a>\n\nn8n typically operates on a subdomain. Create a DNS record with your provider for the subdomain and point it to the IP address of the n8n service. Find the IP address of the n8n service from the **Services & ingresses** menu item of the cluster you want to use under the **External IP** column. You need to add the n8n port, \"5678\" to the URL.\n\n{% hint style=\"info\" %}\n**Static IP addresses with AKS**\n\n[Read this tutorial](https://learn.microsoft.com/en-us/azure/aks/static-ip) for more details on how to use a static IP address with AKS.\n{% endhint %}\n\n## Delete resources <a href=\"#delete-resources\" id=\"delete-resources\"></a>\n\nRemove the resources created by the manifests with the following command:\n\n```shell\nkubectl delete -f .\n```\n\n## Next steps <a href=\"#next-steps\" id=\"next-steps\"></a>\n\n* Learn more about [configuring](/deploy/host-n8n/configure-n8n/basic-configuration/use-environment-variables.md) and [scaling](/deploy/host-n8n/configure-n8n/scaling.md) n8n.\n* Or explore using n8n: try the [Quickstarts](/build-your-first-workflow.md).\n",
-        "excerpt": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/deploy/host-n8n/install-options/use-a-cloud-provider/deploy-to-azure.md).  # Deploy to Azure  This hosting guide shows you how to self-host n8n on Azure. It uses n8n with Postgres as a database backend using Kubernetes to manage the necessary resources and reverse prox...",
-        "sections": [
-          {
-            "title": "Deploy to Azure",
-            "level": 1,
-            "content": "This hosting guide shows you how to self-host n8n on Azure. It uses n8n with Postgres as a database backend using Kubernetes to manage the necessary resources and reverse proxy."
-          }
-        ]
-      },
-      "metadata": {
-        "keywords": [
-          "deploy",
-          "azure",
-          "prerequisites",
-          "href=\"#prerequisites\"",
-          "id=\"prerequisites\"></a>",
-          "hosting",
-          "options",
-          "href=\"#hosting",
-          "options\"",
-          "id=\"hosting",
-          "options\"></a>",
-          "open",
-          "kubernetes",
-          "service",
-          "href=\"#open",
-          "service\"",
-          "id=\"open",
-          "service\"></a>",
-          "create",
-          "cluster",
-          "href=\"#create",
-          "cluster\"",
-          "id=\"create",
-          "cluster\"></a>",
-          "kubectl",
-          "context",
-          "href=\"#set",
-          "context\"",
-          "id=\"set",
-          "context\"></a>",
-          "clone",
-          "configuration",
-          "repository",
-          "href=\"#clone",
-          "repository\"",
-          "id=\"clone",
-          "repository\"></a>",
-          "configure",
-          "postgres",
-          "href=\"#configure",
-          "postgres\"",
-          "id=\"configure",
-          "postgres\"></a>",
-          "volume",
-          "persistent",
-          "storage",
-          "storage\"",
-          "storage\"></a>",
-          "environment",
-          "variables",
-          "href=\"#postgres",
-          "variables\"",
-          "id=\"postgres",
-          "variables\"></a>",
-          "n8n\"",
-          "n8n\"></a>",
-          "file",
-          "resources",
-          "href=\"#pod",
-          "resources\"",
-          "id=\"pod",
-          "resources\"></a>",
-          "optional:",
-          "href=\"#optional",
-          "id=\"optional",
-          "deployments",
-          "href=\"#deployments\"",
-          "id=\"deployments\"></a>",
-          "services",
-          "href=\"#services\"",
-          "id=\"services\"></a>",
-          "send",
-          "href=\"#send",
-          "id=\"send",
-          "dns\"",
-          "dns\"></a>",
-          "delete",
-          "href=\"#delete",
-          "id=\"delete",
-          "next",
-          "steps",
-          "href=\"#next",
-          "steps\"",
-          "id=\"next",
-          "steps\"></a>"
-        ],
-        "useCases": [],
-        "operations": [],
-        "codeExamples": 7,
-        "complexity": "beginner",
-        "readingTime": "6 min",
-        "contentLength": 9574,
-        "relatedPages": []
-      },
-      "searchIndex": {
-        "fullText": "deploy to azure > for the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). markdown versions of documentation pages are available by appending `.md` to page urls; this page is available as [markdown](https://docs.n8n.io/deploy/host-n8n/install-options/use-a-cloud-provider/deploy-to-azure.md).\n\n# deploy to azure\n\nthis hosting guide shows you how to self-host n8n on azure. it uses n8n with postgres as a database backend using kubernetes to manage the necessary resources and reverse proxy.\n\n## prerequisites <a href=\"#prerequisites\" id=\"prerequisites\"></a>\n\nyou need [the azure command line tool](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)\n\n{% hint style=\"info\" %}\n**self-hosting knowledge prerequisites**\n\nself-hosting n8n requires technical knowledge, including:\n\n* setting up and configuring servers and containers\n* managing application resources and scaling\n* securing servers and applications\n* configuring n8n\n\nn8n recommends self-hosting for expert users. mistakes can lead to data loss, security issues, and downtime. if you aren't experienced at managing servers, n8n recommends [n8n cloud](https://n8n.io/cloud/).\n{% endhint %}\n\n{% hint style=\"info\" %}\n**stable and beta versions**\n\nn8n releases a new minor version most weeks. the `stable` version is for production use. `beta` is the most recent release. the `beta` version may be unstable. to report issues, use the [forum](https://community.n8n.io/c/questions/12).\n\ncurrent `stable`: 2.29.8 current `beta`: 2.30.1\n{% endhint %}\n\n## hosting options <a href=\"#hosting-options\" id=\"hosting-options\"></a>\n\nazure offers several ways suitable for hosting n8n, including azure container instances (optimized for running containers), linux virtual machines, and azure kubernetes service (containers running with kubernetes).\n\nthis guide uses the azure kubernetes service (aks) as the hosting option. using kubernetes requires some additional complexity and configuration, but is the best method for scaling n8n as demand changes.\n\nthe steps in this guide use a mix of the azure ui and command line tool, but you can use either to accomplish most tasks.\n\n## open the azure kubernetes service <a href=\"#open-the-azure-kubernetes-service\" id=\"open-the-azure-kubernetes-service\"></a>\n\nfrom [the azure portal](https://portal.azure.com/) select **kubernetes services**.\n\n## create a cluster <a href=\"#create-a-cluster\" id=\"create-a-cluster\"></a>\n\nfrom the kubernetes services page, select **create** > **create a kubernetes cluster**.\n\nyou can select any of the configuration options that suit your needs, then select **create** when done.\n\n## set kubectl context <a href=\"#set-kubectl-context\" id=\"set-kubectl-context\"></a>\n\nthe remainder of the steps in this guide require you to set the azure instance as the kubectl context. you can find the connection details for a cluster instance by opening its details page and then the **connect** button. the resulting code snippets shows the steps to paste and run into a terminal to change your local kubernetes settings to use the new cluster.\n\n## clone configuration repository <a href=\"#clone-configuration-repository\" id=\"clone-configuration-repository\"></a>\n\nkubernetes and n8n require a series of configuration files. you can clone these from [this repository](https://github.com/n8n-io/n8n-hosting). the following steps tell you which file configures what and what you need to change.\n\nclone the repository with the following command:\n\n```shell\ngit clone https://github.com/n8n-io/n8n-hosting.git\n```\n\nand change directory:\n\n```shell\ncd n8n-hosting/kubernetes\n```\n\n## configure postgres <a href=\"#configure-postgres\" id=\"configure-postgres\"></a>\n\nfor larger scale n8n deployments, postgres provides a more robust database backend than sqlite.\n\n### configure volume for persistent storage <a href=\"#configure-volume-for-persistent-storage\" id=\"configure-volume-for-persistent-storage\"></a>\n\nto maintain data between pod restarts, the postgres deployment needs a persistent volume. the default storage class is suitable for this purpose and is defined in the `postgres-claim0-persistentvolumeclaim.yaml` manifest.\n\n{% hint style=\"info\" %}\n**specialized storage classes**\n\nif you have specialised or higher requirements for storage classes, [read more on the options azure offers in the documentation](https://learn.microsoft.com/en-us/azure/aks/concepts-storage#storage-classes).\n{% endhint %}\n\n### postgres environment variables <a href=\"#postgres-environment-variables\" id=\"postgres-environment-variables\"></a>\n\npostgres needs some environment variables set to pass to the application running in the containers.\n\nthe example `postgres-secret.yaml` file contains placeholders you need to replace with your own values. postgres will use these details when creating the database..\n\nthe `postgres-deployment.yaml` manifest then uses the values from this manifest file to send to the application pods.\n\n## configure n8n <a href=\"#configure-n8n\" id=\"configure-n8n\"></a>\n\n### create a volume for file storage <a href=\"#create-a-volume-for-file-storage\" id=\"create-a-volume-for-file-storage\"></a>\n\nwhile not essential for running n8n, using persistent volumes is required for:\n\n* using nodes that interact with files, such as the binary data node.\n* if you want to persist [manual n8n encryption keys](/deploy/host-n8n/configure-n8n/basic-configuration/use-environment-variables/deployment.md) between restarts. this saves a file containing the key into file storage during startup.\n\nthe `n8n-claim0-persistentvolumeclaim.yaml` manifest creates this, and the n8n deployment mounts that claim in the `volumes` section of the `n8n-deployment.yaml` manifest.\n\n```yaml\n…\nvolumes:\n  - name: n8n-claim0\n    persistentvolumeclaim:\n      claimname: n8n-claim0\n…\n```\n\n### pod resources <a href=\"#pod-resources\" id=\"pod-resources\"></a>\n\n[kubernetes lets you](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) optionally specify the minimum resources application containers need and the limits they can run to. the example yaml files cloned above contain the following in the `resources` section of the `n8n-deployment.yaml` file:\n\n```yaml\n…\nresources:\n  requests:\n    memory: \"250mi\"\n  limits:\n    memory: \"500mi\"\n…    \n```\n\nthis defines a minimum of 250mb per container, a maximum of 500mb, and lets kubernetes handle cpu. you can change these values to match your own needs. as a guide, here are the resources values for the n8n cloud offerings:\n\n* **start**: 320mb ram, 10 millicore cpu burstable\n* **pro (10k executions)**: 640mb ram, 20 millicore cpu burstable\n* **pro (50k executions)**: 1280mb ram, 80 millicore cpu burstable\n\n### optional: environment variables <a href=\"#optional-environment-variables\" id=\"optional-environment-variables\"></a>\n\nyou can configure n8n settings and behaviors using environment variables.\n\ncreate an `n8n-secret.yaml` file. refer to [environment variables](/deploy/host-n8n/configure-n8n/basic-configuration/use-environment-variables.md) for n8n environment variables details.\n\n## deployments <a href=\"#deployments\" id=\"deployments\"></a>\n\nthe two deployment manifests (`n8n-deployment.yaml` and `postgres-deployment.yaml`) define the n8n and postgres applications to kubernetes.\n\nthe manifests define the following:\n\n* send the environment variables defined to each application pod\n* define the container image to use\n* set resource consumption limits with the `resources` object\n* the `volumes` defined earlier and `volumemounts` to define the path in the container to mount volumes.\n* scaling and restart policies. the example manifests define one instance of each pod. you should change this to meet your needs.\n\n## services <a href=\"#services\" id=\"services\"></a>\n\nthe two service manifests (`postgres-service.yaml` and `n8n-service.yaml`) expose the services to the outside world using the kubernetes load balancer using ports 5432 and 5678 respectively.\n\n## send to kubernetes cluster <a href=\"#send-to-kubernetes-cluster\" id=\"send-to-kubernetes-cluster\"></a>\n\nsend all the manifests to the cluster with the following command:\n\n```shell\nkubectl apply -f .\n```\n\n{% hint style=\"info\" %}\n**namespace error**\n\nyou may see an error message about not finding an \"n8n\" namespace as that resources isn't ready yet. you can run the same command again, or apply the namespace manifest first with the following command:\n\n```shell\nkubectl apply -f namespace.yaml\n```\n\n{% endhint %}\n\n## set up dns <a href=\"#set-up-dns\" id=\"set-up-dns\"></a>\n\nn8n typically operates on a subdomain. create a dns record with your provider for the subdomain and point it to the ip address of the n8n service. find the ip address of the n8n service from the **services & ingresses** menu item of the cluster you want to use under the **external ip** column. you need to add the n8n port, \"5678\" to the url.\n\n{% hint style=\"info\" %}\n**static ip addresses with aks**\n\n[read this tutorial](https://learn.microsoft.com/en-us/azure/aks/static-ip) for more details on how to use a static ip address with aks.\n{% endhint %}\n\n## delete resources <a href=\"#delete-resources\" id=\"delete-resources\"></a>\n\nremove the resources created by the manifests with the following command:\n\n```shell\nkubectl delete -f .\n```\n\n## next steps <a href=\"#next-steps\" id=\"next-steps\"></a>\n\n* learn more about [configuring](/deploy/host-n8n/configure-n8n/basic-configuration/use-environment-variables.md) and [scaling](/deploy/host-n8n/configure-n8n/scaling.md) n8n.\n* or explore using n8n: try the [quickstarts](/build-your-first-workflow.md).\n deploy to azure",
-        "importantTerms": [
-          "azure",
-          "kubernetes",
-          "href",
-          "postgres",
-          "resources",
-          "yaml",
-          "configure",
-          "environment",
-          "variables",
-          "this",
-          "hosting",
-          "with",
-          "storage",
-          "https",
-          "create",
-          "cluster",
-          "service",
-          "configuration",
-          "file",
-          "deploy",
-          "deployment",
-          "using",
-          "command",
-          "steps",
-          "services",
-          "your",
-          "kubectl",
-          "following",
-          "volume",
-          "host",
-          "options",
-          "containers",
-          "clone",
-          "manifest",
-          "send",
-          "manifests",
-          "guide",
-          "need",
-          "hint",
-          "style",
-          "info",
-          "application",
-          "scaling",
-          "endhint",
-          "from",
-          "needs",
-          "details",
-          "change",
-          "repository",
-          "shell"
         ]
       }
     },
@@ -3246,71 +3246,6 @@
     },
     {
       "id": "page-0022",
-      "title": "Security",
-      "url": "https://docs.n8n.io/deploy/host-n8n/configure-n8n/security.md",
-      "urlPath": "deploy/host-n8n/configure-n8n/security.md",
-      "category": "other",
-      "subcategory": null,
-      "nodeName": null,
-      "nodeType": null,
-      "content": {
-        "markdown": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/deploy/host-n8n/configure-n8n/security.md).\n\n# Security\n\nYou can secure a self-hosted n8n instance to protect credentials and workflow data: run a security audit, set up SSL and SSO, restrict nodes and the public API, and redact execution data.\n\nSecuring your n8n instance can take several forms.\n\nAt a high level, you can:\n\n* Conduct a [security audit](/deploy/host-n8n/configure-n8n/security/run-security-audits.md) to identify security risks.\n* [Set up SSL](/deploy/host-n8n/configure-n8n/security/set-up-ssl.md) to enforce secure connections.\n* [Set up Single Sign-On](/deploy/host-n8n/configure-n8n/security/configure-sso.md) for user account management.\n* Use [token exchange](/deploy/host-n8n/deploy-as-an-oem-integration/set-up-token-exchange.md) to log users in from your own identity provider when embedding n8n, or to call n8n APIs on their behalf.\n* Use [two-factor authentication (2FA)](/administer/manage-users-and-access/verify-user-identity/require-two-factor-auth.md) for your users.\n* Enable [encryption key rotation](/deploy/host-n8n/configure-n8n/security/rotate-encryption-keys.md) to periodically replace the key that encrypts credentials and other sensitive data.\n* Enable [JWE token decryption for OAuth 2.0 credentials](/deploy/host-n8n/configure-n8n/security/decrypt-oauth-20-tokens-with-jwe.md) so your identity provider can encrypt access and ID tokens that only your instance can decrypt.\n\nYou can also protect sensitive data processed by your workflows:\n\n* [Redact execution data](/deploy/host-n8n/configure-n8n/security/redact-execution-data.md) to hide input and output data from workflow executions.\n\nMore granularly, consider blocking or opting out of features or data collection you don't want:\n\n* [Disable the public API](/deploy/host-n8n/configure-n8n/security/disable-the-public-api.md) if you aren't using it.\n* [Opt out of data collection](/deploy/host-n8n/configure-n8n/security/control-telemetry.md) of the anonymous data n8n collects automatically.\n* [Block certain nodes](/deploy/host-n8n/configure-n8n/security/block-specific-nodes.md) from being available to your users.\n* [Protect against SSRF attacks](/deploy/host-n8n/configure-n8n/security/enable-ssrf-protection.md) to control which hosts and IP ranges workflow nodes can connect to.\n* [Restrict account registration](/deploy/host-n8n/configure-n8n/security/verify-user-emails.md) to email-verified users.\n",
-        "excerpt": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/deploy/host-n8n/configure-n8n/security.md).  # Security  You can secure a self-hosted n8n instance to protect credentials and workflow data: run a security audit, set up SSL and SSO, restrict nodes and the public API, and redact execution data.  Securing your n8n insta...",
-        "sections": [
-          {
-            "title": "Security",
-            "level": 1,
-            "content": "You can secure a self-hosted n8n instance to protect credentials and workflow data: run a security audit, set up SSL and SSO, restrict nodes and the public API, and redact execution data.\n\nSecuring your n8n instance can take several forms.\n\nAt a high level, you can:\n\n* Conduct a [security audit](/deploy/host-n8n/configure-n8n/security/run-security-audits.md) to identify security risks.\n* [Set up SSL](/deploy/host-n8n/configure-n8n/security/set-up-ssl.md) to enforce secure connections.\n* [Set up Single Sign-On](/deploy/host-n8n/configure-n8n/security/configure-sso.md) for user account management.\n* Use [token exchange](/deploy/host-n8n/deploy-as-an-oem-integration/set-up-token-exchange.md) to log users in from your own identity provider when embedding n8n, or to call n8n APIs on their behalf.\n* Use [two-factor authentication (2FA)](/administer/manage-users-and-access/verify-user-identity/require-two-factor-auth.md) for your users.\n* Enable [encryption key rotation](/deploy/host-n8n/conf"
-          }
-        ]
-      },
-      "metadata": {
-        "keywords": [
-          "security"
-        ],
-        "useCases": [],
-        "operations": [
-          "* conduct a [security audit](",
-          "deploy",
-          "host-n8n",
-          "configure-n8n",
-          "security"
-        ],
-        "codeExamples": 0,
-        "complexity": "beginner",
-        "readingTime": "2 min",
-        "contentLength": 2638,
-        "relatedPages": []
-      },
-      "searchIndex": {
-        "fullText": "security > for the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). markdown versions of documentation pages are available by appending `.md` to page urls; this page is available as [markdown](https://docs.n8n.io/deploy/host-n8n/configure-n8n/security.md).\n\n# security\n\nyou can secure a self-hosted n8n instance to protect credentials and workflow data: run a security audit, set up ssl and sso, restrict nodes and the public api, and redact execution data.\n\nsecuring your n8n instance can take several forms.\n\nat a high level, you can:\n\n* conduct a [security audit](/deploy/host-n8n/configure-n8n/security/run-security-audits.md) to identify security risks.\n* [set up ssl](/deploy/host-n8n/configure-n8n/security/set-up-ssl.md) to enforce secure connections.\n* [set up single sign-on](/deploy/host-n8n/configure-n8n/security/configure-sso.md) for user account management.\n* use [token exchange](/deploy/host-n8n/deploy-as-an-oem-integration/set-up-token-exchange.md) to log users in from your own identity provider when embedding n8n, or to call n8n apis on their behalf.\n* use [two-factor authentication (2fa)](/administer/manage-users-and-access/verify-user-identity/require-two-factor-auth.md) for your users.\n* enable [encryption key rotation](/deploy/host-n8n/configure-n8n/security/rotate-encryption-keys.md) to periodically replace the key that encrypts credentials and other sensitive data.\n* enable [jwe token decryption for oauth 2.0 credentials](/deploy/host-n8n/configure-n8n/security/decrypt-oauth-20-tokens-with-jwe.md) so your identity provider can encrypt access and id tokens that only your instance can decrypt.\n\nyou can also protect sensitive data processed by your workflows:\n\n* [redact execution data](/deploy/host-n8n/configure-n8n/security/redact-execution-data.md) to hide input and output data from workflow executions.\n\nmore granularly, consider blocking or opting out of features or data collection you don't want:\n\n* [disable the public api](/deploy/host-n8n/configure-n8n/security/disable-the-public-api.md) if you aren't using it.\n* [opt out of data collection](/deploy/host-n8n/configure-n8n/security/control-telemetry.md) of the anonymous data n8n collects automatically.\n* [block certain nodes](/deploy/host-n8n/configure-n8n/security/block-specific-nodes.md) from being available to your users.\n* [protect against ssrf attacks](/deploy/host-n8n/configure-n8n/security/enable-ssrf-protection.md) to control which hosts and ip ranges workflow nodes can connect to.\n* [restrict account registration](/deploy/host-n8n/configure-n8n/security/verify-user-emails.md) to email-verified users.\n security",
-        "importantTerms": [
-          "security",
-          "deploy",
-          "host",
-          "configure",
-          "data",
-          "your",
-          "users",
-          "nodes",
-          "available",
-          "instance",
-          "protect",
-          "credentials",
-          "workflow",
-          "public",
-          "redact",
-          "execution",
-          "user",
-          "token",
-          "from",
-          "identity",
-          "enable"
-        ]
-      }
-    },
-    {
-      "id": "page-0023",
       "title": "Scaling",
       "url": "https://docs.n8n.io/deploy/host-n8n/configure-n8n/scaling.md",
       "urlPath": "deploy/host-n8n/configure-n8n/scaling.md",
@@ -3355,7 +3290,7 @@
       }
     },
     {
-      "id": "page-0024",
+      "id": "page-0023",
       "title": "Enable queue mode",
       "url": "https://docs.n8n.io/deploy/host-n8n/configure-n8n/scaling/enable-queue-mode.md",
       "urlPath": "deploy/host-n8n/configure-n8n/scaling/enable-queue-mode.md",
@@ -3527,6 +3462,71 @@
           "enable",
           "have",
           "bull"
+        ]
+      }
+    },
+    {
+      "id": "page-0024",
+      "title": "Security",
+      "url": "https://docs.n8n.io/deploy/host-n8n/configure-n8n/security.md",
+      "urlPath": "deploy/host-n8n/configure-n8n/security.md",
+      "category": "other",
+      "subcategory": null,
+      "nodeName": null,
+      "nodeType": null,
+      "content": {
+        "markdown": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/deploy/host-n8n/configure-n8n/security.md).\n\n# Security\n\nYou can secure a self-hosted n8n instance to protect credentials and workflow data: run a security audit, set up SSL and SSO, restrict nodes and the public API, and redact execution data.\n\nSecuring your n8n instance can take several forms.\n\nAt a high level, you can:\n\n* Conduct a [security audit](/deploy/host-n8n/configure-n8n/security/run-security-audits.md) to identify security risks.\n* [Set up SSL](/deploy/host-n8n/configure-n8n/security/set-up-ssl.md) to enforce secure connections.\n* [Set up Single Sign-On](/deploy/host-n8n/configure-n8n/security/configure-sso.md) for user account management.\n* Use [token exchange](/deploy/host-n8n/deploy-as-an-oem-integration/set-up-token-exchange.md) to log users in from your own identity provider when embedding n8n, or to call n8n APIs on their behalf.\n* Use [two-factor authentication (2FA)](/administer/manage-users-and-access/verify-user-identity/require-two-factor-auth.md) for your users.\n* Enable [encryption key rotation](/deploy/host-n8n/configure-n8n/security/rotate-encryption-keys.md) to periodically replace the key that encrypts credentials and other sensitive data.\n* Enable [JWE token decryption for OAuth 2.0 credentials](/deploy/host-n8n/configure-n8n/security/decrypt-oauth-20-tokens-with-jwe.md) so your identity provider can encrypt access and ID tokens that only your instance can decrypt.\n\nYou can also protect sensitive data processed by your workflows:\n\n* [Redact execution data](/deploy/host-n8n/configure-n8n/security/redact-execution-data.md) to hide input and output data from workflow executions.\n\nMore granularly, consider blocking or opting out of features or data collection you don't want:\n\n* [Disable the public API](/deploy/host-n8n/configure-n8n/security/disable-the-public-api.md) if you aren't using it.\n* [Opt out of data collection](/deploy/host-n8n/configure-n8n/security/control-telemetry.md) of the anonymous data n8n collects automatically.\n* [Block certain nodes](/deploy/host-n8n/configure-n8n/security/block-specific-nodes.md) from being available to your users.\n* [Protect against SSRF attacks](/deploy/host-n8n/configure-n8n/security/enable-ssrf-protection.md) to control which hosts and IP ranges workflow nodes can connect to.\n* [Restrict account registration](/deploy/host-n8n/configure-n8n/security/verify-user-emails.md) to email-verified users.\n",
+        "excerpt": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/deploy/host-n8n/configure-n8n/security.md).  # Security  You can secure a self-hosted n8n instance to protect credentials and workflow data: run a security audit, set up SSL and SSO, restrict nodes and the public API, and redact execution data.  Securing your n8n insta...",
+        "sections": [
+          {
+            "title": "Security",
+            "level": 1,
+            "content": "You can secure a self-hosted n8n instance to protect credentials and workflow data: run a security audit, set up SSL and SSO, restrict nodes and the public API, and redact execution data.\n\nSecuring your n8n instance can take several forms.\n\nAt a high level, you can:\n\n* Conduct a [security audit](/deploy/host-n8n/configure-n8n/security/run-security-audits.md) to identify security risks.\n* [Set up SSL](/deploy/host-n8n/configure-n8n/security/set-up-ssl.md) to enforce secure connections.\n* [Set up Single Sign-On](/deploy/host-n8n/configure-n8n/security/configure-sso.md) for user account management.\n* Use [token exchange](/deploy/host-n8n/deploy-as-an-oem-integration/set-up-token-exchange.md) to log users in from your own identity provider when embedding n8n, or to call n8n APIs on their behalf.\n* Use [two-factor authentication (2FA)](/administer/manage-users-and-access/verify-user-identity/require-two-factor-auth.md) for your users.\n* Enable [encryption key rotation](/deploy/host-n8n/conf"
+          }
+        ]
+      },
+      "metadata": {
+        "keywords": [
+          "security"
+        ],
+        "useCases": [],
+        "operations": [
+          "* conduct a [security audit](",
+          "deploy",
+          "host-n8n",
+          "configure-n8n",
+          "security"
+        ],
+        "codeExamples": 0,
+        "complexity": "beginner",
+        "readingTime": "2 min",
+        "contentLength": 2638,
+        "relatedPages": []
+      },
+      "searchIndex": {
+        "fullText": "security > for the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). markdown versions of documentation pages are available by appending `.md` to page urls; this page is available as [markdown](https://docs.n8n.io/deploy/host-n8n/configure-n8n/security.md).\n\n# security\n\nyou can secure a self-hosted n8n instance to protect credentials and workflow data: run a security audit, set up ssl and sso, restrict nodes and the public api, and redact execution data.\n\nsecuring your n8n instance can take several forms.\n\nat a high level, you can:\n\n* conduct a [security audit](/deploy/host-n8n/configure-n8n/security/run-security-audits.md) to identify security risks.\n* [set up ssl](/deploy/host-n8n/configure-n8n/security/set-up-ssl.md) to enforce secure connections.\n* [set up single sign-on](/deploy/host-n8n/configure-n8n/security/configure-sso.md) for user account management.\n* use [token exchange](/deploy/host-n8n/deploy-as-an-oem-integration/set-up-token-exchange.md) to log users in from your own identity provider when embedding n8n, or to call n8n apis on their behalf.\n* use [two-factor authentication (2fa)](/administer/manage-users-and-access/verify-user-identity/require-two-factor-auth.md) for your users.\n* enable [encryption key rotation](/deploy/host-n8n/configure-n8n/security/rotate-encryption-keys.md) to periodically replace the key that encrypts credentials and other sensitive data.\n* enable [jwe token decryption for oauth 2.0 credentials](/deploy/host-n8n/configure-n8n/security/decrypt-oauth-20-tokens-with-jwe.md) so your identity provider can encrypt access and id tokens that only your instance can decrypt.\n\nyou can also protect sensitive data processed by your workflows:\n\n* [redact execution data](/deploy/host-n8n/configure-n8n/security/redact-execution-data.md) to hide input and output data from workflow executions.\n\nmore granularly, consider blocking or opting out of features or data collection you don't want:\n\n* [disable the public api](/deploy/host-n8n/configure-n8n/security/disable-the-public-api.md) if you aren't using it.\n* [opt out of data collection](/deploy/host-n8n/configure-n8n/security/control-telemetry.md) of the anonymous data n8n collects automatically.\n* [block certain nodes](/deploy/host-n8n/configure-n8n/security/block-specific-nodes.md) from being available to your users.\n* [protect against ssrf attacks](/deploy/host-n8n/configure-n8n/security/enable-ssrf-protection.md) to control which hosts and ip ranges workflow nodes can connect to.\n* [restrict account registration](/deploy/host-n8n/configure-n8n/security/verify-user-emails.md) to email-verified users.\n security",
+        "importantTerms": [
+          "security",
+          "deploy",
+          "host",
+          "configure",
+          "data",
+          "your",
+          "users",
+          "nodes",
+          "available",
+          "instance",
+          "protect",
+          "credentials",
+          "workflow",
+          "public",
+          "redact",
+          "execution",
+          "user",
+          "token",
+          "from",
+          "identity",
+          "enable"
         ]
       }
     },
@@ -4287,6 +4287,50 @@
     },
     {
       "id": "page-0031",
+      "title": "Understand the architecture",
+      "url": "https://docs.n8n.io/deploy/host-n8n/understand-the-architecture.md",
+      "urlPath": "deploy/host-n8n/understand-the-architecture.md",
+      "category": "other",
+      "subcategory": null,
+      "nodeName": null,
+      "nodeType": null,
+      "content": {
+        "markdown": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/deploy/host-n8n/understand-the-architecture.md).\n\n# Understand the architecture\n\n{% content-ref url=\"/pages/HMeGB29kUSnKuT8nANiQ\" %}\n[How n8n works](/deploy/host-n8n/understand-the-architecture/how-n8n-works.md)\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/sbX5lkvEQh18utOJLWzy\" %}\n[Understand the database](/deploy/host-n8n/understand-the-architecture/understand-the-database.md)\n{% endcontent-ref %}\n",
+        "excerpt": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/deploy/host-n8n/understand-the-architecture.md).  # Understand the architecture  {% content-ref url=\"/pages/HMeGB29kUSnKuT8nANiQ\" %} [How n8n works](/deploy/host-n8n/understand-the-architecture/how-n8n-works.md) {% endcontent-ref %}  {% content-ref url=\"/pages/sbX5lkvE...",
+        "sections": [
+          {
+            "title": "Understand the architecture",
+            "level": 1,
+            "content": "{% content-ref url=\"/pages/HMeGB29kUSnKuT8nANiQ\" %}\n[How n8n works](/deploy/host-n8n/understand-the-architecture/how-n8n-works.md)\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/sbX5lkvEQh18utOJLWzy\" %}\n[Understand the database](/deploy/host-n8n/understand-the-architecture/understand-the-database.md)\n{% endcontent-ref %}"
+          }
+        ]
+      },
+      "metadata": {
+        "keywords": [
+          "understand",
+          "architecture"
+        ],
+        "useCases": [],
+        "operations": [],
+        "codeExamples": 0,
+        "complexity": "beginner",
+        "readingTime": "1 min",
+        "contentLength": 637,
+        "relatedPages": []
+      },
+      "searchIndex": {
+        "fullText": "understand the architecture > for the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). markdown versions of documentation pages are available by appending `.md` to page urls; this page is available as [markdown](https://docs.n8n.io/deploy/host-n8n/understand-the-architecture.md).\n\n# understand the architecture\n\n{% content-ref url=\"/pages/hmegb29kusnkut8naniq\" %}\n[how n8n works](/deploy/host-n8n/understand-the-architecture/how-n8n-works.md)\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/sbx5lkveqh18utojlwzy\" %}\n[understand the database](/deploy/host-n8n/understand-the-architecture/understand-the-database.md)\n{% endcontent-ref %}\n understand the architecture",
+        "importantTerms": [
+          "understand",
+          "architecture",
+          "pages",
+          "deploy",
+          "host"
+        ]
+      }
+    },
+    {
+      "id": "page-0032",
       "title": "Build",
       "url": "https://docs.n8n.io/build/readme.md",
       "urlPath": "build/readme.md",
@@ -4341,50 +4385,6 @@
           "building",
           "this",
           "shortcuts"
-        ]
-      }
-    },
-    {
-      "id": "page-0032",
-      "title": "Understand the architecture",
-      "url": "https://docs.n8n.io/deploy/host-n8n/understand-the-architecture.md",
-      "urlPath": "deploy/host-n8n/understand-the-architecture.md",
-      "category": "other",
-      "subcategory": null,
-      "nodeName": null,
-      "nodeType": null,
-      "content": {
-        "markdown": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/deploy/host-n8n/understand-the-architecture.md).\n\n# Understand the architecture\n\n{% content-ref url=\"/pages/HMeGB29kUSnKuT8nANiQ\" %}\n[How n8n works](/deploy/host-n8n/understand-the-architecture/how-n8n-works.md)\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/sbX5lkvEQh18utOJLWzy\" %}\n[Understand the database](/deploy/host-n8n/understand-the-architecture/understand-the-database.md)\n{% endcontent-ref %}\n",
-        "excerpt": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/deploy/host-n8n/understand-the-architecture.md).  # Understand the architecture  {% content-ref url=\"/pages/HMeGB29kUSnKuT8nANiQ\" %} [How n8n works](/deploy/host-n8n/understand-the-architecture/how-n8n-works.md) {% endcontent-ref %}  {% content-ref url=\"/pages/sbX5lkvE...",
-        "sections": [
-          {
-            "title": "Understand the architecture",
-            "level": 1,
-            "content": "{% content-ref url=\"/pages/HMeGB29kUSnKuT8nANiQ\" %}\n[How n8n works](/deploy/host-n8n/understand-the-architecture/how-n8n-works.md)\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/sbX5lkvEQh18utOJLWzy\" %}\n[Understand the database](/deploy/host-n8n/understand-the-architecture/understand-the-database.md)\n{% endcontent-ref %}"
-          }
-        ]
-      },
-      "metadata": {
-        "keywords": [
-          "understand",
-          "architecture"
-        ],
-        "useCases": [],
-        "operations": [],
-        "codeExamples": 0,
-        "complexity": "beginner",
-        "readingTime": "1 min",
-        "contentLength": 637,
-        "relatedPages": []
-      },
-      "searchIndex": {
-        "fullText": "understand the architecture > for the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). markdown versions of documentation pages are available by appending `.md` to page urls; this page is available as [markdown](https://docs.n8n.io/deploy/host-n8n/understand-the-architecture.md).\n\n# understand the architecture\n\n{% content-ref url=\"/pages/hmegb29kusnkut8naniq\" %}\n[how n8n works](/deploy/host-n8n/understand-the-architecture/how-n8n-works.md)\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/sbx5lkveqh18utojlwzy\" %}\n[understand the database](/deploy/host-n8n/understand-the-architecture/understand-the-database.md)\n{% endcontent-ref %}\n understand the architecture",
-        "importantTerms": [
-          "understand",
-          "architecture",
-          "pages",
-          "deploy",
-          "host"
         ]
       }
     },
@@ -12506,54 +12506,6 @@
     },
     {
       "id": "page-0128",
-      "title": "Build your node",
-      "url": "https://docs.n8n.io/connect/create-nodes/build-your-node.md",
-      "urlPath": "connect/create-nodes/build-your-node.md",
-      "category": "other",
-      "subcategory": null,
-      "nodeName": null,
-      "nodeType": null,
-      "content": {
-        "markdown": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/connect/create-nodes/build-your-node.md).\n\n# Build your node\n\nThis section provides tutorials on building nodes. It covers:\n\n* [Tutorial: Build a declarative-style node](/connect/create-nodes/build-your-node/tutorial-build-a-declarative-style-node.md)\n* [Reference](/connect/create-nodes/build-your-node/reference.md) material on [file structure](/connect/create-nodes/plan-your-node/choose-node-file-structure.md), parameter definitions for [base](/connect/create-nodes/build-your-node/reference/base-files.md), [codex](/connect/create-nodes/build-your-node/reference/codex-files.md), and [credentials](/connect/create-nodes/build-your-node/reference/credentials-files.md) files, [node UI elements](/connect/create-nodes/build-your-node/reference/node-ui-elements.md), and more.\n\nComing soon:\n\n* More tutorials\n* Revised guidance on standards\n",
-        "excerpt": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/connect/create-nodes/build-your-node.md).  # Build your node  This section provides tutorials on building nodes. It covers:  * [Tutorial: Build a declarative-style node](/connect/create-nodes/build-your-node/tutorial-build-a-declarative-style-node.md) * [Reference](/co...",
-        "sections": [
-          {
-            "title": "Build your node",
-            "level": 1,
-            "content": "This section provides tutorials on building nodes. It covers:\n\n* [Tutorial: Build a declarative-style node](/connect/create-nodes/build-your-node/tutorial-build-a-declarative-style-node.md)\n* [Reference](/connect/create-nodes/build-your-node/reference.md) material on [file structure](/connect/create-nodes/plan-your-node/choose-node-file-structure.md), parameter definitions for [base](/connect/create-nodes/build-your-node/reference/base-files.md), [codex](/connect/create-nodes/build-your-node/reference/codex-files.md), and [credentials](/connect/create-nodes/build-your-node/reference/credentials-files.md) files, [node UI elements](/connect/create-nodes/build-your-node/reference/node-ui-elements.md), and more.\n\nComing soon:\n\n* More tutorials\n* Revised guidance on standards"
-          }
-        ]
-      },
-      "metadata": {
-        "keywords": [
-          "build",
-          "your",
-          "node"
-        ],
-        "useCases": [],
-        "operations": [],
-        "codeExamples": 0,
-        "complexity": "beginner",
-        "readingTime": "1 min",
-        "contentLength": 1075,
-        "relatedPages": []
-      },
-      "searchIndex": {
-        "fullText": "build your node > for the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). markdown versions of documentation pages are available by appending `.md` to page urls; this page is available as [markdown](https://docs.n8n.io/connect/create-nodes/build-your-node.md).\n\n# build your node\n\nthis section provides tutorials on building nodes. it covers:\n\n* [tutorial: build a declarative-style node](/connect/create-nodes/build-your-node/tutorial-build-a-declarative-style-node.md)\n* [reference](/connect/create-nodes/build-your-node/reference.md) material on [file structure](/connect/create-nodes/plan-your-node/choose-node-file-structure.md), parameter definitions for [base](/connect/create-nodes/build-your-node/reference/base-files.md), [codex](/connect/create-nodes/build-your-node/reference/codex-files.md), and [credentials](/connect/create-nodes/build-your-node/reference/credentials-files.md) files, [node ui elements](/connect/create-nodes/build-your-node/reference/node-ui-elements.md), and more.\n\ncoming soon:\n\n* more tutorials\n* revised guidance on standards\n build your node",
-        "importantTerms": [
-          "node",
-          "build",
-          "your",
-          "nodes",
-          "connect",
-          "create",
-          "reference",
-          "files"
-        ]
-      }
-    },
-    {
-      "id": "page-0129",
       "title": "Set up your development environment",
       "url": "https://docs.n8n.io/connect/create-nodes/build-your-node/set-up-your-development-environment.md",
       "urlPath": "connect/create-nodes/build-your-node/set-up-your-development-environment.md",
@@ -12623,6 +12575,54 @@
           "items",
           "itemname",
           "editorconfig"
+        ]
+      }
+    },
+    {
+      "id": "page-0129",
+      "title": "Build your node",
+      "url": "https://docs.n8n.io/connect/create-nodes/build-your-node.md",
+      "urlPath": "connect/create-nodes/build-your-node.md",
+      "category": "other",
+      "subcategory": null,
+      "nodeName": null,
+      "nodeType": null,
+      "content": {
+        "markdown": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/connect/create-nodes/build-your-node.md).\n\n# Build your node\n\nThis section provides tutorials on building nodes. It covers:\n\n* [Tutorial: Build a declarative-style node](/connect/create-nodes/build-your-node/tutorial-build-a-declarative-style-node.md)\n* [Reference](/connect/create-nodes/build-your-node/reference.md) material on [file structure](/connect/create-nodes/plan-your-node/choose-node-file-structure.md), parameter definitions for [base](/connect/create-nodes/build-your-node/reference/base-files.md), [codex](/connect/create-nodes/build-your-node/reference/codex-files.md), and [credentials](/connect/create-nodes/build-your-node/reference/credentials-files.md) files, [node UI elements](/connect/create-nodes/build-your-node/reference/node-ui-elements.md), and more.\n\nComing soon:\n\n* More tutorials\n* Revised guidance on standards\n",
+        "excerpt": "> For the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). Markdown versions of documentation pages are available by appending `.md` to page URLs; this page is available as [Markdown](https://docs.n8n.io/connect/create-nodes/build-your-node.md).  # Build your node  This section provides tutorials on building nodes. It covers:  * [Tutorial: Build a declarative-style node](/connect/create-nodes/build-your-node/tutorial-build-a-declarative-style-node.md) * [Reference](/co...",
+        "sections": [
+          {
+            "title": "Build your node",
+            "level": 1,
+            "content": "This section provides tutorials on building nodes. It covers:\n\n* [Tutorial: Build a declarative-style node](/connect/create-nodes/build-your-node/tutorial-build-a-declarative-style-node.md)\n* [Reference](/connect/create-nodes/build-your-node/reference.md) material on [file structure](/connect/create-nodes/plan-your-node/choose-node-file-structure.md), parameter definitions for [base](/connect/create-nodes/build-your-node/reference/base-files.md), [codex](/connect/create-nodes/build-your-node/reference/codex-files.md), and [credentials](/connect/create-nodes/build-your-node/reference/credentials-files.md) files, [node UI elements](/connect/create-nodes/build-your-node/reference/node-ui-elements.md), and more.\n\nComing soon:\n\n* More tutorials\n* Revised guidance on standards"
+          }
+        ]
+      },
+      "metadata": {
+        "keywords": [
+          "build",
+          "your",
+          "node"
+        ],
+        "useCases": [],
+        "operations": [],
+        "codeExamples": 0,
+        "complexity": "beginner",
+        "readingTime": "1 min",
+        "contentLength": 1075,
+        "relatedPages": []
+      },
+      "searchIndex": {
+        "fullText": "build your node > for the complete documentation index, see [llms.txt](https://docs.n8n.io/llms.txt). markdown versions of documentation pages are available by appending `.md` to page urls; this page is available as [markdown](https://docs.n8n.io/connect/create-nodes/build-your-node.md).\n\n# build your node\n\nthis section provides tutorials on building nodes. it covers:\n\n* [tutorial: build a declarative-style node](/connect/create-nodes/build-your-node/tutorial-build-a-declarative-style-node.md)\n* [reference](/connect/create-nodes/build-your-node/reference.md) material on [file structure](/connect/create-nodes/plan-your-node/choose-node-file-structure.md), parameter definitions for [base](/connect/create-nodes/build-your-node/reference/base-files.md), [codex](/connect/create-nodes/build-your-node/reference/codex-files.md), and [credentials](/connect/create-nodes/build-your-node/reference/credentials-files.md) files, [node ui elements](/connect/create-nodes/build-your-node/reference/node-ui-elements.md), and more.\n\ncoming soon:\n\n* more tutorials\n* revised guidance on standards\n build your node",
+        "importantTerms": [
+          "node",
+          "build",
+          "your",
+          "nodes",
+          "connect",
+          "create",
+          "reference",
+          "files"
         ]
       }
     },
@@ -16258,7 +16258,7 @@
         "page-0019"
       ],
       "12345678": [
-        "page-0016"
+        "page-0017"
       ],
       "docs": [
         "page-0001",
@@ -16290,7 +16290,7 @@
         "page-0002",
         "page-0008",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0134",
         "page-0143"
       ],
@@ -16299,7 +16299,7 @@
         "page-0003",
         "page-0004",
         "page-0011",
-        "page-0016",
+        "page-0017",
         "page-0021",
         "page-0101",
         "page-0160"
@@ -16318,11 +16318,11 @@
         "page-0013",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0020",
-        "page-0024",
+        "page-0023",
         "page-0030",
         "page-0097",
         "page-0160"
@@ -16336,7 +16336,7 @@
         "page-0010",
         "page-0012",
         "page-0014",
-        "page-0016",
+        "page-0017",
         "page-0019",
         "page-0096",
         "page-0100",
@@ -16395,13 +16395,13 @@
       ],
       "understand": [
         "page-0007",
-        "page-0032",
+        "page-0031",
         "page-0040",
         "page-0082"
       ],
       "concurrency": [
         "page-0007",
-        "page-0024",
+        "page-0023",
         "page-0025"
       ],
       "limits": [
@@ -16409,14 +16409,14 @@
       ],
       "href=\"#concurrency": [
         "page-0007",
-        "page-0024"
+        "page-0023"
       ],
       "limits\"": [
         "page-0007"
       ],
       "id=\"concurrency": [
         "page-0007",
-        "page-0024"
+        "page-0023"
       ],
       "limits\"></a>": [
         "page-0007"
@@ -16442,14 +16442,14 @@
       "queue": [
         "page-0007",
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0025"
       ],
       "mode": [
         "page-0007",
-        "page-0016",
+        "page-0017",
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0025",
         "page-0072"
       ],
@@ -16459,9 +16459,9 @@
       ],
       "mode\"": [
         "page-0007",
-        "page-0016",
+        "page-0017",
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0025",
         "page-0072"
       ],
@@ -16471,9 +16471,9 @@
       ],
       "mode\"></a>": [
         "page-0007",
-        "page-0016",
+        "page-0017",
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0025",
         "page-0072"
       ],
@@ -16494,7 +16494,7 @@
         "page-0009",
         "page-0010",
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0030",
         "page-0038",
         "page-0040",
@@ -16563,7 +16563,7 @@
         "page-0013",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0131",
@@ -16576,7 +16576,7 @@
         "page-0013",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0131",
@@ -16589,7 +16589,7 @@
         "page-0013",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0131",
@@ -16602,7 +16602,7 @@
         "page-0013",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0131",
@@ -16615,7 +16615,7 @@
         "page-0013",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0131",
@@ -16628,7 +16628,7 @@
         "page-0013",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0131",
@@ -16664,7 +16664,7 @@
         "page-0012",
         "page-0014",
         "page-0019",
-        "page-0024"
+        "page-0023"
       ],
       "cloudflared": [
         "page-0009",
@@ -16741,7 +16741,7 @@
       ],
       "troubleshooting": [
         "page-0009",
-        "page-0016",
+        "page-0017",
         "page-0019",
         "page-0101",
         "page-0131",
@@ -16771,7 +16771,7 @@
       "prerequisites": [
         "page-0010",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0122",
@@ -16781,7 +16781,7 @@
       "href=\"#prerequisites\"": [
         "page-0010",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0122",
@@ -16791,7 +16791,7 @@
       "id=\"prerequisites\"></a>": [
         "page-0010",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0122",
@@ -16810,7 +16810,7 @@
         "page-0013",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0021",
@@ -16832,7 +16832,7 @@
         "page-0013",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0021",
@@ -17025,7 +17025,7 @@
         "page-0012",
         "page-0014",
         "page-0019",
-        "page-0024"
+        "page-0023"
       ],
       "container\"": [
         "page-0010",
@@ -17037,7 +17037,7 @@
         "page-0012",
         "page-0014",
         "page-0019",
-        "page-0024"
+        "page-0023"
       ],
       "container\"></a>": [
         "page-0010",
@@ -17096,7 +17096,7 @@
         "page-0012",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0029",
@@ -17288,21 +17288,21 @@
         "page-0012",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "configuration": [
         "page-0012",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "repository": [
         "page-0012",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0111",
         "page-0158"
@@ -17311,28 +17311,28 @@
         "page-0012",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "repository\"": [
         "page-0012",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "id=\"clone": [
         "page-0012",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "repository\"></a>": [
         "page-0012",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "default": [
@@ -17382,40 +17382,40 @@
         "page-0012",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0029"
       ],
       "dns\"": [
         "page-0012",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "id=\"set": [
         "page-0012",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0029"
       ],
       "dns\"></a>": [
         "page-0012",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "open": [
         "page-0012",
         "page-0014",
-        "page-0017",
+        "page-0016",
         "page-0019",
         "page-0158"
       ],
@@ -17427,7 +17427,7 @@
       "href=\"#open": [
         "page-0012",
         "page-0014",
-        "page-0017",
+        "page-0016",
         "page-0019"
       ],
       "ports\"": [
@@ -17438,7 +17438,7 @@
       "id=\"open": [
         "page-0012",
         "page-0014",
-        "page-0017",
+        "page-0016",
         "page-0019"
       ],
       "ports\"></a>": [
@@ -17451,10 +17451,10 @@
         "page-0013",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0030"
       ],
       "id=\"configure": [
@@ -17462,10 +17462,10 @@
         "page-0013",
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0030"
       ],
       "href=\"#the": [
@@ -17505,11 +17505,11 @@
       "setup": [
         "page-0012",
         "page-0014",
-        "page-0016",
+        "page-0017",
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0102",
-        "page-0129",
+        "page-0128",
         "page-0147",
         "page-0150",
         "page-0160",
@@ -17525,9 +17525,9 @@
         "page-0012",
         "page-0014",
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0102",
-        "page-0129",
+        "page-0128",
         "page-0150"
       ],
       "id=\"test": [
@@ -17540,9 +17540,9 @@
         "page-0012",
         "page-0014",
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0102",
-        "page-0129",
+        "page-0128",
         "page-0150"
       ],
       "heroku": [
@@ -17554,7 +17554,7 @@
       ],
       "project": [
         "page-0013",
-        "page-0016",
+        "page-0017",
         "page-0018",
         "page-0019",
         "page-0107",
@@ -17575,7 +17575,7 @@
       ],
       "project\"": [
         "page-0013",
-        "page-0016",
+        "page-0017",
         "page-0018",
         "page-0019",
         "page-0131",
@@ -17589,7 +17589,7 @@
       ],
       "project\"></a>": [
         "page-0013",
-        "page-0016",
+        "page-0017",
         "page-0018",
         "page-0019",
         "page-0131",
@@ -17598,17 +17598,17 @@
       "environment": [
         "page-0013",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0097",
-        "page-0129",
+        "page-0128",
         "page-0144"
       ],
       "variables": [
         "page-0013",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0072",
@@ -17620,7 +17620,7 @@
       "variables\"": [
         "page-0013",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0072"
@@ -17628,19 +17628,19 @@
       "variables\"></a>": [
         "page-0013",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0072"
       ],
       "href=\"#deploy": [
         "page-0013",
-        "page-0016",
+        "page-0017",
         "page-0019"
       ],
       "id=\"deploy": [
         "page-0013",
-        "page-0016",
+        "page-0017",
         "page-0019"
       ],
       "changing": [
@@ -17678,18 +17678,18 @@
       ],
       "configuring": [
         "page-0013",
-        "page-0024"
+        "page-0023"
       ],
       "href=\"#configuring": [
         "page-0013",
-        "page-0024"
+        "page-0023"
       ],
       "heroku\"": [
         "page-0013"
       ],
       "id=\"configuring": [
         "page-0013",
-        "page-0024"
+        "page-0023"
       ],
       "heroku\"></a>": [
         "page-0013"
@@ -17699,22 +17699,22 @@
       ],
       "server": [
         "page-0014",
-        "page-0024",
+        "page-0023",
         "page-0148",
         "page-0160"
       ],
       "server\"": [
         "page-0014",
-        "page-0024"
+        "page-0023"
       ],
       "server\"></a>": [
         "page-0014",
-        "page-0024"
+        "page-0023"
       ],
       "volume": [
         "page-0014",
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "volume\"": [
@@ -17725,44 +17725,44 @@
       ],
       "hosting": [
         "page-0015",
-        "page-0017"
+        "page-0016"
       ],
       "href=\"#hosting": [
         "page-0015",
-        "page-0017"
+        "page-0016"
       ],
       "options\"": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0134",
         "page-0143"
       ],
       "id=\"hosting": [
         "page-0015",
-        "page-0017"
+        "page-0016"
       ],
       "options\"></a>": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0134",
         "page-0143"
       ],
       "cluster": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0085"
       ],
       "cluster\"": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019"
       ],
       "cluster\"></a>": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019"
       ],
@@ -17774,50 +17774,50 @@
       ],
       "postgres\"": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "postgres\"></a>": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "persistent": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "storage": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019"
       ],
       "storage\"": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019"
       ],
       "storage\"></a>": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019"
       ],
       "href=\"#postgres": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "id=\"postgres": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "resources": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0074",
         "page-0080",
@@ -17827,12 +17827,12 @@
       ],
       "href=\"#pod": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "resources\"": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0074",
@@ -17841,12 +17841,12 @@
       ],
       "id=\"pod": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "resources\"></a>": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019",
         "page-0074",
@@ -17855,7 +17855,7 @@
       ],
       "optional:": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0021"
       ],
@@ -17875,53 +17875,53 @@
       ],
       "deployments": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "href=\"#deployments\"": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "id=\"deployments\"></a>": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "href=\"#services\"": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "id=\"services\"></a>": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "send": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "kubernetes": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0019"
       ],
       "href=\"#send": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "id=\"send": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018"
       ],
       "delete": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0076",
         "page-0103",
@@ -17937,134 +17937,154 @@
       ],
       "href=\"#delete": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0152"
       ],
       "id=\"delete": [
         "page-0015",
-        "page-0017",
+        "page-0016",
         "page-0018",
         "page-0152"
       ],
-      "google": [
+      "azure": [
+        "page-0016"
+      ],
+      "kubectl": [
         "page-0016",
+        "page-0018"
+      ],
+      "context": [
+        "page-0016",
+        "page-0018",
+        "page-0034"
+      ],
+      "context\"": [
+        "page-0016",
+        "page-0018"
+      ],
+      "context\"></a>": [
+        "page-0016",
+        "page-0018"
+      ],
+      "google": [
+        "page-0017",
         "page-0018",
         "page-0161"
       ],
       "before": [
-        "page-0016",
+        "page-0017",
         "page-0161"
       ],
       "begin:": [
-        "page-0016"
+        "page-0017"
       ],
       "href=\"#before": [
-        "page-0016"
+        "page-0017"
       ],
       "begin": [
-        "page-0016"
+        "page-0017"
       ],
       "id=\"before": [
-        "page-0016"
+        "page-0017"
       ],
       "easy": [
-        "page-0016"
+        "page-0017"
       ],
       "href=\"#easy": [
-        "page-0016"
+        "page-0017"
       ],
       "id=\"easy": [
-        "page-0016"
+        "page-0017"
       ],
       "durable": [
-        "page-0016"
+        "page-0017"
       ],
       "href=\"#durable": [
-        "page-0016"
+        "page-0017"
       ],
       "id=\"durable": [
-        "page-0016"
+        "page-0017"
       ],
       "enable": [
-        "page-0016",
+        "page-0017",
         "page-0018",
-        "page-0024",
+        "page-0023",
         "page-0026"
       ],
       "apis": [
-        "page-0016"
+        "page-0017"
       ],
       "vars": [
-        "page-0016"
+        "page-0017"
       ],
       "href=\"#enable": [
-        "page-0016",
+        "page-0017",
         "page-0018",
         "page-0026"
       ],
       "vars\"": [
-        "page-0016"
+        "page-0017"
       ],
       "id=\"enable": [
-        "page-0016",
+        "page-0017",
         "page-0018",
         "page-0026"
       ],
       "vars\"></a>": [
-        "page-0016"
+        "page-0017"
       ],
       "need": [
-        "page-0016"
+        "page-0017"
       ],
       "login": [
-        "page-0016"
+        "page-0017"
       ],
       "first": [
-        "page-0016",
+        "page-0017",
         "page-0077"
       ],
       "href=\"#you": [
-        "page-0016"
+        "page-0017"
       ],
       "first\"": [
-        "page-0016"
+        "page-0017"
       ],
       "id=\"you": [
-        "page-0016"
+        "page-0017"
       ],
       "first\"></a>": [
-        "page-0016"
+        "page-0017"
       ],
       "database": [
-        "page-0016",
+        "page-0017",
         "page-0019",
         "page-0021",
         "page-0160",
         "page-0161"
       ],
       "href=\"#setup": [
-        "page-0016"
+        "page-0017"
       ],
       "database\"": [
-        "page-0016"
+        "page-0017"
       ],
       "id=\"setup": [
-        "page-0016"
+        "page-0017"
       ],
       "database\"></a>": [
-        "page-0016"
+        "page-0017"
       ],
       "store": [
-        "page-0016",
+        "page-0017",
         "page-0160",
         "page-0161"
       ],
       "sensitive": [
-        "page-0016"
+        "page-0017"
       ],
       "data": [
-        "page-0016",
+        "page-0017",
         "page-0026",
         "page-0030",
         "page-0034",
@@ -18092,179 +18112,159 @@
         "page-0161"
       ],
       "secret": [
-        "page-0016",
+        "page-0017",
         "page-0019",
         "page-0161"
       ],
       "manager": [
-        "page-0016"
+        "page-0017"
       ],
       "href=\"#store": [
-        "page-0016"
+        "page-0017"
       ],
       "manager\"": [
-        "page-0016"
+        "page-0017"
       ],
       "id=\"store": [
-        "page-0016"
+        "page-0017"
       ],
       "manager\"></a>": [
-        "page-0016"
+        "page-0017"
       ],
       "account": [
-        "page-0016",
+        "page-0017",
         "page-0019"
       ],
       "run\"": [
-        "page-0016"
+        "page-0017"
       ],
       "run\"></a>": [
-        "page-0016"
+        "page-0017"
       ],
       "href=\"#troubleshooting\"": [
-        "page-0016",
+        "page-0017",
         "page-0019",
         "page-0131",
         "page-0132",
         "page-0146"
       ],
       "id=\"troubleshooting\"></a>": [
-        "page-0016",
+        "page-0017",
         "page-0019",
         "page-0131",
         "page-0132",
         "page-0146"
       ],
       "(optional)": [
-        "page-0016",
-        "page-0024"
+        "page-0017",
+        "page-0023"
       ],
       "enabling": [
-        "page-0016"
+        "page-0017"
       ],
       "workspace": [
-        "page-0016"
+        "page-0017"
       ],
       "tools": [
-        "page-0016",
+        "page-0017",
         "page-0019"
       ],
       "tools\"": [
-        "page-0016",
+        "page-0017",
         "page-0019"
       ],
       "tools\"></a>": [
-        "page-0016",
+        "page-0017",
         "page-0019"
       ],
       "whichever": [
-        "page-0016"
+        "page-0017"
       ],
       "need\"": [
-        "page-0016"
+        "page-0017"
       ],
       "need\"></a>": [
-        "page-0016"
+        "page-0017"
       ],
       "note:": [
-        "page-0016"
+        "page-0017"
       ],
       "want": [
-        "page-0016"
+        "page-0017"
       ],
       "sheets/docs,": [
-        "page-0016"
+        "page-0017"
       ],
       "it's": [
-        "page-0016",
+        "page-0017",
         "page-0148"
       ],
       "enough": [
-        "page-0016"
+        "page-0017"
       ],
       "just": [
-        "page-0016"
+        "page-0017"
       ],
       "drive;": [
-        "page-0016"
+        "page-0017"
       ],
       "these": [
-        "page-0016"
+        "page-0017"
       ],
       "each": [
-        "page-0016",
+        "page-0017",
         "page-0026",
         "page-0029"
       ],
       "have": [
-        "page-0016"
+        "page-0017"
       ],
       "their": [
-        "page-0016"
+        "page-0017"
       ],
       "href=\"#note": [
-        "page-0016"
+        "page-0017"
       ],
       "sheetsdocs": [
-        "page-0016"
+        "page-0017"
       ],
       "drive": [
-        "page-0016"
+        "page-0017"
       ],
       "api\"": [
-        "page-0016",
+        "page-0017",
         "page-0018"
       ],
       "id=\"note": [
-        "page-0016"
+        "page-0017"
       ],
       "api\"></a>": [
-        "page-0016",
+        "page-0017",
         "page-0018"
       ],
       "https://n8n": [
-        "page-0016"
-      ],
-      "west1": [
-        "page-0016"
-      ],
-      "href=\"#eg": [
-        "page-0016"
-      ],
-      "httpsn8n": [
-        "page-0016"
-      ],
-      "12345678us": [
-        "page-0016"
-      ],
-      "west1runapp\"": [
-        "page-0016"
-      ],
-      "id=\"eg": [
-        "page-0016"
-      ],
-      "west1runapp\"></a>": [
-        "page-0016"
-      ],
-      "azure": [
         "page-0017"
       ],
-      "kubectl": [
-        "page-0017",
-        "page-0018"
+      "west1": [
+        "page-0017"
       ],
-      "context": [
-        "page-0017",
-        "page-0018",
-        "page-0034"
+      "href=\"#eg": [
+        "page-0017"
       ],
-      "context\"": [
-        "page-0017",
-        "page-0018"
+      "httpsn8n": [
+        "page-0017"
       ],
-      "context\"></a>": [
-        "page-0017",
-        "page-0018"
+      "12345678us": [
+        "page-0017"
+      ],
+      "west1runapp\"": [
+        "page-0017"
+      ],
+      "id=\"eg": [
+        "page-0017"
+      ],
+      "west1runapp\"></a>": [
+        "page-0017"
       ],
       "engine": [
         "page-0018"
@@ -18604,7 +18604,7 @@
       ],
       "security": [
         "page-0019",
-        "page-0022",
+        "page-0024",
         "page-0105",
         "page-0120"
       ],
@@ -18740,7 +18740,7 @@
         "page-0125",
         "page-0126",
         "page-0127",
-        "page-0128",
+        "page-0129",
         "page-0130",
         "page-0131",
         "page-0132",
@@ -18794,7 +18794,7 @@
       ],
       "this": [
         "page-0019",
-        "page-0031",
+        "page-0032",
         "page-0039",
         "page-0075",
         "page-0159"
@@ -18913,18 +18913,18 @@
       ],
       "multi": [
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0134",
         "page-0160"
       ],
       "href=\"#multi": [
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0134"
       ],
       "id=\"multi": [
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0134"
       ],
       "services\"": [
@@ -18947,15 +18947,15 @@
       ],
       "redis": [
         "page-0019",
-        "page-0024"
+        "page-0023"
       ],
       "redis\"": [
         "page-0019",
-        "page-0024"
+        "page-0023"
       ],
       "redis\"></a>": [
         "page-0019",
-        "page-0024"
+        "page-0023"
       ],
       "minio": [
         "page-0019"
@@ -19129,7 +19129,7 @@
       ],
       "main": [
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0131",
         "page-0132"
       ],
@@ -19141,7 +19141,7 @@
       ],
       "worker": [
         "page-0019",
-        "page-0024"
+        "page-0023"
       ],
       "pods": [
         "page-0019"
@@ -19160,7 +19160,7 @@
       ],
       "webhook": [
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0030",
         "page-0051",
         "page-0160",
@@ -19168,25 +19168,25 @@
       ],
       "processors": [
         "page-0019",
-        "page-0024"
+        "page-0023"
       ],
       "href=\"#webhook": [
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0030"
       ],
       "processors\"": [
         "page-0019",
-        "page-0024"
+        "page-0023"
       ],
       "id=\"webhook": [
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0030"
       ],
       "processors\"></a>": [
         "page-0019",
-        "page-0024"
+        "page-0023"
       ],
       "cluster)": [
         "page-0019"
@@ -19281,7 +19281,7 @@
       ],
       "running": [
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0028"
       ],
       "running\"": [
@@ -19544,7 +19544,7 @@
       ],
       "view": [
         "page-0019",
-        "page-0024"
+        "page-0023"
       ],
       "logs": [
         "page-0019",
@@ -19552,7 +19552,7 @@
       ],
       "href=\"#view": [
         "page-0019",
-        "page-0024"
+        "page-0023"
       ],
       "logs\"": [
         "page-0019",
@@ -19560,7 +19560,7 @@
       ],
       "id=\"view": [
         "page-0019",
-        "page-0024"
+        "page-0023"
       ],
       "logs\"></a>": [
         "page-0019",
@@ -19568,7 +19568,7 @@
       ],
       "process": [
         "page-0019",
-        "page-0024",
+        "page-0023",
         "page-0158"
       ],
       "href=\"#main": [
@@ -19585,7 +19585,7 @@
       ],
       "workers": [
         "page-0019",
-        "page-0024"
+        "page-0023"
       ],
       "href=\"#workers\"": [
         "page-0019"
@@ -19792,15 +19792,15 @@
         "page-0021"
       ],
       "scaling": [
-        "page-0023",
-        "page-0024"
+        "page-0022",
+        "page-0023"
       ],
       "works": [
-        "page-0024",
+        "page-0023",
         "page-0039"
       ],
       "href=\"#how": [
-        "page-0024",
+        "page-0023",
         "page-0026",
         "page-0034",
         "page-0035",
@@ -19809,10 +19809,10 @@
         "page-0042"
       ],
       "works\"": [
-        "page-0024"
+        "page-0023"
       ],
       "id=\"how": [
-        "page-0024",
+        "page-0023",
         "page-0026",
         "page-0034",
         "page-0035",
@@ -19821,127 +19821,127 @@
         "page-0042"
       ],
       "works\"></a>": [
-        "page-0024"
+        "page-0023"
       ],
       "workers\"": [
-        "page-0024"
+        "page-0023"
       ],
       "workers\"></a>": [
-        "page-0024"
+        "page-0023"
       ],
       "encryption": [
-        "page-0024",
+        "page-0023",
         "page-0161"
       ],
       "key\"": [
-        "page-0024"
+        "page-0023"
       ],
       "key\"></a>": [
-        "page-0024"
+        "page-0023"
       ],
       "executions": [
-        "page-0024",
+        "page-0023",
         "page-0026",
         "page-0070",
         "page-0106"
       ],
       "href=\"#worker": [
-        "page-0024"
+        "page-0023"
       ],
       "id=\"worker": [
-        "page-0024"
+        "page-0023"
       ],
       "queues": [
-        "page-0024"
+        "page-0023"
       ],
       "href=\"#running": [
-        "page-0024"
+        "page-0023"
       ],
       "queues\"": [
-        "page-0024"
+        "page-0023"
       ],
       "id=\"running": [
-        "page-0024"
+        "page-0023"
       ],
       "queues\"></a>": [
-        "page-0024"
+        "page-0023"
       ],
       "url\"": [
-        "page-0024"
+        "page-0023"
       ],
       "url\"></a>": [
-        "page-0024"
+        "page-0023"
       ],
       "load": [
-        "page-0024"
+        "page-0023"
       ],
       "balancer": [
-        "page-0024"
+        "page-0023"
       ],
       "balancer\"": [
-        "page-0024"
+        "page-0023"
       ],
       "balancer\"></a>": [
-        "page-0024"
+        "page-0023"
       ],
       "disable": [
-        "page-0024",
+        "page-0023",
         "page-0034",
         "page-0098"
       ],
       "processing": [
-        "page-0024"
+        "page-0023"
       ],
       "href=\"#disable": [
-        "page-0024",
+        "page-0023",
         "page-0034",
         "page-0098"
       ],
       "optional\"": [
-        "page-0024"
+        "page-0023"
       ],
       "id=\"disable": [
-        "page-0024",
+        "page-0023",
         "page-0034",
         "page-0098"
       ],
       "optional\"></a>": [
-        "page-0024"
+        "page-0023"
       ],
       "concurrency\"": [
-        "page-0024",
+        "page-0023",
         "page-0025"
       ],
       "concurrency\"></a>": [
-        "page-0024",
+        "page-0023",
         "page-0025"
       ],
       "recommendations": [
-        "page-0024"
+        "page-0023"
       ],
       "recommendations\"": [
-        "page-0024"
+        "page-0023"
       ],
       "recommendations\"></a>": [
-        "page-0024"
+        "page-0023"
       ],
       "leader": [
-        "page-0024"
+        "page-0023"
       ],
       "designation": [
-        "page-0024"
+        "page-0023"
       ],
       "href=\"#leader": [
-        "page-0024"
+        "page-0023"
       ],
       "designation\"": [
-        "page-0024"
+        "page-0023"
       ],
       "id=\"leader": [
-        "page-0024"
+        "page-0023"
       ],
       "designation\"></a>": [
-        "page-0024"
+        "page-0023"
       ],
       "control": [
         "page-0025",
@@ -20481,27 +20481,27 @@
       "lookup\"></a>": [
         "page-0030"
       ],
+      "architecture": [
+        "page-0031"
+      ],
       "build": [
-        "page-0031",
-        "page-0128",
+        "page-0032",
+        "page-0129",
         "page-0130",
         "page-0131",
         "page-0132"
       ],
       "explore": [
-        "page-0031"
+        "page-0032"
       ],
       "space": [
-        "page-0031",
+        "page-0032",
         "page-0160"
       ],
       "foundations": [
-        "page-0031"
+        "page-0032"
       ],
       "optimize": [
-        "page-0031"
-      ],
-      "architecture": [
         "page-0032"
       ],
       "ways": [
@@ -24817,27 +24817,27 @@
         "page-0127"
       ],
       "development": [
-        "page-0129"
+        "page-0128"
       ],
       "requirements": [
-        "page-0129"
+        "page-0128"
       ],
       "href=\"#requirements\"": [
-        "page-0129"
+        "page-0128"
       ],
       "id=\"requirements\"></a>": [
-        "page-0129"
+        "page-0128"
       ],
       "editor": [
-        "page-0129",
+        "page-0128",
         "page-0148"
       ],
       "href=\"#editor": [
-        "page-0129",
+        "page-0128",
         "page-0148"
       ],
       "id=\"editor": [
-        "page-0129",
+        "page-0128",
         "page-0148"
       ],
       "tool": [
